@@ -135,23 +135,10 @@ header{
   </div>
 </header>
 
-<video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/palm_14.jpg">
+<section class="hero">
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/palm_14.jpg">
     <source src="https://res.cloudinary.com/dtqr9dhos/video/upload/vc_auto/farm.mp4_h5gty0.mp4" type="video/mp4">
   </video>
-  <script>
-    (function(){
-      var v=document.getElementById('heroVideo');
-      if(v){
-        v.muted=true;
-        v.setAttribute('muted','');
-        v.setAttribute('playsinline','');
-        var p=v.play();
-        if(p!==undefined){p.catch(function(){
-          document.addEventListener('touchstart',function(){v.play();},{once:true});
-        });}
-      }
-    })();
-  </script>
   <div class="hero-overlay">
     <p class="hero-tagline">Serving South Florida, Georgia, Texas, Louisiana &amp; California Since 1998</p>
     <h1 class="hero-title">Premium Sylvester Palms &mdash; Grown in <em>South Florida</em> for 26 Years</h1>
@@ -253,6 +240,19 @@ function likePhoto(){
 }
 document.getElementById("fsOverlay").addEventListener("click",function(e){if(e.target===document.getElementById("fsOverlay"))closeFS();});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();});
+
+(function(){
+  var v=document.getElementById('heroVideo');
+  if(v){
+    v.muted=true;
+    v.setAttribute('muted','');
+    v.setAttribute('playsinline','');
+    var p=v.play();
+    if(p!==undefined){p.catch(function(){
+      document.addEventListener('touchstart',function(){v.play();},{once:true});
+    });}
+  }
+})();
 </script>
 </body>
 </html>
