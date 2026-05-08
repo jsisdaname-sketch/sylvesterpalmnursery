@@ -80,18 +80,15 @@ header{
   position:relative;width:100%;height:85vh;min-height:500px;
   overflow:hidden;
 }
-.hero-img{
-  width:100%;height:100%;object-fit:cover;display:block;
+.hero-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
   filter:brightness(0.45);
-  transform:scale(1.02);
-  animation:heroZoom 20s ease-in-out infinite alternate;
-}
-@keyframes heroZoom{
-  0%{transform:scale(1.02) translateY(0);}
-  100%{transform:scale(1.08) translateY(-1%);}
+  z-index:0;
 }
 .hero-overlay{
-  position:absolute;inset:0;
+  position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.6) 50%,rgba(10,10,10,0.9) 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:2rem;
@@ -220,7 +217,6 @@ header{
 <body>
 
 <header>
-  <!-- Mobile: row1 = logo, row2 = icons. Desktop: left icons | center logo | right instagram -->
   <div class="desktop-left">
     <a href="tel:5619005658" class="icon-btn" title="Call us">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -242,13 +238,13 @@ header{
   </div>
 
   <div class="row2">
-    <a href="tel:5619005658" class="icon-btn mobile-only" title="Call us">
+    <a href="tel:5619005658" class="icon-btn" title="Call us">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </a>
-    <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="icon-btn mobile-only" title="Text us">
+    <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="icon-btn" title="Text us">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </a>
-    <a href="https://maps.app.goo.gl/rVxA8JvowELWe8N29?g_st=ic" target="_blank" class="icon-btn mobile-only" title="Directions">
+    <a href="https://maps.app.goo.gl/rVxA8JvowELWe8N29?g_st=ic" target="_blank" class="icon-btn" title="Directions">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     </a>
     <a href="https://www.instagram.com/sylvesterpalmnursery?igsh=d25yZnVicHh0ZDJ5&amp;utm_source=qr" target="_blank" class="ig-btn">
@@ -259,7 +255,9 @@ header{
 </header>
 
 <section class="hero">
-  <img src="images/palm_14.jpg" alt="Premium Sylvester Palm Trees" class="hero-img">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="farm.mp4" type="video/mp4">
+  </video>
   <div class="hero-overlay">
     <p class="hero-tagline">Serving South Florida, Georgia, Texas, Louisiana &amp; California Since 1998</p>
     <h1 class="hero-title">Premium Sylvester Palms &mdash; Grown in <em>South Florida</em> for 26 Years</h1>
