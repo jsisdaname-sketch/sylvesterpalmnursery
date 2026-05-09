@@ -46,7 +46,7 @@ header{
 }
 
 .hero{position:relative;width:100%;height:85vh;min-height:500px;overflow:hidden;}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.85);z-index:0;}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,0.1) 50%,rgba(10,10,10,0.4) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,10,0.15) 0%,rgba(10,10,10,0.3) 50%,rgba(10,10,10,0.6) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
 .hero-tagline{font-family:"DM Sans",sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#FBDF80;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.3s;}
 .hero-title{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:900;color:#fff;line-height:1.15;max-width:700px;margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s ease forwards 0.5s;}
