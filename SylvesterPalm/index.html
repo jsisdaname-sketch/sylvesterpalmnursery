@@ -40,6 +40,30 @@ header{
 .ig-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:22px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-size:0.78rem;font-weight:700;text-decoration:none;white-space:nowrap;margin-left:auto;transition:opacity 0.3s;}
 .ig-btn:hover{opacity:0.85;}
 
+/* SYNCHRONIZED BLINK FOR HEADER ICONS */
+@keyframes iconBlink {
+  0%, 85%, 100% {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: none;
+  }
+  90%, 95% {
+    background: rgba(255,255,255,0.30);
+    border-color: rgba(255,255,255,0.95);
+    box-shadow: 0 0 20px rgba(255,255,255,0.65);
+  }
+}
+@keyframes iconStrokeBlink {
+  0%, 85%, 100% { stroke: #FBDF80; }
+  90%, 95% { stroke: #ffffff; }
+}
+header .icon-btn {
+  animation: iconBlink 5s ease-in-out infinite;
+}
+header .icon-btn svg {
+  animation: iconStrokeBlink 5s ease-in-out infinite;
+}
+
 /* DESKTOP HEADER - rebuilt clean */
 @media(min-width:601px){
   header{
@@ -83,6 +107,40 @@ header{
 .hero-cta:hover{background:#1e8c42;transform:translateY(-2px);box-shadow:0 8px 32px rgba(26,122,58,0.6);}
 .hero-cta svg{flex-shrink:0;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* GOOGLE REVIEWS SECTION */
+.reviews-section{padding:4rem 1.5rem 2rem;max-width:1400px;margin:0 auto;}
+.reviews-header{text-align:center;margin-bottom:2.5rem;}
+.reviews-google-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:50px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);margin-bottom:1.25rem;}
+.google-logo{font-family:"DM Sans",sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:-0.01em;}
+.google-logo .g-blue{color:#4285F4;}
+.google-logo .g-red{color:#EA4335;}
+.google-logo .g-yellow{color:#FBBC05;}
+.google-logo .g-green{color:#34A853;}
+.reviews-rating-row{display:flex;align-items:center;gap:8px;}
+.reviews-stars{display:inline-flex;gap:2px;color:#FBBC05;}
+.reviews-rating-num{font-weight:700;color:#fff;font-size:0.95rem;}
+.reviews-count{color:rgba(255,255,255,0.65);font-size:0.85rem;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:2rem;}
+.review-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform 0.3s ease,border-color 0.3s ease,background 0.3s ease;}
+.review-card:hover{transform:translateY(-4px);border-color:rgba(251,223,128,0.3);background:rgba(255,255,255,0.06);}
+.review-top{display:flex;align-items:center;justify-content:space-between;}
+.review-stars{display:inline-flex;gap:2px;color:#FBBC05;}
+.review-google-icon{width:22px;height:22px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;}
+.review-text{font-size:0.95rem;line-height:1.55;color:rgba(255,255,255,0.88);font-weight:400;flex-grow:1;}
+.review-author{display:flex;align-items:center;gap:12px;margin-top:6px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:0.95rem;flex-shrink:0;}
+.review-meta{display:flex;flex-direction:column;}
+.review-name{font-weight:700;color:#fff;font-size:0.9rem;}
+.review-location{font-size:0.75rem;color:rgba(255,255,255,0.55);}
+.reviews-cta{text-align:center;}
+.reviews-link{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:50px;background:transparent;border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;}
+.reviews-link:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.5);}
+
+@media(max-width:900px){
+  .reviews-grid{grid-template-columns:1fr;}
+  .reviews-section{padding:3rem 1rem 1rem;}
+}
 
 .gallery-section{padding:3rem 1.5rem;max-width:1400px;margin:0 auto;}
 .section-label{font-family:"DM Sans",sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FBDF80;margin-bottom:0.5rem;text-align:center;}
@@ -163,8 +221,8 @@ header{
 </header>
 
 <section class="hero">
-  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/palm_14.jpg">
-    <source src="https://res.cloudinary.com/dtqr9dhos/video/upload/vc_auto/farm.mp4_h5gty0.mp4" type="video/mp4">
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/palm_14.jpg">
+    <source src="https://res.cloudinary.com/dtqr9dhos/video/upload/f_mp4,vc_h264,q_auto/farm.mp4_h5gty0.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay">
     <p class="hero-tagline">Serving South Florida, Georgia, Texas, Louisiana &amp; California Since 1998</p>
@@ -172,6 +230,109 @@ header{
     <a href="tel:5619005658" class="hero-cta">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Call Us Today
+    </a>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS SECTION -->
+<section class="reviews-section">
+  <div class="reviews-header">
+    <div class="reviews-google-badge">
+      <span class="google-logo">
+        <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+      </span>
+      <div class="reviews-rating-row">
+        <span class="reviews-stars">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <span class="reviews-rating-num">5.0</span>
+      </div>
+    </div>
+    <p class="section-label">What Our Customers Say</p>
+    <h2 class="section-title">Trusted by Florida Homeowners for 26 Years</h2>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-top">
+        <span class="review-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <div class="review-google-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+      </div>
+      <p class="review-text">"Absolutely stunning palms! The team delivered three Sylvester palms to our home and they look incredible. Professional installation and great communication throughout the whole process."</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div class="review-meta">
+          <span class="review-name">Maria R.</span>
+          <span class="review-location">Boca Raton, FL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <span class="review-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <div class="review-google-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+      </div>
+      <p class="review-text">"26 years of experience really shows. These guys know palms inside and out. Our backyard has been completely transformed. Highly recommend to anyone looking for premium palm trees!"</p>
+      <div class="review-author">
+        <div class="review-avatar">J</div>
+        <div class="review-meta">
+          <span class="review-name">James T.</span>
+          <span class="review-location">Wellington, FL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <span class="review-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <div class="review-google-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+      </div>
+      <p class="review-text">"Best nursery in South Florida hands down. Quality of the trees is unmatched and the price was fair. Will definitely be back for more in the future. Five stars all the way!"</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div class="review-meta">
+          <span class="review-name">Sarah M.</span>
+          <span class="review-location">Delray Beach, FL</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reviews-cta">
+    <a href="https://www.google.com/search?q=Sylvester+Palm+Nursery+Reviews" target="_blank" rel="noopener" class="reviews-link">
+      Read All Reviews on Google
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
     </a>
   </div>
 </section>
@@ -185,7 +346,7 @@ header{
 <section class="contact-section">
   <h2 class="contact-heading">Get Your Sylvester Palm Today</h2>
   <a href="tel:5619005658" class="contact-phone">(561) 900-5658</a>
-  <p class="contact-sub">Call or Text Us &mdash; We deliver across South Florida, Georgia, Texas, Louisiana &amp; California<br>Located in Delray Beach, FL</p>
+  <p class="contact-sub">Call or Text Us &mdash; We deliver across South Florida, Georgia, Texas, Louisiana &amp; California<br>Located in South Florida</p>
   <a href="tel:5619005658" class="contact-btn">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call Now
@@ -199,7 +360,7 @@ header{
 </div>
 
 <footer class="site-footer">
-  Sylvester Palm Nursery &middot; Delray Beach, FL &middot; (561) 900-5658
+  Sylvester Palm Nursery &middot; South Florida &middot; (561) 900-5658
 </footer>
 
 <script>
@@ -269,16 +430,28 @@ document.getElementById("fsOverlay").addEventListener("click",function(e){if(e.t
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();});
 
 (function(){
-  var v=document.getElementById('heroVideo');
-  if(v){
-    v.muted=true;
-    v.setAttribute('muted','');
-    v.setAttribute('playsinline','');
-    var p=v.play();
-    if(p!==undefined){p.catch(function(){
-      document.addEventListener('touchstart',function(){v.play();},{once:true});
-    });}
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  v.muted = true;
+  v.defaultMuted = true;
+  v.setAttribute('muted','');
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
+
+  function tryPlay(){
+    var p = v.play();
+    if (p !== undefined) p.catch(function(){});
   }
+
+  tryPlay();
+  v.addEventListener('loadedmetadata', tryPlay);
+  v.addEventListener('canplay', tryPlay);
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) tryPlay();
+  });
+  ['touchstart','click','scroll'].forEach(function(evt){
+    document.addEventListener(evt, tryPlay, {once:true, passive:true});
+  });
 })();
 </script>
 </body>
