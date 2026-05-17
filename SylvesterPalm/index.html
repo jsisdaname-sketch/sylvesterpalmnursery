@@ -513,7 +513,7 @@ header .icon-btn svg {
 
 <div class="fs-overlay" id="fsOverlay">
   <div id="fsContent"></div>
-  <button class="like-btn" id="likeBtn" onclick="getQuote()">💬 Get a Quote</button>
+  <button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button>
   <button class="fs-close" onclick="closeFS()">&#x2715;</button>
 </div>
 
@@ -668,25 +668,12 @@ function closeFS(){
   var sc=document.getElementById("stickyCall");
   if(sc && !sessionStorage.getItem("stickyCallDismissed")) sc.style.display="block";
 }
-function getQuote(){
-  if(currentFSIndex<0) return;
+function likePhoto(){
+  if(currentFSIndex<0)return;
   var imgSrc=palms[currentFSIndex].img;
-  var fallback=function(){ window.location.href="sms:+15619005658?body=Hi!%20I%20need%20a%20quote%20for%20this%20palm%20%F0%9F%8C%B4"; };
-  if(navigator.share){
-    fetch(imgSrc)
-      .then(function(r){ return r.blob(); })
-      .then(function(blob){
-        var ext=(imgSrc.split('.').pop()||'jpg').split('?')[0];
-        var file=new File([blob],'palm.'+ext,{type:blob.type});
-        var shareData=navigator.canShare&&navigator.canShare({files:[file]})
-          ? {files:[file],text:"Hi! I need a quote for this palm 🌴"}
-          : {text:"Hi! I need a quote for this palm 🌴"};
-        return navigator.share(shareData);
-      })
-      .catch(fallback);
-  } else {
-    fallback();
-  }
+  var photoRef=window.location.origin+"/"+imgSrc;
+  var body=encodeURIComponent("Hi! I need a quote for this palm 🌴 "+photoRef);
+  window.location.href="sms:+15619005658?body="+body;
 }
 document.getElementById("fsOverlay").addEventListener("click",function(e){if(e.target===document.getElementById("fsOverlay"))closeFS();});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();});
