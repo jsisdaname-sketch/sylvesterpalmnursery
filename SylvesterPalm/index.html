@@ -281,6 +281,17 @@ header .icon-btn svg {
   .masonry-item{margin-bottom:6px;border-radius:4px;}
   .gallery-section{padding:2rem 0.75rem;}
 }
+
+/* STICKY TAP TO CALL — mobile only */
+.sticky-call{display:none;}
+@media(max-width:767px){
+  .sticky-call{display:block;position:fixed;bottom:0;left:0;right:0;z-index:999;background:#1a7a3a;transition:transform 0.3s ease;}
+  .sticky-call.dismissed{transform:translateY(100%);}
+  .sticky-call-link{display:block;color:#fff;font-family:"DM Sans",sans-serif;font-weight:700;font-size:1rem;padding:1rem;text-align:center;text-decoration:none;}
+  .sticky-dismiss{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .hero-cta{display:none;}
+  body{padding-bottom:70px;}
+}
 </style>
 </head>
 <body>
@@ -502,7 +513,7 @@ header .icon-btn svg {
 
 <div class="fs-overlay" id="fsOverlay">
   <div id="fsContent"></div>
-  <button class="like-btn" id="likeBtn" onclick="likePhoto()">&#10084; I like this</button>
+  <a href="tel:+15619005658" class="like-btn" id="likeBtn">📞 Get a Quote</a>
   <button class="fs-close" onclick="closeFS()">&#x2715;</button>
 </div>
 
@@ -651,11 +662,15 @@ function openFS(i){
   document.getElementById("fsContent").innerHTML='<img src="'+palms[i].img+'">';
   document.getElementById("fsOverlay").classList.add("open");
   document.body.style.overflow="hidden";
+  var sc=document.getElementById("stickyCall");
+  if(sc) sc.style.display="none";
 }
 function closeFS(){
   document.getElementById("fsOverlay").classList.remove("open");
   currentFSIndex=-1;
   document.body.style.overflow="";
+  var sc=document.getElementById("stickyCall");
+  if(sc && !sessionStorage.getItem("stickyCallDismissed")) sc.style.display="block";
 }
 function likePhoto(){
   if(currentFSIndex<0)return;
@@ -798,6 +813,23 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 
   if (btn && shouldShow()) btn.classList.add('visible');
 })();
+// === STICKY CALL BAR DISMISS ===
+(function(){
+  var bar=document.getElementById("stickyCall");
+  var dismiss=document.getElementById("stickyDismiss");
+  if(!bar||!dismiss) return;
+  if(sessionStorage.getItem("stickyCallDismissed")) bar.style.display="none";
+  dismiss.addEventListener("click",function(e){
+    e.preventDefault();
+    bar.classList.add("dismissed");
+    setTimeout(function(){ bar.style.display="none"; },300);
+    sessionStorage.setItem("stickyCallDismissed","1");
+  });
+})();
 </script>
+<div class="sticky-call" id="stickyCall">
+  <a href="tel:+15619005658" class="sticky-call-link">📞 Tap to Call — (561) 900-5658</a>
+  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss">&#x2715;</button>
+</div>
 </body>
 </html>
