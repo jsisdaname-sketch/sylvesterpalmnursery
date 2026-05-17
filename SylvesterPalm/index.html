@@ -513,7 +513,7 @@ header .icon-btn svg {
 
 <div class="fs-overlay" id="fsOverlay">
   <div id="fsContent"></div>
-  <a href="tel:+15619005658" class="like-btn" id="likeBtn">📞 Get a Quote</a>
+  <a href="sms:+15619005658?body=Hi!%20I%20need%20a%20quote%20for%20this%20palm%20%F0%9F%8C%B4" class="like-btn" id="likeBtn">📞 Get a Quote</a>
   <button class="fs-close" onclick="closeFS()">&#x2715;</button>
 </div>
 
@@ -569,16 +569,12 @@ header .icon-btn svg {
               onsubmit="handleSubscribe(event)">
 
           <div class="sub-field">
-            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <input class="sub-input" type="text" name="FNAME" placeholder="Your name" required>
+            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <input class="sub-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
           </div>
           <div class="sub-field">
             <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <input class="sub-input" type="email" name="EMAIL" placeholder="Email address" required>
-          </div>
-          <div class="sub-field">
-            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <input class="sub-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
+            <input class="sub-input" type="email" name="EMAIL" placeholder="Email address (optional)">
           </div>
 
           <!-- Mailchimp bot trap - do not remove or rename -->
