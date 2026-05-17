@@ -171,49 +171,48 @@ header .icon-btn svg {
 
 .site-footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.75rem;letter-spacing:0.03em;}
 
+/* FLOATING TAB */
+.sub-tab{position:fixed;bottom:20px;right:20px;z-index:599;background:#1a7a3a;color:#FBDF80;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:700;border:none;border-radius:50px;padding:12px 22px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.4);animation:tabPulse 3s ease-in-out infinite;display:none;}
+.sub-tab.visible{display:block;}
+@keyframes tabPulse{0%,85%,100%{transform:scale(1);}92%{transform:scale(1.07);}}
+@keyframes tabPulseMobile{0%,85%,100%{transform:translateX(-50%) scale(1);}92%{transform:translateX(-50%) scale(1.07);}}
+
 /* SUBSCRIBE POPUP */
-.popup-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1rem;animation:popupFadeIn 0.4s ease;}
-.popup-overlay.show{display:flex;}
-@keyframes popupFadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes popupSlideUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
-.popup-card{background:linear-gradient(165deg,#0f3220 0%,#0a1f10 100%);border:1px solid rgba(251,223,128,0.25);border-radius:18px;padding:2.5rem 2rem;max-width:440px;width:100%;position:relative;animation:popupSlideUp 0.5s cubic-bezier(0.25,0.46,0.45,0.94);box-shadow:0 24px 60px rgba(0,0,0,0.5);}
-.popup-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;}
-.popup-close:hover{background:rgba(255,255,255,0.12);color:#fff;}
-.popup-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;box-shadow:0 4px 16px rgba(26,122,58,0.4);}
-.popup-label{text-align:center;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FBDF80;margin-bottom:0.5rem;}
-.popup-title{text-align:center;font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:0.7rem;}
-.popup-subtitle{text-align:center;font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.5;margin-bottom:1.5rem;}
-.popup-subheadline{text-align:center;font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.7rem;line-height:1.4;}
-.popup-form{display:flex;flex-direction:column;gap:10px;}
-.popup-input{padding:13px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.95rem;width:100%;transition:all 0.3s ease;}
-.popup-input::placeholder{color:rgba(255,255,255,0.4);}
-.popup-input:focus{outline:none;border-color:#FBDF80;background:rgba(255,255,255,0.08);}
-.popup-terms{display:flex;align-items:flex-start;gap:9px;margin:8px 0 4px;}
-.popup-terms input[type="checkbox"]{margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;accent-color:#1a7a3a;}
-.popup-terms label{font-size:0.75rem;color:rgba(255,255,255,0.7);line-height:1.5;cursor:pointer;}
-.popup-terms a{color:#FBDF80;text-decoration:underline;}
-.popup-submit{padding:14px;border-radius:10px;background:#1a7a3a;color:#fff;font-family:"DM Sans",sans-serif;font-size:0.95rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;transition:all 0.3s ease;margin-top:6px;}
-.popup-submit:hover:not(:disabled){background:#1e8c42;transform:translateY(-1px);}
-.popup-submit:disabled{opacity:0.5;cursor:not-allowed;}
-.popup-skip{display:block;width:100%;text-align:center;margin-top:0.7rem;padding:6px;font-size:0.78rem;color:rgba(255,255,255,0.5);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
-.popup-skip:hover{color:rgba(255,255,255,0.85);}
-.popup-success{text-align:center;padding:1rem 0;}
-.popup-success-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;}
-.popup-success h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:#fff;margin-bottom:0.5rem;}
-.popup-success p{color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.5;}
+.sub-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.sub-overlay.show{display:flex;}
+.sub-card{display:flex;max-width:720px;width:100%;border-radius:18px;overflow:hidden;border:1px solid rgba(251,223,128,0.3);box-shadow:0 24px 60px rgba(0,0,0,0.6);position:relative;max-height:90vh;}
+.sub-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:2;}
+.sub-close:hover{background:rgba(0,0,0,0.6);color:#fff;}
+.sub-img-col{flex:0 0 45%;position:relative;overflow:hidden;}
+.sub-img{width:100%;height:100%;object-fit:cover;display:block;}
+.sub-form-col{flex:0 0 55%;background:linear-gradient(165deg,#0f3220 0%,#0a1f10 100%);padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
+.sub-label{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#FBDF80;margin-bottom:0.5rem;}
+.sub-title{font-family:"Playfair Display",serif;font-size:1.7rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:0.75rem;}
+.sub-subtitle{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.55;margin-bottom:1.25rem;}
+.sub-form-col form{display:flex;flex-direction:column;gap:9px;}
+.sub-input{padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.9rem;width:100%;transition:all 0.3s ease;}
+.sub-input::placeholder{color:rgba(255,255,255,0.4);}
+.sub-input:focus{outline:none;border-color:#FBDF80;background:rgba(255,255,255,0.08);}
+.sub-terms{display:flex;align-items:flex-start;gap:8px;margin:6px 0 3px;}
+.sub-terms input[type="checkbox"]{margin-top:3px;flex-shrink:0;width:15px;height:15px;cursor:pointer;accent-color:#1a7a3a;}
+.sub-terms label{font-size:0.7rem;color:rgba(255,255,255,0.65);line-height:1.45;cursor:pointer;}
+.sub-terms a{color:#FBDF80;text-decoration:underline;}
+.sub-submit{padding:13px;border-radius:10px;background:#1a7a3a;color:#fff;font-family:"DM Sans",sans-serif;font-size:0.92rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;transition:all 0.3s ease;margin-top:4px;}
+.sub-submit:hover:not(:disabled){background:#1e8c42;transform:translateY(-1px);}
+.sub-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.sub-skip{display:block;width:100%;text-align:center;margin-top:0.5rem;padding:5px;font-size:0.75rem;color:rgba(255,255,255,0.45);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
+.sub-skip:hover{color:rgba(255,255,255,0.8);}
+.sub-success{text-align:center;padding:1rem 0;}
+.sub-success-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;}
+.sub-success h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:#fff;margin-bottom:0.5rem;}
+.sub-success p{color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.5;}
 @media(max-width:767px){
-  .popup-card{max-width:340px;padding:1.2rem 1.2rem 0.9rem;border-color:rgba(251,223,128,0.5);}
-  .popup-icon{display:none;}
-  .popup-label{margin-bottom:0.2rem;}
-  .popup-title{font-size:1.6rem;line-height:1.1;margin-bottom:0.35rem;}
-  .popup-subheadline{font-size:0.88rem;margin-bottom:0.4rem;}
-  .popup-subtitle{font-size:0.76rem;margin-bottom:0.9rem;line-height:1.4;}
-  .popup-form{gap:7px;}
-  .popup-input{padding:9px 12px;font-size:0.86rem;}
-  .popup-terms{margin:3px 0 1px;}
-  .popup-terms label{font-size:0.68rem;line-height:1.4;}
-  .popup-submit{padding:10px;font-size:0.88rem;margin-top:2px;}
-  .popup-skip{margin-top:0.3rem;padding:4px;font-size:0.7rem;}
+  .sub-tab{right:auto;left:50%;transform:translateX(-50%);animation:tabPulseMobile 3s ease-in-out infinite;}
+  .sub-img-col{display:none;}
+  .sub-card{max-width:90vw;max-height:88vh;}
+  .sub-form-col{flex:0 0 100%;padding:1.75rem 1.5rem;}
+  .sub-title{font-size:1.45rem;}
+  .sub-overlay{padding:1rem;}
 }
 
 @media(max-width:900px){.masonry{columns:3;}}
@@ -404,51 +403,55 @@ header .icon-btn svg {
   <button class="fs-close" onclick="closeFS()">&#x2715;</button>
 </div>
 
+<button class="sub-tab" id="subTab" onclick="openSubscribePopup()">🌴 Get $50 Off</button>
+
 <!-- SUBSCRIBE POPUP -->
-<div class="popup-overlay" id="subscribePopup">
-  <div class="popup-card">
-    <button class="popup-close" onclick="closeSubscribePopup()" aria-label="Close">&#x2715;</button>
+<div class="sub-overlay" id="subscribePopup">
+  <div class="sub-card">
+    <button class="sub-close" onclick="closeSubscribePopup()" aria-label="Close">&#x2715;</button>
 
-    <div id="popupForm">
-      <div class="popup-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <p class="popup-label">EXCLUSIVE OFFER</p>
-      <h2 class="popup-title">Subscribe to Our <span style="color:#FBDF80">Free Newsletter</span></h2>
-      <p class="popup-subheadline">Save Up to <span style="color:#FBDF80">$50</span> on Your Next Palm Tree Order</p>
-      <p class="popup-subtitle">Join hundreds of palm lovers getting weekly tips, farm updates, and subscriber-only deals delivered straight to your inbox.</p>
-
-      <form class="popup-form" id="subscribeForm"
-            action="https://sylvesterpalmnursery.us4.list-manage.com/subscribe/post?u=38f8e67a6d192b50f806ffe3a&amp;id=e2c93d11cc&amp;f_id=006c1eeaf0"
-            method="post"
-            target="mcResponseIframe"
-            onsubmit="handleSubscribe(event)">
-        <input class="popup-input" type="text" name="FNAME" placeholder="Your name" required>
-        <input class="popup-input" type="email" name="EMAIL" placeholder="Email address" required>
-        <input class="popup-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
-
-        <!-- Mailchimp bot trap - do not remove or rename -->
-        <div style="position:absolute;left:-5000px;" aria-hidden="true">
-          <input type="text" name="b_38f8e67a6d192b50f806ffe3a_e2c93d11cc" tabindex="-1" value="">
-        </div>
-
-        <div class="popup-terms">
-          <input type="checkbox" id="agreeTerms" required>
-          <label for="agreeTerms">I agree to receive emails and texts about new palm inventory and promotions. I can unsubscribe anytime. View our <a href="/terms.html" target="_blank">terms &amp; privacy policy</a>.</label>
-        </div>
-
-        <button type="submit" class="popup-submit" id="popupSubmitBtn">Claim My $50 Discount</button>
-        <button type="button" class="popup-skip" onclick="closeSubscribePopup()">No thanks, maybe later</button>
-      </form>
-      <iframe name="mcResponseIframe" id="mcResponseIframe" style="display:none;width:0;height:0;border:0;" title="Mailchimp response"></iframe>
+    <div class="sub-img-col">
+      <img src="images/popup-palm.jpg" alt="Sylvester Palm" class="sub-img">
     </div>
 
-    <div id="popupSuccess" class="popup-success" style="display:none;">
-      <div class="popup-success-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="sub-form-col">
+      <div id="subForm">
+        <p class="sub-label">EXCLUSIVE OFFER</p>
+        <h2 class="sub-title">Get $50 Off Your Next Palm Tree Order</h2>
+        <p class="sub-subtitle">Subscribe to our free newsletter and be the first to hear about new inventory, care tips, and subscriber-only deals.</p>
+
+        <form id="subscribeForm"
+              action="https://sylvesterpalmnursery.us4.list-manage.com/subscribe/post?u=38f8e67a6d192b50f806ffe3a&amp;id=e2c93d11cc&amp;f_id=006c1eeaf0"
+              method="post"
+              target="mcResponseIframe"
+              onsubmit="handleSubscribe(event)">
+          <input class="sub-input" type="text" name="FNAME" placeholder="Your name" required>
+          <input class="sub-input" type="email" name="EMAIL" placeholder="Email address" required>
+          <input class="sub-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
+
+          <!-- Mailchimp bot trap - do not remove or rename -->
+          <div style="position:absolute;left:-5000px;" aria-hidden="true">
+            <input type="text" name="b_38f8e67a6d192b50f806ffe3a_e2c93d11cc" tabindex="-1" value="">
+          </div>
+
+          <div class="sub-terms">
+            <input type="checkbox" id="agreeTerms" required>
+            <label for="agreeTerms">I agree to receive emails and texts about new palm inventory and promotions. I can unsubscribe anytime. View our <a href="/terms.html" target="_blank">terms &amp; privacy policy</a>.</label>
+          </div>
+
+          <button type="submit" class="sub-submit" id="subSubmitBtn">Claim My $50 Discount</button>
+          <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
+        </form>
+        <iframe name="mcResponseIframe" id="mcResponseIframe" style="display:none;width:0;height:0;border:0;" title="Mailchimp response"></iframe>
       </div>
-      <h3>You're on the list!</h3>
-      <p>Watch for our first email this Saturday with the freshest Sylvester palms straight from the farm.</p>
+
+      <div id="subSuccess" class="sub-success" style="display:none;">
+        <div class="sub-success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>You're on the list!</h3>
+        <p>Watch for our first email this Saturday with the freshest Sylvester palms straight from the farm.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -547,9 +550,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     document.addEventListener(evt, tryPlay, {once:true, passive:true});
   });
 })();
-// === SUBSCRIBE POPUP LOGIC ===
-var MAILCHIMP_FORM_ACTION = 'https://sylvesterpalmnursery.us4.list-manage.com/subscribe/post?u=38f8e67a6d192b50f806ffe3a&id=e2c93d11cc&f_id=006c1eeaf0';
-
+// === SUBSCRIBE POPUP & FLOATING TAB ===
 (function(){
   var STORAGE_KEY = 'spn_popup_state';
   var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
@@ -561,7 +562,6 @@ var MAILCHIMP_FORM_ACTION = 'https://sylvesterpalmnursery.us4.list-manage.com/su
   function setState(state){
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
   }
-
   function shouldShow(){
     var state = getState();
     if (state.subscribed) return false;
@@ -569,16 +569,27 @@ var MAILCHIMP_FORM_ACTION = 'https://sylvesterpalmnursery.us4.list-manage.com/su
     return true;
   }
 
-  if (shouldShow()) {
-    setTimeout(function(){
-      var popup = document.getElementById('subscribePopup');
-      if (popup) popup.classList.add('show');
-    }, 600);
+  var tab = document.getElementById('subTab');
+  var overlay = document.getElementById('subscribePopup');
+
+  function showTab(){
+    if (tab && shouldShow()) tab.classList.add('visible');
+  }
+  function hideTab(){
+    if (tab) tab.classList.remove('visible');
   }
 
+  window.openSubscribePopup = function(){
+    if (!overlay) return;
+    overlay.classList.add('show');
+    hideTab();
+    document.body.style.overflow = 'hidden';
+  };
+
   window.closeSubscribePopup = function(){
-    var popup = document.getElementById('subscribePopup');
-    if (popup) popup.classList.remove('show');
+    if (!overlay) return;
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
     var state = getState();
     if (!state.subscribed) {
       state.dismissedAt = Date.now();
@@ -588,7 +599,7 @@ var MAILCHIMP_FORM_ACTION = 'https://sylvesterpalmnursery.us4.list-manage.com/su
 
   window.handleSubscribe = function(e){
     // Note: we do NOT call e.preventDefault() — the form submits naturally to the hidden iframe
-    var btn = document.getElementById('popupSubmitBtn');
+    var btn = document.getElementById('subSubmitBtn');
     btn.disabled = true;
     btn.textContent = 'Subscribing...';
 
@@ -598,14 +609,15 @@ var MAILCHIMP_FORM_ACTION = 'https://sylvesterpalmnursery.us4.list-manage.com/su
     function showSuccess(){
       if (handled) return;
       handled = true;
-      document.getElementById('popupForm').style.display = 'none';
-      document.getElementById('popupSuccess').style.display = 'block';
+      document.getElementById('subForm').style.display = 'none';
+      document.getElementById('subSuccess').style.display = 'block';
       var state = getState();
       state.subscribed = true;
       setState(state);
+      hideTab();
       setTimeout(function(){
-        var popup = document.getElementById('subscribePopup');
-        if (popup) popup.classList.remove('show');
+        if (overlay) overlay.classList.remove('show');
+        document.body.style.overflow = '';
       }, 3500);
     }
 
@@ -613,18 +625,21 @@ var MAILCHIMP_FORM_ACTION = 'https://sylvesterpalmnursery.us4.list-manage.com/su
       iframe.removeEventListener('load', onIframeLoad);
       showSuccess();
     }
-
     iframe.addEventListener('load', onIframeLoad);
     // Fallback in case iframe load event doesn't fire (some browsers)
     setTimeout(showSuccess, 3000);
   };
 
-  var popupOverlay = document.getElementById('subscribePopup');
-  if (popupOverlay) {
-    popupOverlay.addEventListener('click', function(e){
+  if (overlay) {
+    overlay.addEventListener('click', function(e){
       if (e.target === this) closeSubscribePopup();
     });
   }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeSubscribePopup();
+  });
+
+  showTab();
 })();
 </script>
 </body>
