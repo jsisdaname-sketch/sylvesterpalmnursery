@@ -171,47 +171,54 @@ header .icon-btn svg {
 
 .site-footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.75rem;letter-spacing:0.03em;}
 
-/* FLOATING TAB */
-.sub-tab{position:fixed;bottom:20px;right:20px;z-index:599;background:#1a7a3a;color:#FBDF80;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:700;border:none;border-radius:50px;padding:12px 22px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.4);animation:tabPulse 3s ease-in-out infinite;display:none;}
-.sub-tab.visible{display:block;}
-@keyframes tabPulse{0%,85%,100%{transform:scale(1);}92%{transform:scale(1.07);}}
-@keyframes tabPulseMobile{0%,85%,100%{transform:translateX(-50%) scale(1);}92%{transform:translateX(-50%) scale(1.07);}}
+/* HERO OFFER BUTTON */
+@keyframes offerPulse{0%,100%{box-shadow:0 4px 20px rgba(26,122,58,0.4);}50%{box-shadow:0 4px 32px rgba(26,122,58,0.7),0 0 0 6px rgba(26,122,58,0.15);}}
+.hero-offer-btn{display:none;align-items:center;gap:8px;margin-top:1rem;padding:13px 28px;border-radius:50px;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#FBDF80;font-family:"DM Sans",sans-serif;font-size:1rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;animation:offerPulse 2.5s ease-in-out infinite;transition:transform 0.2s ease;}
+.hero-offer-btn.visible{display:inline-flex;}
+.hero-offer-btn:hover{transform:translateY(-2px);}
 
 /* SUBSCRIBE POPUP */
 .sub-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.5rem;}
 .sub-overlay.show{display:flex;}
-.sub-card{display:flex;max-width:720px;width:100%;border-radius:18px;overflow:hidden;border:1px solid rgba(251,223,128,0.3);box-shadow:0 24px 60px rgba(0,0,0,0.6);position:relative;max-height:90vh;}
-.sub-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:2;}
-.sub-close:hover{background:rgba(0,0,0,0.6);color:#fff;}
+.sub-card{display:flex;max-width:720px;width:100%;border-radius:18px;overflow:hidden;border:1px solid rgba(197,151,58,0.3);box-shadow:0 24px 60px rgba(0,0,0,0.6);position:relative;max-height:90vh;}
+.sub-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.3);border:1px solid rgba(0,0,0,0.15);color:rgba(10,31,16,0.7);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:2;}
+.sub-close:hover{background:rgba(0,0,0,0.15);color:#0a1f10;}
 .sub-img-col{flex:0 0 45%;position:relative;overflow:hidden;}
 .sub-img{width:100%;height:100%;object-fit:cover;display:block;}
-.sub-form-col{flex:0 0 55%;background:linear-gradient(165deg,#0f3220 0%,#0a1f10 100%);padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
-.sub-label{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#FBDF80;margin-bottom:0.5rem;}
-.sub-title{font-family:"Playfair Display",serif;font-size:1.7rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:0.75rem;}
-.sub-subtitle{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.55;margin-bottom:1.25rem;}
+.sub-form-col{flex:0 0 55%;background:#fdf8f0;padding:2.25rem 2rem;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
+.sub-badge{display:inline-block;background:linear-gradient(135deg,#C5973A,#e4b85a);color:#fff;font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:0.75rem;}
+.sub-headline{font-family:"Playfair Display",serif;font-size:1.75rem;font-weight:900;color:#0a1f10;line-height:1.2;margin-bottom:0.6rem;}
+.sub-gold{color:#C5973A;}
+.sub-subtext{font-size:0.86rem;color:rgba(10,31,16,0.65);line-height:1.55;margin-bottom:1rem;}
+.sub-features{display:flex;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;}
+.sub-feature{display:flex;align-items:center;gap:6px;font-size:0.76rem;font-weight:600;color:#0a1f10;}
+.sub-feature-icon{width:24px;height:24px;border-radius:50%;background:#e8f5ee;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sub-timer{display:flex;align-items:center;gap:8px;background:rgba(197,151,58,0.08);border:1.5px solid #C5973A;border-radius:10px;padding:8px 14px;margin-bottom:1rem;font-size:0.78rem;color:rgba(10,31,16,0.7);}
+.sub-timer-count{font-weight:700;color:#C5973A;font-size:1.3rem;font-variant-numeric:tabular-nums;min-width:50px;}
 .sub-form-col form{display:flex;flex-direction:column;gap:9px;}
-.sub-input{padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.9rem;width:100%;transition:all 0.3s ease;}
-.sub-input::placeholder{color:rgba(255,255,255,0.4);}
-.sub-input:focus{outline:none;border-color:#FBDF80;background:rgba(255,255,255,0.08);}
-.sub-terms{display:flex;align-items:flex-start;gap:8px;margin:6px 0 3px;}
+.sub-field{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid #d9d2c8;background:#fff;transition:border-color 0.25s ease;}
+.sub-field:focus-within{border-color:#1a7a3a;}
+.sub-field-icon{flex-shrink:0;color:#C5973A;opacity:0.8;}
+.sub-input{flex:1;border:none;outline:none;background:none;color:#0a1f10;font-family:"DM Sans",sans-serif;font-size:0.9rem;}
+.sub-input::placeholder{color:rgba(10,31,16,0.4);}
+.sub-terms{display:flex;align-items:flex-start;gap:8px;margin:4px 0 2px;}
 .sub-terms input[type="checkbox"]{margin-top:3px;flex-shrink:0;width:15px;height:15px;cursor:pointer;accent-color:#1a7a3a;}
-.sub-terms label{font-size:0.7rem;color:rgba(255,255,255,0.65);line-height:1.45;cursor:pointer;}
-.sub-terms a{color:#FBDF80;text-decoration:underline;}
-.sub-submit{padding:13px;border-radius:10px;background:#1a7a3a;color:#fff;font-family:"DM Sans",sans-serif;font-size:0.92rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;transition:all 0.3s ease;margin-top:4px;}
-.sub-submit:hover:not(:disabled){background:#1e8c42;transform:translateY(-1px);}
+.sub-terms label{font-size:0.7rem;color:rgba(10,31,16,0.65);line-height:1.45;cursor:pointer;}
+.sub-terms a{color:#1a7a3a;text-decoration:underline;}
+.sub-submit{padding:13px;border-radius:10px;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.92rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;transition:all 0.3s ease;margin-top:4px;}
+.sub-submit:hover:not(:disabled){background:linear-gradient(135deg,#1e8c42,#27b84f);transform:translateY(-1px);}
 .sub-submit:disabled{opacity:0.5;cursor:not-allowed;}
-.sub-skip{display:block;width:100%;text-align:center;margin-top:0.5rem;padding:5px;font-size:0.75rem;color:rgba(255,255,255,0.45);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
-.sub-skip:hover{color:rgba(255,255,255,0.8);}
+.sub-skip{display:block;width:100%;text-align:center;margin-top:0.5rem;padding:5px;font-size:0.75rem;color:rgba(10,31,16,0.45);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
+.sub-skip:hover{color:rgba(10,31,16,0.75);}
 .sub-success{text-align:center;padding:1rem 0;}
 .sub-success-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;}
-.sub-success h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:#fff;margin-bottom:0.5rem;}
-.sub-success p{color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.5;}
+.sub-success h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:#0a1f10;margin-bottom:0.5rem;}
+.sub-success p{color:rgba(10,31,16,0.7);font-size:0.9rem;line-height:1.5;}
 @media(max-width:767px){
-  .sub-tab{right:auto;left:50%;transform:translateX(-50%);animation:tabPulseMobile 3s ease-in-out infinite;}
-  .sub-img-col{display:none;}
-  .sub-card{max-width:90vw;max-height:88vh;}
-  .sub-form-col{flex:0 0 100%;padding:1.75rem 1.5rem;}
-  .sub-title{font-size:1.45rem;}
+  .sub-card{flex-direction:column;max-width:92vw;max-height:90vh;}
+  .sub-img-col{flex:none;width:100%;height:160px;min-height:unset;}
+  .sub-form-col{flex:1;overflow-y:auto;padding:1.5rem 1.25rem;}
+  .sub-headline{font-size:1.4rem;}
   .sub-overlay{padding:1rem;}
 }
 
@@ -275,6 +282,7 @@ header .icon-btn svg {
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Call Us Today
     </a>
+    <button class="hero-offer-btn" id="heroOfferBtn" onclick="openSubscribePopup()">🌴 Claim $50 Off</button>
   </div>
 </section>
 
@@ -403,8 +411,6 @@ header .icon-btn svg {
   <button class="fs-close" onclick="closeFS()">&#x2715;</button>
 </div>
 
-<button class="sub-tab" id="subTab" onclick="openSubscribePopup()">🌴 Get $50 Off</button>
-
 <!-- SUBSCRIBE POPUP -->
 <div class="sub-overlay" id="subscribePopup">
   <div class="sub-card">
@@ -416,18 +422,55 @@ header .icon-btn svg {
 
     <div class="sub-form-col">
       <div id="subForm">
-        <p class="sub-label">EXCLUSIVE OFFER</p>
-        <h2 class="sub-title">Get $50 Off Your Next Palm Tree Order</h2>
-        <p class="sub-subtitle">Subscribe to our free newsletter and be the first to hear about new inventory, care tips, and subscriber-only deals.</p>
+        <span class="sub-badge">EXCLUSIVE OFFER</span>
+        <h2 class="sub-headline">Get <span class="sub-gold">$50 Off</span> Your Next Palm Tree Order</h2>
+        <p class="sub-subtext">Join <span class="sub-gold">1,200+ subscribers</span> who get weekly palm updates, care tips, and deals straight from our farm.</p>
+
+        <div class="sub-features">
+          <div class="sub-feature">
+            <div class="sub-feature-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Free weekly newsletter
+          </div>
+          <div class="sub-feature">
+            <div class="sub-feature-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            First access to new palms
+          </div>
+          <div class="sub-feature">
+            <div class="sub-feature-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a7a3a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Exclusive subscriber deals
+          </div>
+        </div>
+
+        <div class="sub-timer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5973A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Offer expires in</span>
+          <span class="sub-timer-count" id="subTimerCount">5:00</span>
+        </div>
 
         <form id="subscribeForm"
               action="https://sylvesterpalmnursery.us4.list-manage.com/subscribe/post?u=38f8e67a6d192b50f806ffe3a&amp;id=e2c93d11cc&amp;f_id=006c1eeaf0"
               method="post"
               target="mcResponseIframe"
               onsubmit="handleSubscribe(event)">
-          <input class="sub-input" type="text" name="FNAME" placeholder="Your name" required>
-          <input class="sub-input" type="email" name="EMAIL" placeholder="Email address" required>
-          <input class="sub-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
+
+          <div class="sub-field">
+            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input class="sub-input" type="text" name="FNAME" placeholder="Your name" required>
+          </div>
+          <div class="sub-field">
+            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <input class="sub-input" type="email" name="EMAIL" placeholder="Email address" required>
+          </div>
+          <div class="sub-field">
+            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <input class="sub-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
+          </div>
 
           <!-- Mailchimp bot trap - do not remove or rename -->
           <div style="position:absolute;left:-5000px;" aria-hidden="true">
@@ -435,11 +478,11 @@ header .icon-btn svg {
           </div>
 
           <div class="sub-terms">
-            <input type="checkbox" id="agreeTerms" required>
+            <input type="checkbox" id="agreeTerms" checked required>
             <label for="agreeTerms">I agree to receive emails and texts about new palm inventory and promotions. I can unsubscribe anytime. View our <a href="/terms.html" target="_blank">terms &amp; privacy policy</a>.</label>
           </div>
 
-          <button type="submit" class="sub-submit" id="subSubmitBtn">Claim My $50 Discount</button>
+          <button type="submit" class="sub-submit" id="subSubmitBtn">Get My $50 Discount</button>
           <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
         </form>
         <iframe name="mcResponseIframe" id="mcResponseIframe" style="display:none;width:0;height:0;border:0;" title="Mailchimp response"></iframe>
@@ -550,7 +593,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     document.addEventListener(evt, tryPlay, {once:true, passive:true});
   });
 })();
-// === SUBSCRIBE POPUP & FLOATING TAB ===
+// === SUBSCRIBE POPUP & INLINE HERO BUTTON ===
 (function(){
   var STORAGE_KEY = 'spn_popup_state';
   var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
@@ -569,39 +612,54 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     return true;
   }
 
-  var tab = document.getElementById('subTab');
+  var btn = document.getElementById('heroOfferBtn');
   var overlay = document.getElementById('subscribePopup');
+  var timerInterval = null;
 
-  function showTab(){
-    if (tab && shouldShow()) tab.classList.add('visible');
+  function startTimer(){
+    var seconds = 300;
+    var el = document.getElementById('subTimerCount');
+    clearInterval(timerInterval);
+    timerInterval = setInterval(function(){
+      seconds--;
+      if (seconds <= 0){ clearInterval(timerInterval); seconds = 0; }
+      var m = Math.floor(seconds / 60);
+      var s = seconds % 60;
+      if (el) el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
   }
-  function hideTab(){
-    if (tab) tab.classList.remove('visible');
+  function stopTimer(){
+    clearInterval(timerInterval);
+  }
+  function hideBtn(){
+    if (btn) btn.classList.remove('visible');
   }
 
   window.openSubscribePopup = function(){
     if (!overlay) return;
     overlay.classList.add('show');
-    hideTab();
     document.body.style.overflow = 'hidden';
+    startTimer();
   };
 
   window.closeSubscribePopup = function(){
     if (!overlay) return;
     overlay.classList.remove('show');
     document.body.style.overflow = '';
+    stopTimer();
     var state = getState();
     if (!state.subscribed) {
       state.dismissedAt = Date.now();
       setState(state);
+      hideBtn();
     }
   };
 
   window.handleSubscribe = function(e){
     // Note: we do NOT call e.preventDefault() — the form submits naturally to the hidden iframe
-    var btn = document.getElementById('subSubmitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Subscribing...';
+    var submitBtn = document.getElementById('subSubmitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Subscribing...';
 
     var iframe = document.getElementById('mcResponseIframe');
     var handled = false;
@@ -614,7 +672,8 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
       var state = getState();
       state.subscribed = true;
       setState(state);
-      hideTab();
+      stopTimer();
+      hideBtn();
       setTimeout(function(){
         if (overlay) overlay.classList.remove('show');
         document.body.style.overflow = '';
@@ -639,7 +698,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     if (e.key === 'Escape') closeSubscribePopup();
   });
 
-  showTab();
+  if (btn && shouldShow()) btn.classList.add('visible');
 })();
 </script>
 </body>
