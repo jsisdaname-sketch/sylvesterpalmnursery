@@ -29,39 +29,36 @@ header{
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
 .row1{display:flex;align-items:center;gap:10px;width:100%;}
-.row2{display:flex;align-items:center;gap:8px;width:100%;}
+.row2{display:flex;align-items:center;gap:5px;width:100%;}
 .desktop-left{display:none;}
 .logo-img{height:50px;width:auto;border-radius:8px;flex-shrink:0;}
 .name-block{display:flex;flex-direction:column;gap:2px;}
 .co-name{font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:900;color:#ffffff;letter-spacing:0.02em;line-height:1.1;white-space:nowrap;}
 .co-tagline{font-size:0.62rem;font-weight:700;color:#FBDF80;letter-spacing:0.07em;text-transform:uppercase;}
-.icon-btn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);font-size:1.2rem;text-decoration:none;flex-shrink:0;cursor:pointer;transition:all 0.3s ease;}
-.icon-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);}
+.icon-btn{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);background:transparent;text-decoration:none;flex-shrink:0;cursor:pointer;transition:all 0.3s ease;overflow:hidden;}
+.icon-btn:hover{border-color:rgba(255,255,255,0.7);box-shadow:0 0 12px rgba(255,255,255,0.4);}
 .ig-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:22px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-size:0.78rem;font-weight:700;text-decoration:none;white-space:nowrap;margin-left:auto;transition:opacity 0.3s;}
 .ig-btn:hover{opacity:0.85;}
 
 /* SYNCHRONIZED BLINK FOR HEADER ICONS */
 @keyframes iconBlink {
   0%, 85%, 100% {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.3);
     box-shadow: none;
   }
   90%, 95% {
-    background: rgba(255,255,255,0.30);
     border-color: rgba(255,255,255,0.95);
     box-shadow: 0 0 20px rgba(255,255,255,0.65);
   }
 }
-@keyframes iconStrokeBlink {
-  0%, 85%, 100% { stroke: #FBDF80; }
-  90%, 95% { stroke: #ffffff; }
-}
 header .icon-btn {
   animation: iconBlink 5s ease-in-out infinite;
 }
-header .icon-btn svg {
-  animation: iconStrokeBlink 5s ease-in-out infinite;
+header .icon-btn img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  mix-blend-mode: screen;
 }
 
 /* DESKTOP HEADER - rebuilt clean */
@@ -76,10 +73,12 @@ header .icon-btn svg {
   .desktop-left{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:5px;
     flex:1;
     justify-content:flex-start;
   }
+  .desktop-left .icon-btn{width:36px;height:36px;}
+  .desktop-left .icon-btn img{width:36px;height:36px;}
   .row1{
     width:auto;
     flex-shrink:0;
@@ -288,7 +287,7 @@ header .icon-btn svg {
   .sticky-call{display:block;position:fixed;bottom:0;left:0;right:0;z-index:999;background:#FBDF80;transition:transform 0.3s ease;}
   .sticky-call.dismissed{transform:translateY(100%);}
   .sticky-call-link{display:block;color:#0d2818;font-family:"DM Sans",sans-serif;font-weight:700;font-size:1rem;padding:1rem;text-align:center;text-decoration:none;}
-  .sticky-dismiss{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:rgba(13,40,24,0.15);border:none;color:#0d2818;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .sticky-dismiss{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:rgba(13,40,24,0.15);border:none;color:#0d2818;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;}
   .hero-cta{display:none;}
   body{padding-bottom:70px;}
 }
@@ -299,13 +298,13 @@ header .icon-btn svg {
 <header>
   <div class="desktop-left">
     <a href="tel:5619005658" class="icon-btn" title="Call us">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <img src="images/icon-phone-custom.png" alt="Call">
     </a>
     <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="icon-btn" title="Text us">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <img src="images/icon-text-custom.png" alt="Text">
     </a>
     <a href="https://maps.app.goo.gl/rVxA8JvowELWe8N29?g_st=ic" target="_blank" class="icon-btn" title="Directions">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <img src="images/icon-directions-custom.png" alt="Directions">
     </a>
   </div>
 
@@ -319,13 +318,13 @@ header .icon-btn svg {
 
   <div class="row2">
     <a href="tel:5619005658" class="icon-btn" title="Call us">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <img src="images/icon-phone-custom.png" alt="Call">
     </a>
     <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="icon-btn" title="Text us">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <img src="images/icon-text-custom.png" alt="Text">
     </a>
     <a href="https://maps.app.goo.gl/rVxA8JvowELWe8N29?g_st=ic" target="_blank" class="icon-btn" title="Directions">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <img src="images/icon-directions-custom.png" alt="Directions">
     </a>
     <a href="https://www.instagram.com/sylvesterpalmnursery?igsh=d25yZnVicHh0ZDJ5&amp;utm_source=qr" target="_blank" class="ig-btn">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -812,22 +811,11 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 </script>
 <div class="sticky-call" id="stickyCall">
   <a href="tel:+15619005658" class="sticky-call-link">📞 Tap to Call — (561) 900-5658</a>
-  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss">&#x2715;</button>
+  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">&#x2715;</button>
 </div>
 <script>
-// === STICKY CALL BAR DISMISS ===
-(function(){
-  var bar=document.getElementById("stickyCall");
-  var dismiss=document.getElementById("stickyDismiss");
-  if(!bar||!dismiss) return;
-  if(sessionStorage.getItem("stickyCallDismissed")) bar.style.display="none";
-  dismiss.addEventListener("click",function(e){
-    e.preventDefault();
-    bar.classList.add("dismissed");
-    setTimeout(function(){ bar.style.display="none"; },300);
-    sessionStorage.setItem("stickyCallDismissed","1");
-  });
-})();
+// hide bar immediately if already dismissed this session
+(function(){var b=document.getElementById("stickyCall");if(b&&sessionStorage.getItem("stickyCallDismissed"))b.style.display="none";})();
 </script>
 </body>
 </html>
