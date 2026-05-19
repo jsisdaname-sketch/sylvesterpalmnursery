@@ -562,24 +562,26 @@ header .icon-btn img {
         </div>
 
         <form id="subscribeForm"
-              action="https://sylvesterpalmnursery.us4.list-manage.com/subscribe/post?u=38f8e67a6d192b50f806ffe3a&amp;id=e2c93d11cc&amp;f_id=006c1eeaf0"
+              action="https://d6ff3ed7.sibforms.com/serve/MUIFABdLvrPqUKViTNfvkNkCUgfm2N-LM1x_FozepiFDuwLcxomFJHwU4n_arMDa6FwfWbSeHzeQPrPR1eWNeS8wGDeY7RBKX4ZqmLGpjtpUxkz5vaDcB5AujzzU_-2uR3o4pmOTdSDGIWwkbn70EZxRC1WX7qtElNjJa6dx_RtRmyPUhHCra8o3TNihXZ7VqjVJ7DuRBnqC2VVp7w=="
               method="post"
-              target="mcResponseIframe"
+              target="hidden_iframe"
               onsubmit="handleSubscribe(event)">
 
           <div class="sub-field">
             <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <input class="sub-input" type="tel" name="MMERGE7" placeholder="Phone number" required>
+            <input class="sub-input" type="tel" name="SMS" id="smsInput" placeholder="Phone number" required>
           </div>
           <div class="sub-field">
             <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <input class="sub-input" type="email" name="EMAIL" placeholder="Email address (optional)">
           </div>
 
-          <!-- Mailchimp bot trap - do not remove or rename -->
-          <div style="position:absolute;left:-5000px;" aria-hidden="true">
-            <input type="text" name="b_38f8e67a6d192b50f806ffe3a_e2c93d11cc" tabindex="-1" value="">
-          </div>
+          <!-- Brevo required hidden fields -->
+          <input type="hidden" name="SMS__COUNTRY_CODE" value="+1">
+          <input type="hidden" name="locale" value="en">
+          <input type="hidden" name="html_type" value="simple">
+          <!-- Brevo bot trap - must remain blank -->
+          <input type="text" name="email_address_check" value="" style="display:none;" tabindex="-1" autocomplete="off">
 
           <div class="sub-terms">
             <input type="checkbox" id="agreeTerms" checked required>
@@ -589,7 +591,7 @@ header .icon-btn img {
           <button type="submit" class="sub-submit" id="subSubmitBtn">Get My $50 Discount</button>
           <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
         </form>
-        <iframe name="mcResponseIframe" id="mcResponseIframe" style="display:none;width:0;height:0;border:0;" title="Mailchimp response"></iframe>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;width:0;height:0;border:0;" title="Brevo response"></iframe>
       </div>
 
       <div id="subSuccess" class="sub-success" style="display:none;">
@@ -764,12 +766,20 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   };
 
   window.handleSubscribe = function(e){
+    // Normalize phone to E.164-style digits (no +, with country code) for Brevo SMS field
+    var phoneInput = document.getElementById('smsInput');
+    if (phoneInput) {
+      var digits = phoneInput.value.replace(/\D/g, '');
+      if (digits.length === 10) digits = '1' + digits;
+      phoneInput.value = digits;
+    }
+
     // Note: we do NOT call e.preventDefault() — the form submits naturally to the hidden iframe
     var submitBtn = document.getElementById('subSubmitBtn');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Subscribing...';
 
-    var iframe = document.getElementById('mcResponseIframe');
+    var iframe = document.getElementById('hidden_iframe');
     var handled = false;
 
     function showSuccess(){
