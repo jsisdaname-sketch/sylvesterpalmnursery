@@ -561,45 +561,15 @@ header .icon-btn img {
           <span class="sub-timer-count" id="subTimerCount">5:00</span>
         </div>
 
-        <form id="subscribeForm"
-              action="https://d6ff3ed7.sibforms.com/serve/MUIFABdLvrPqUKViTNfvkNkCUgfm2N-LM1x_FozepiFDuwLcxomFJHwU4n_arMDa6FwfWbSeHzeQPrPR1eWNeS8wGDeY7RBKX4ZqmLGpjtpUxkz5vaDcB5AujzzU_-2uR3o4pmOTdSDGIWwkbn70EZxRC1WX7qtElNjJa6dx_RtRmyPUhHCra8o3TNihXZ7VqjVJ7DuRBnqC2VVp7w=="
-              method="post"
-              target="hidden_iframe"
-              onsubmit="handleSubscribe(event)">
-
-          <div class="sub-field">
-            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <input class="sub-input" type="tel" name="SMS" id="smsInput" placeholder="Phone number" required>
-          </div>
-          <div class="sub-field">
-            <svg class="sub-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <input class="sub-input" type="email" name="EMAIL" placeholder="Email address (optional)">
-          </div>
-
-          <!-- Brevo required hidden fields -->
-          <input type="hidden" name="SMS__COUNTRY_CODE" value="+1">
-          <input type="hidden" name="locale" value="en">
-          <input type="hidden" name="html_type" value="simple">
-          <!-- Brevo bot trap - must remain blank -->
-          <input type="text" name="email_address_check" value="" style="display:none;" tabindex="-1" autocomplete="off">
-
-          <div class="sub-terms">
-            <input type="checkbox" id="agreeTerms" checked required>
-            <label for="agreeTerms">I agree to receive emails and texts about new palm inventory and promotions. I can unsubscribe anytime. View our <a href="/terms.html" target="_blank">terms &amp; privacy policy</a>.</label>
-          </div>
-
-          <button type="submit" class="sub-submit" id="subSubmitBtn">Get My $50 Discount</button>
-          <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
-        </form>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;width:0;height:0;border:0;" title="Brevo response"></iframe>
-      </div>
-
-      <div id="subSuccess" class="sub-success" style="display:none;">
-        <div class="sub-success-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div style="overflow:hidden; height:180px; border-radius:8px; margin-top:8px;">
+          <iframe
+            width="100%" height="400"
+            src="https://d6ff3ed7.sibforms.com/serve/MUIFABdLvrPqUKViTNfvkNkCUgfm2N-LM1x_FozepiFDuwLcxomFJHwU4n_arMDa6FwfWbSeHzeQPrPR1eWNeS8wGDeY7RBKX4ZqmLGpjtpUxkz5vaDcB5AujzzU_-2uR3o4pmOTdSDGIWwkbn70EZxRC1WX7qtElNjJa6dx_RtRmyPUhHCra8o3TNihXZ7VqjVJ7DuRBnqC2VVp7w=="
+            frameborder="0" scrolling="no" allowfullscreen
+            style="display:block;border:none;margin-top:-80px;"></iframe>
         </div>
-        <h3>You're on the list!</h3>
-        <p>Watch for our first email this Saturday with the freshest Sylvester palms straight from the farm.</p>
+
+        <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
       </div>
     </div>
   </div>
@@ -745,11 +715,36 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     if (btn) btn.classList.remove('visible');
   }
 
+  var iframeLoadCount = 0;
+
   window.openSubscribePopup = function(){
     if (!overlay) return;
     overlay.classList.add('show');
     document.body.style.overflow = 'hidden';
     startTimer();
+
+    // Reset counter each time popup opens, then watch for submit
+    iframeLoadCount = 0;
+    var brevoIframe = overlay.querySelector('iframe[src*="sibforms"]');
+    if (brevoIframe) {
+      brevoIframe.addEventListener('load', function onIframeLoad(){
+        iframeLoadCount++;
+        if (iframeLoadCount >= 2) {
+          brevoIframe.removeEventListener('load', onIframeLoad);
+          // Mark subscribed so popup never shows again
+          var state = getState();
+          state.subscribed = true;
+          setState(state);
+          stopTimer();
+          hideBtn();
+          // Give user 2s to read Brevo's success message, then close
+          setTimeout(function(){
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+          }, 2000);
+        }
+      });
+    }
   };
 
   window.closeSubscribePopup = function(){
@@ -765,48 +760,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     }
   };
 
-  window.handleSubscribe = function(e){
-    // Normalize phone to E.164-style digits (no +, with country code) for Brevo SMS field
-    var phoneInput = document.getElementById('smsInput');
-    if (phoneInput) {
-      var digits = phoneInput.value.replace(/\D/g, '');
-      if (digits.length === 10) digits = '1' + digits;
-      phoneInput.value = digits;
-    }
-
-    // Note: we do NOT call e.preventDefault() — the form submits naturally to the hidden iframe
-    var submitBtn = document.getElementById('subSubmitBtn');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Subscribing...';
-
-    var iframe = document.getElementById('hidden_iframe');
-    var handled = false;
-
-    function showSuccess(){
-      if (handled) return;
-      handled = true;
-      document.getElementById('subForm').style.display = 'none';
-      document.getElementById('subSuccess').style.display = 'block';
-      var state = getState();
-      state.subscribed = true;
-      setState(state);
-      stopTimer();
-      hideBtn();
-      setTimeout(function(){
-        if (overlay) overlay.classList.remove('show');
-        document.body.style.overflow = '';
-      }, 3500);
-    }
-
-    function onIframeLoad(){
-      iframe.removeEventListener('load', onIframeLoad);
-      showSuccess();
-    }
-    iframe.addEventListener('load', onIframeLoad);
-    // Fallback in case iframe load event doesn't fire (some browsers)
-    setTimeout(showSuccess, 3000);
-  };
-
   if (overlay) {
     overlay.addEventListener('click', function(e){
       if (e.target === this) closeSubscribePopup();
@@ -818,6 +771,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 
   if (btn && shouldShow()) btn.classList.add('visible');
 })();
+
 </script>
 <div class="sticky-call" id="stickyCall">
   <a href="tel:+15619005658" class="sticky-call-link">📞 Tap to Call — (561) 900-5658</a>
