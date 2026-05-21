@@ -114,7 +114,7 @@ header .icon-btn img {
 .trust-icon{width:36px;height:36px;border-radius:50%;background:rgba(251,223,128,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .trust-text{display:flex;flex-direction:column;gap:1px;}
 .trust-bold{font-family:"DM Sans",sans-serif;font-weight:700;font-size:0.9rem;color:#ffffff;line-height:1.2;}
-.trust-sub{font-family:"DM Sans",sans-serif;font-weight:400;font-size:0.8rem;color:rgba(255,255,255,0.7);line-height:1.2;}
+.trust-sub{font-family:"DM Sans",sans-serif;font-weight:400;font-size:0.8rem;color:#ffffff;line-height:1.2;}
 @media(max-width:600px){
   .trust-bar{padding:1.2rem 1rem;display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
   .trust-item{justify-content:flex-start;padding:0 0.5rem;}
@@ -356,7 +356,7 @@ header .icon-btn img {
     </div>
     <div class="trust-text">
       <span class="trust-bold">26 Years</span>
-      <span class="trust-sub">Family-Owned Farm</span>
+      <span class="trust-sub">Family Owned &amp; Operated</span>
     </div>
   </div>
   <div class="trust-divider"></div>
@@ -715,36 +715,11 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     if (btn) btn.classList.remove('visible');
   }
 
-  var iframeLoadCount = 0;
-
   window.openSubscribePopup = function(){
     if (!overlay) return;
     overlay.classList.add('show');
     document.body.style.overflow = 'hidden';
     startTimer();
-
-    // Reset counter each time popup opens, then watch for submit
-    iframeLoadCount = 0;
-    var brevoIframe = overlay.querySelector('iframe[src*="sibforms"]');
-    if (brevoIframe) {
-      brevoIframe.addEventListener('load', function onIframeLoad(){
-        iframeLoadCount++;
-        if (iframeLoadCount >= 2) {
-          brevoIframe.removeEventListener('load', onIframeLoad);
-          // Mark subscribed so popup never shows again
-          var state = getState();
-          state.subscribed = true;
-          setState(state);
-          stopTimer();
-          hideBtn();
-          // Give user 2s to read Brevo's success message, then close
-          setTimeout(function(){
-            overlay.classList.remove('show');
-            document.body.style.overflow = '';
-          }, 2000);
-        }
-      });
-    }
   };
 
   window.closeSubscribePopup = function(){
@@ -770,6 +745,15 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   });
 
   if (btn && shouldShow()) btn.classList.add('visible');
+
+  // Called by the blur-based auto-close script when it decides the form was submitted
+  window.markSubscribed = function() {
+    var state = getState();
+    state.subscribed = true;
+    setState(state);
+    stopTimer();
+    hideBtn();
+  };
 })();
 
 </script>
@@ -780,6 +764,29 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 <script>
 // hide bar immediately if already dismissed this session
 (function(){var b=document.getElementById("stickyCall");if(b&&sessionStorage.getItem("stickyCallDismissed"))b.style.display="none";})();
+</script>
+<script>
+(function() {
+  var popupCloseTimer = null;
+
+  window.addEventListener('blur', function() {
+    var overlay = document.getElementById('subscribePopup');
+    if (overlay && overlay.classList.contains('show')) {
+      // User clicked inside the Brevo iframe — start a 6 second timer
+      // (enough time to type phone + click submit + see success message)
+      if (popupCloseTimer) clearTimeout(popupCloseTimer);
+      console.log('[Brevo] window blur — popup is open, starting 6s close timer');
+      popupCloseTimer = setTimeout(function() {
+        var overlayNow = document.getElementById('subscribePopup');
+        if (overlayNow && overlayNow.classList.contains('show')) {
+          console.log('[Brevo] 6s elapsed — closing popup');
+          if (window.markSubscribed) window.markSubscribed();
+          if (window.closeSubscribePopup) window.closeSubscribePopup();
+        }
+      }, 14000);
+    }
+  });
+})();
 </script>
 </body>
 </html>
