@@ -1,0 +1,50 @@
+name: Auto-Update Gallery
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SylvesterPalm/images/gallery/**'
+
+permissions:
+  contents: write
+
+jobs:
+  update-gallery:
+    runs-on: ubuntu-latest
+    # Prevent the workflow from triggering itself when it commits back
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update gallery array in index.html
+        run: node .github/scripts/update-gallery.js
+
+      - name: Check if index.html changed
+        id: diff
+        run: |
+          if git diff --quiet SylvesterPalm/index.html; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "index.html updated — will commit."
+          fi
+
+      - name: Commit and push updated gallery
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add SylvesterPalm/index.html
+          git commit -m "Auto-update gallery from new photos [skip ci]"
+          git push
