@@ -160,46 +160,13 @@ header .icon-btn img {
 .gallery-section{padding:3rem 1.5rem;max-width:1400px;margin:0 auto;}
 .section-label{font-family:"DM Sans",sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#FBDF80;margin-bottom:0.5rem;text-align:center;}
 .section-title{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:#ffffff;text-align:center;margin-bottom:2.5rem;}
-
-/* ===== SCROLLING PHOTO WALL ===== */
-.masonry-wall{
-  display:flex;
-  gap:10px;
-  height:78vh;
-  max-height:760px;
-  overflow:hidden;
-  position:relative;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 93%,transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 93%,transparent 100%);
-}
-.scroll-col{flex:1;min-width:0;overflow:hidden;}
-.scroll-track{
-  display:flex;
-  flex-direction:column;
-  will-change:transform;
-  animation:wallScroll linear infinite;
-}
-@keyframes wallScroll{
-  from{transform:translateY(0);}
-  to{transform:translateY(-50%);}
-}
-.masonry-wall:hover .scroll-track{animation-play-state:paused;}
-.masonry-wall.wall-paused .scroll-track{animation-play-state:paused;}
-
+.masonry{columns:4;column-gap:10px;}
 .masonry-item{break-inside:avoid;margin-bottom:10px;position:relative;overflow:hidden;border-radius:6px;cursor:pointer;background:#112e1c;}
 .masonry-item img{width:100%;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;}
 .masonry-item:hover img{transform:scale(1.05);filter:brightness(1.1);}
 .masonry-item .item-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(10,10,10,0.7) 100%);opacity:0;transition:opacity 0.35s ease;display:flex;align-items:flex-end;justify-content:center;padding:12px;}
 .masonry-item:hover .item-overlay{opacity:1;}
 .item-label{font-family:"DM Sans",sans-serif;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.9);letter-spacing:0.06em;}
-
-/* Respect users who prefer reduced motion: stop the drift, show a static wall */
-@media(prefers-reduced-motion:reduce){
-  .scroll-track{animation:none;}
-  .masonry-wall{height:auto;max-height:none;overflow:visible;align-items:flex-start;-webkit-mask-image:none;mask-image:none;}
-  .scroll-col{overflow:visible;}
-  .scroll-track .masonry-item.dup{display:none;}
-}
 
 .contact-section{background:#0a1f10;padding:4rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,0.1);}
 .contact-heading{font-family:"Playfair Display",serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#ffffff;margin-bottom:1rem;}
@@ -306,12 +273,10 @@ header .icon-btn img {
   .sub-submit{padding:11px;font-size:0.95rem;}
   .sub-skip{font-size:0.8rem;margin-top:0.6rem;}
 }
-@media(max-width:900px){
-  .masonry-wall{height:72vh;}
-}
+@media(max-width:900px){.masonry{columns:3;}}
 @media(max-width:600px){
   .hero{height:70vh;min-height:400px;}
-  .masonry-wall{height:66vh;gap:6px;}
+  .masonry{columns:2;column-gap:6px;}
   .masonry-item{margin-bottom:6px;border-radius:4px;}
   .gallery-section{padding:2rem 0.75rem;}
 }
@@ -429,7 +394,7 @@ header .icon-btn img {
 <section class="gallery-section">
   <p class="section-label">Our Collection</p>
   <h2 class="section-title">Browse Our Palms</h2>
-  <div class="masonry-wall" id="grid"></div>
+  <div class="masonry" id="grid"></div>
 </section>
 
 <!-- GOOGLE REVIEWS SECTION -->
@@ -632,77 +597,30 @@ const palms=[
 ];
 
 const grid=document.getElementById("grid");
-
-// How many columns based on screen width (matches the CSS breakpoints)
-function colCount(){
-  var w=window.innerWidth;
-  if(w<=600)return 2;
-  if(w<=900)return 3;
-  return 4;
-}
-
-// Build a single photo tile (the "isDup" copies are the second set that makes the loop seamless)
-function makeItem(i,isDup){
+palms.forEach(function(p,i){
   var item=document.createElement("div");
-  item.className="masonry-item"+(isDup?" dup":"");
-  if(isDup)item.setAttribute("aria-hidden","true");
+  item.className="masonry-item";
   var img=document.createElement("img");
-  img.src=palms[i].img;img.alt="Sylvester Palm";img.decoding="async";
+  img.src=p.img;img.alt="Sylvester Palm";img.loading="lazy";
   item.appendChild(img);
   var ov=document.createElement("div");
   ov.className="item-overlay";
   ov.innerHTML='<span class="item-label">View</span>';
   item.appendChild(ov);
-  // Tap / click opens fullscreen. Browsers suppress the click during a swipe-scroll,
-  // so this won't fire by accident while someone is scrolling the page.
-  item.addEventListener("click",function(){openFS(i);});
-  return item;
-}
-
-// Build the moving wall: a set of columns, each holding its photos TWICE so the
-// upward scroll can loop forever with no visible jump.
-function buildWall(){
-  var n=colCount();
-  grid.innerHTML="";
-  var tracks=[];
-  for(var c=0;c<n;c++){
-    var col=document.createElement("div");
-    col.className="scroll-col";
-    var track=document.createElement("div");
-    track.className="scroll-track";
-    // Each column drifts at a slightly different (gentle) speed so it feels alive.
-    var perImage=6.4+c*0.7;                 // seconds per photo
-    var imgsInCol=Math.ceil((palms.length-c)/n);
-    var dur=Math.max(30,imgsInCol*perImage);
-    track.style.animationDuration=dur.toFixed(1)+"s";
-    track.style.animationDelay=(-(c*5))+"s"; // start columns out of sync immediately
-    col.appendChild(track);
-    grid.appendChild(col);
-    tracks.push(track);
-  }
-  // Spread photos across the columns evenly
-  var perCol=[];for(var k=0;k<n;k++)perCol.push([]);
-  palms.forEach(function(p,i){perCol[i%n].push(i);});
-  // Fill each column with its photos, then the same photos again (the seamless second set)
-  perCol.forEach(function(indices,c){
-    var track=tracks[c];
-    for(var rep=0;rep<2;rep++){
-      indices.forEach(function(idx){track.appendChild(makeItem(idx,rep===1));});
-    }
+  var isClick=false;
+  item.addEventListener("mousedown",function(){isClick=true;});
+  item.addEventListener("mousemove",function(){isClick=false;});
+  item.addEventListener("mouseup",function(){if(isClick)openFS(i);isClick=false;});
+  var holdTimer=null,taps=0,tapTimer=null;
+  item.addEventListener("touchstart",function(){holdTimer=setTimeout(function(){holdTimer=null;openFS(i);},550);},{passive:true});
+  item.addEventListener("touchmove",function(){if(holdTimer){clearTimeout(holdTimer);holdTimer=null;}},{passive:true});
+  item.addEventListener("touchend",function(){
+    if(holdTimer){clearTimeout(holdTimer);holdTimer=null;}
+    taps++;
+    if(taps===1){tapTimer=setTimeout(function(){taps=0;},400);}
+    else{clearTimeout(tapTimer);taps=0;openFS(i);}
   });
-}
-
-var lastCols=colCount();
-buildWall();
-
-// Rebuild only when the screen crosses a breakpoint (phone <-> tablet <-> desktop)
-var rzT=null;
-window.addEventListener("resize",function(){
-  clearTimeout(rzT);
-  rzT=setTimeout(function(){
-    var n=colCount();
-    if(n!==lastCols){lastCols=n;buildWall();}
-  },250);
+  grid.appendChild(item);
 });
 
 var currentFSIndex=-1;
@@ -711,7 +629,6 @@ function openFS(i){
   document.getElementById("fsContent").innerHTML='<img src="'+palms[i].img+'">';
   document.getElementById("fsOverlay").classList.add("open");
   document.body.style.overflow="hidden";
-  if(grid) grid.classList.add("wall-paused");
   var sc=document.getElementById("stickyCall");
   if(sc) sc.style.display="none";
 }
@@ -719,7 +636,6 @@ function closeFS(){
   document.getElementById("fsOverlay").classList.remove("open");
   currentFSIndex=-1;
   document.body.style.overflow="";
-  if(grid) grid.classList.remove("wall-paused");
   var sc=document.getElementById("stickyCall");
   if(sc && !sessionStorage.getItem("stickyCallDismissed")) sc.style.display="block";
 }
