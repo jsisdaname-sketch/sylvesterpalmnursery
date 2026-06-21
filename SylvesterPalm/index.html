@@ -192,6 +192,7 @@ header .icon-btn img {
 .masonry-item .item-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(10,10,10,0.7) 100%);opacity:0;transition:opacity 0.35s ease;display:flex;align-items:flex-end;justify-content:center;padding:12px;}
 .masonry-item:hover .item-overlay{opacity:1;}
 .item-label{font-family:"DM Sans",sans-serif;font-size:0.82rem;font-weight:800;color:#FBDF80;letter-spacing:0.08em;text-shadow:0 1px 6px rgba(0,0,0,0.85);}
+.size-badge{position:absolute;top:8px;left:8px;padding:3px 11px;border-radius:50px;background:rgba(13,40,24,0.82);border:1px solid rgba(251,223,128,0.55);color:#FBDF80;font-family:"DM Sans",sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;z-index:3;pointer-events:none;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);}
 
 /* Respect users who prefer reduced motion: stop the drift, show a static wall */
 @media(prefers-reduced-motion:reduce){
@@ -658,6 +659,10 @@ function makeItem(i,isDup){
   ov.className="item-overlay";
   ov.innerHTML='<span class="item-label">'+PALM_SIZE+'</span>';
   item.appendChild(ov);
+  var badge=document.createElement("div");
+  badge.className="size-badge";
+  badge.textContent=PALM_SIZE;
+  item.appendChild(badge);
   // Tap / click opens fullscreen. Browsers suppress the click during a swipe-scroll,
   // so this won't fire by accident while someone is scrolling the page.
   item.addEventListener("click",function(){openFS(i);});
