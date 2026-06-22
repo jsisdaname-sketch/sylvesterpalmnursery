@@ -685,7 +685,7 @@ function buildWall(){
     var row=document.createElement("div");
     row.className="scroll-row";
     var track=document.createElement("div");
-    track.className="scroll-track "+(r%2===0?"dir-left":"dir-right");
+    track.className="scroll-track dir-left";
     // bigger number = slower drift
     var perImage=10.5+r*1.4;
     var imgsInRow=Math.ceil((palms.length-r)/n);
