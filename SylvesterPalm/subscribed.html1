@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're In — Sylvester Palm Nursery</title>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fdf8f0;font-family:"DM Sans",-apple-system,BlinkMacSystemFont,sans-serif;padding:1.25rem;}
+  .card{text-align:center;max-width:360px;}
+  .check{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;box-shadow:0 8px 24px rgba(26,122,58,0.25);}
+  h1{font-size:1.45rem;color:#0a1f10;margin:0 0 0.4rem;font-weight:800;letter-spacing:-0.01em;}
+  p{color:rgba(10,31,16,0.72);font-size:0.95rem;line-height:1.5;margin:0;}
+  .gold{color:#C5973A;font-weight:700;}
+  .divider{width:44px;height:1px;background:rgba(10,31,16,0.15);margin:1.25rem auto;}
+  .es h2{font-size:1.15rem;color:#0a1f10;margin:0 0 0.4rem;font-weight:700;}
+  .es p{font-size:0.88rem;color:rgba(10,31,16,0.65);}
+</style>
+</head>
+<body>
+<script>
+  // Signal the parent popup that the subscription succeeded, so it can
+  // transform into the on-site congrats screen.
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage('brevo-subscribed', '*');
+    }
+  } catch (e) {}
+</script>
+<div class="card">
+  <div class="check">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h1>You're In! 🌴</h1>
+  <p>Your <span class="gold">$50 off</span> is locked in — just mention it when you order.</p>
+
+  <div class="divider"></div>
+
+  <div class="es">
+    <h2>¡Estás dentro! 🌴</h2>
+    <p>Tu <span class="gold">$50 de descuento</span> está reservado — solo menciónalo al hacer tu pedido.</p>
+  </div>
+</div>
+</body>
+</html>
