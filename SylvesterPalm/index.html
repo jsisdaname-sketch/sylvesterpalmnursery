@@ -441,7 +441,7 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
   </div>
 </section>
 
-<!-- TRUST BAR -->
+<!-- GALLERY -->
 <section class="gallery-section">
   <p class="section-label">Our Collection</p>
   <h2 class="section-title">Browse Our Palms</h2>
@@ -450,7 +450,7 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 
 <div class="trust-bar">
   <div class="trust-item">
-    <div class="trust-icon"><img src="images/gallery/palm_14.jpg" alt="" loading="lazy"><img src="images/gallery/palm_11.jpg" alt="" loading="lazy"><img src="images/gallery/palm_7.jpg" alt="" loading="lazy"><img src="images/gallery/palm_3.jpg" alt="" loading="lazy">
+    <div class="trust-icon">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     </div>
     <div class="trust-text">
@@ -674,20 +674,16 @@ const palms=[
   {img:"images/gallery/palm_15.jpg"},{img:"images/gallery/palm_16.jpg"},{img:"sylvester.jpeg"}
 ];
 
-// Size shown on every photo (hover on desktop, and in the fullscreen view on phones).
-// To change the size later, just edit this one line.
 const PALM_SIZE="5 ft";
 
 const grid=document.getElementById("grid");
 
-// How many rows based on screen width
 function rowCount(){
   var w=window.innerWidth;
   if(w<=600)return 4;
   return 3;
 }
 
-// Build a single photo tile (the "isDup" copies are the second set that makes the loop seamless)
 function makeItem(i,isDup){
   var item=document.createElement("div");
   item.className="masonry-item"+(isDup?" dup":"");
@@ -699,15 +695,10 @@ function makeItem(i,isDup){
   ov.className="item-overlay";
   ov.innerHTML='<span class="item-label">'+PALM_SIZE+'</span>';
   item.appendChild(ov);
-  // Tap / click opens fullscreen. Browsers suppress the click during a swipe-scroll,
-  // so this won't fire by accident while someone is scrolling the page.
   item.addEventListener("click",function(){openFS(i);});
   return item;
 }
 
-// Build the moving wall: rows of photos that scroll SIDEWAYS. Each row holds its
-// photos twice so the scroll loops forever with no visible jump. Rows alternate
-// direction (left / right) at gentle, varied speeds.
 function buildWall(){
   var n=rowCount();
   grid.innerHTML="";
@@ -717,7 +708,6 @@ function buildWall(){
     row.className="scroll-row";
     var track=document.createElement("div");
     track.className="scroll-track dir-left";
-    // bigger number = slower drift
     var perImage=10.5+r*1.4;
     var imgsInRow=Math.ceil((palms.length-r)/n);
     var dur=Math.max(40,imgsInRow*perImage);
@@ -726,10 +716,8 @@ function buildWall(){
     grid.appendChild(row);
     tracks.push(track);
   }
-  // Spread photos across the rows evenly
   var perRow=[];for(var k=0;k<n;k++)perRow.push([]);
   palms.forEach(function(p,i){perRow[i%n].push(i);});
-  // Fill each row with its photos, then the same photos again (the seamless second set)
   perRow.forEach(function(indices,r){
     var track=tracks[r];
     for(var rep=0;rep<2;rep++){
@@ -741,7 +729,6 @@ function buildWall(){
 var lastRows=rowCount();
 buildWall();
 
-// Rebuild only when the screen crosses a breakpoint (phone <-> larger)
 var rzT=null;
 window.addEventListener("resize",function(){
   clearTimeout(rzT);
@@ -796,15 +783,12 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   tryPlay();
   v.addEventListener('loadedmetadata', tryPlay);
   v.addEventListener('canplay', tryPlay);
-  // Instagram/Facebook in-app browsers sometimes suppress the first autoplay.
-  // Kick the video every 700ms for the first ~8 seconds until it runs.
   var kickAttempts = 0;
   var kick = setInterval(function(){
     kickAttempts++;
     if (!v.paused || kickAttempts > 12){ clearInterval(kick); return; }
     tryPlay();
   }, 700);
-  // If something pauses it while the page is visible, resume.
   v.addEventListener('pause', function(){
     if (!document.hidden) setTimeout(tryPlay, 300);
   });
@@ -815,7 +799,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     document.addEventListener(evt, tryPlay, {once:true, passive:true});
   });
 })();
-// === SUBSCRIBE POPUP & INLINE HERO BUTTON ===
 (function(){
   var STORAGE_KEY = 'spn_popup_state';
   var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
@@ -888,7 +871,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 
   if (btn && shouldShow()) btn.classList.add('visible');
 
-  // Called by the blur-based auto-close script when it decides the form was submitted
   window.markSubscribed = function() {
     var state = getState();
     state.subscribed = true;
@@ -904,14 +886,10 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">&#x2715;</button>
 </div>
 <script>
-// hide bar immediately if already dismissed this session
 (function(){var b=document.getElementById("stickyCall");if(b&&sessionStorage.getItem("stickyCallDismissed"))b.style.display="none";})();
 </script>
 <script>
 (function() {
-  // Success handoff: after submitting, Brevo redirects the form (inside the
-  // iframe) to /subscribed.html on our own site. That page sends us a message,
-  // and we swap the form for the congrats screen.
   window.addEventListener('message', function(e) {
     if (e && e.data === 'brevo-subscribed') {
       if (window.markSubscribed) window.markSubscribed();
@@ -925,12 +903,8 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 </script>
 
 <script>
-// === HOLIDAY AUTO-THEME ENGINE ===
-// Checks today's date and rebrands the popup + hero button for whichever
-// holiday window is active. Floating holidays (Father's Day, Thanksgiving,
-// etc.) are calculated automatically every year — no maintenance needed.
 (function(){
-  function nthWeekday(y, m, dow, n){ // m: 0-11, dow: 0=Sunday
+  function nthWeekday(y, m, dow, n){
     var first = new Date(y, m, 1);
     var offset = (dow - first.getDay() + 7) % 7;
     return new Date(y, m, 1 + offset + (n - 1) * 7);
@@ -944,14 +918,13 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   function win(start, end, theme){ theme.start = start; theme.end = end; return theme; }
 
   function buildWindows(y){
-    var mothers = nthWeekday(y, 4, 0, 2);      // 2nd Sunday of May
-    var memorial = lastWeekday(y, 4, 1);       // last Monday of May
-    var fathers = nthWeekday(y, 5, 0, 3);      // 3rd Sunday of June
-    var labor = nthWeekday(y, 8, 1, 1);        // 1st Monday of September
-    var thanks = nthWeekday(y, 10, 4, 4);      // 4th Thursday of November
+    var mothers = nthWeekday(y, 4, 0, 2);
+    var memorial = lastWeekday(y, 4, 1);
+    var fathers = nthWeekday(y, 5, 0, 3);
+    var labor = nthWeekday(y, 8, 1, 1);
+    var thanks = nthWeekday(y, 10, 4, 4);
     var cyberMon = shift(thanks, 4);
 
-    // Order matters: first match wins, so specific holidays sit above seasonal ones.
     return [
       win(new Date(y,1,1), new Date(y,1,14), {
         badge:"VALENTINE'S SPECIAL",
@@ -1008,7 +981,6 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
         headline:'New Year Special \u2014 <span class="sub-gold">$50 Off</span> Your Palm Order',
         sub:'New year, new landscape \u2014 subscribe and <span class="sub-gold">save $50 on your next order.</span>',
         btn:"\uD83C\uDF89 Claim $50 Off"}),
-      // Seasonal fallback (only if no specific holiday matched above)
       win(new Date(y,5,1), new Date(y,5,24), {
         badge:"SUMMER KICKOFF",
         headline:'Summer Is Here \u2014 <span class="sub-gold">$50 Off</span> Your Palm Order',
@@ -1035,7 +1007,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 
   function applyTheme(){
     var t = activeTheme();
-    if (!t) return; // no holiday window — default text stays
+    if (!t) return;
     var btn = document.getElementById('heroOfferBtn');
     if (btn) btn.textContent = t.btn;
   }
