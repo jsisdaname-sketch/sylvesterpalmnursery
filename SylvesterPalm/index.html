@@ -988,5 +988,31 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   }
 })();
 </script>
-</body>
+<script>
+(function(){
+  var v=document.getElementById('heroVideo');
+  if(!v)return;
+  // Phones get a smaller, faster-loading video file
+  if(window.innerWidth<=600){
+    var s=v.querySelector('source');
+    if(s&&s.src.indexOf('h_1080')>-1){
+      s.src=s.src.replace('h_1080','h_720');
+      v.load();
+    }
+  }
+  function go(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  // Keep retrying once a second for 30 seconds (old version gave up after 8)
+  var n=0;
+  var t=setInterval(function(){n++;if(!v.paused||n>30){clearInterval(t);return;}go();},1000);
+  // Any touch, tap, or scroll starts the video (beats Low Power Mode)
+  function onTouch(){
+    if(v.paused)go();
+    if(!v.paused){['touchstart','touchend','click','scroll'].forEach(function(e){document.removeEventListener(e,onTouch);});}
+  }
+  ['touchstart','touchend','click','scroll'].forEach(function(e){document.addEventListener(e,onTouch,{passive:true});});
+  // If the download stalls mid-way, restart it
+  v.addEventListener('stalled',function(){v.load();go();});
+  v.addEventListener('error',function(){v.load();go();});
+})();
+</script></body>
 </html>
