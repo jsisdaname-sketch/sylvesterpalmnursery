@@ -382,7 +382,15 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
   body{padding-bottom:70px;}
 }
 </style>
-</head>
+<style>
+/* Give the Brevo form more room on phones so the country dropdown isn't squished */
+@media(max-width:767px){
+  .sub-overlay{padding:0.4rem;}
+  .sub-card{width:98vw;max-width:98vw;}
+  .sub-form-col{padding:0.6rem 0.4rem;}
+  .sub-iframe-wrap{height:66vh;}
+}
+</style></head>
 <body>
 
 <header>
