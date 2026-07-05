@@ -232,4 +232,761 @@ header .icon-btn img {
 .fs-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,10,0.97);align-items:center;justify-content:center;backdrop-filter:blur(4px);}
 .fs-overlay.open{display:flex;}
 #fsContent img{max-width:94vw;max-height:90vh;object-fit:contain;display:block;border-radius:4px;}
-.fs-size{position:absolute;bottom:82px;left:50%;transform:translateX(-50%);padding:6px 18px;border-radius:50px;background:rgba(13,40,24,0.85);border:1px solid rgba(251,223,128,0.5);color:#FBDF80;font-family:"DM
+.fs-size{position:absolute;bottom:82px;left:50%;transform:translateX(-50%);padding:6px 18px;border-radius:50px;background:rgba(13,40,24,0.85);border:1px solid rgba(251,223,128,0.5);color:#FBDF80;font-family:"DM Sans",sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;z-index:510;}
+.fs-close{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;}
+.fs-close:hover{background:rgba(255,255,255,0.15);}
+.like-btn{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);padding:12px 28px;border-radius:50px;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.85rem;font-weight:700;border:none;cursor:pointer;z-index:510;white-space:nowrap;letter-spacing:0.03em;box-shadow:0 4px 20px rgba(26,122,58,0.35);transition:all 0.3s ease;}
+.like-btn:hover{transform:translateX(-50%) translateY(-2px);box-shadow:0 6px 28px rgba(26,122,58,0.5);}
+
+.site-footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.75rem;letter-spacing:0.03em;}
+
+/* HERO OFFER BUTTON */
+@keyframes offerPulse{0%,100%{box-shadow:0 4px 20px rgba(26,122,58,0.4);}50%{box-shadow:0 4px 32px rgba(26,122,58,0.7),0 0 0 6px rgba(26,122,58,0.15);}}
+.hero-offer-btn{display:none;align-items:center;gap:8px;margin-top:1rem;padding:13px 28px;border-radius:50px;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#FBDF80;font-family:"DM Sans",sans-serif;font-size:1rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;animation:offerPulse 2.5s ease-in-out infinite;transition:transform 0.2s ease;}
+.hero-offer-btn.visible{display:inline-flex;}
+.hero-offer-btn:hover{transform:translateY(-2px);}
+
+/* ===== TROPICAL LUXURY POLISH ===== */
+::selection{background:#C5973A;color:#0d2818;}
+header{border-bottom:1px solid rgba(197,151,58,0.28);}
+.hero-overlay{background:linear-gradient(180deg,rgba(13,40,24,0) 0%,rgba(13,40,24,0.1) 55%,rgba(13,40,24,0.72) 100%);}
+.hero-tagline::before{content:"";display:block;width:44px;height:1px;background:linear-gradient(90deg,transparent,#C5973A,transparent);margin:0 auto 14px;}
+.hero-cta:hover{box-shadow:0 8px 32px rgba(26,122,58,0.6),0 0 0 2px rgba(251,223,128,0.5);}
+.trust-bar{border-top:1px solid rgba(197,151,58,0.22);border-bottom:1px solid rgba(197,151,58,0.14);}
+.section-title::after,.contact-heading::after{content:"";display:block;width:58px;height:2px;background:linear-gradient(90deg,transparent,#C5973A,transparent);margin:0.9rem auto 0;border-radius:2px;}
+.review-card{box-shadow:0 6px 22px rgba(0,0,0,0.18);}
+.review-card:hover{box-shadow:0 16px 38px rgba(0,0,0,0.35);}
+.contact-phone{text-shadow:0 0 38px rgba(197,151,58,0.35);}
+.contact-btn:hover{box-shadow:0 8px 32px rgba(26,122,58,0.4),0 0 0 2px rgba(251,223,128,0.45);}
+.site-footer{border-top:1px solid rgba(197,151,58,0.22);}
+.footer-tag{display:block;margin-top:6px;color:#C5973A;font-weight:600;letter-spacing:0.08em;}
+
+/* ===== GOLD REVIEW CARDS (dark luxe) ===== */
+.review-card{background:linear-gradient(165deg,#12301d 0%,#0a1f10 100%);border:1px solid rgba(197,151,58,0.4);position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.35);}
+.review-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,#C5973A 30%,#FBDF80 50%,#C5973A 70%,transparent 100%);}
+.review-card::after{content:"\201C";position:absolute;top:-10px;right:16px;font-family:"Playfair Display",serif;font-size:6.5rem;line-height:1;color:rgba(251,223,128,0.08);pointer-events:none;}
+.review-card:hover{transform:translateY(-4px);border-color:rgba(251,223,128,0.65);background:linear-gradient(165deg,#153722 0%,#0c2413 100%);box-shadow:0 20px 48px rgba(0,0,0,0.5),0 0 24px rgba(197,151,58,0.12);}
+.review-stars{color:#FBDF80;filter:drop-shadow(0 0 6px rgba(251,223,128,0.35));}
+.review-text{color:rgba(255,255,255,0.9);}
+.review-author{border-top:1px solid rgba(197,151,58,0.3);}
+.review-avatar{border:2px solid rgba(197,151,58,0.55);}
+.review-name{color:#FBDF80;}
+.review-location{color:rgba(255,255,255,0.5);}
+.reviews-google-badge{border:1px solid rgba(197,151,58,0.45);background:rgba(197,151,58,0.08);}
+.reviews-link{border-color:rgba(197,151,58,0.5);color:#FBDF80;}
+.reviews-link:hover{background:rgba(197,151,58,0.12);border-color:#FBDF80;}
+
+/* SUBSCRIBE POPUP */
+.sub-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.sub-overlay.show{display:flex;}
+.sub-card{display:flex;max-width:720px;width:100%;border-radius:18px;overflow:hidden;border:1px solid rgba(197,151,58,0.3);box-shadow:0 24px 60px rgba(0,0,0,0.6);position:relative;max-height:90vh;}
+.sub-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.3);border:1px solid rgba(0,0,0,0.15);color:rgba(10,31,16,0.7);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:2;}
+.sub-close:hover{background:rgba(0,0,0,0.15);color:#0a1f10;}
+.sub-iframe-wrap{overflow-y:auto;-webkit-overflow-scrolling:touch;height:480px;border-radius:8px;margin-top:4px;}
+.sub-img-col{flex:0 0 45%;position:relative;overflow:hidden;}
+.sub-img{width:100%;height:100%;object-fit:cover;display:block;}
+.sub-form-col{flex:0 0 55%;background:#fdf8f0;padding:2.25rem 2rem;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
+.sub-badge{display:inline-block;background:linear-gradient(135deg,#C5973A,#e4b85a);color:#fff;font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:0.75rem;}
+.sub-headline{font-family:"DM Sans",sans-serif;font-size:1.75rem;font-weight:900;color:#0a1f10;line-height:1.2;margin-bottom:0.6rem;}
+.sub-gold{color:#C5973A;}
+.sub-subtext{font-size:0.86rem;color:rgba(10,31,16,0.65);line-height:1.55;margin-bottom:1rem;}
+.sub-features{display:flex;gap:0.5rem;margin-bottom:1rem;justify-content:space-between;}
+.sub-feature{display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px;flex:1;}
+.sub-feature-icon{width:32px;height:32px;border-radius:50%;background:#e8f5ee;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sub-feature-label{font-size:0.73rem;font-weight:700;color:#0a1f10;line-height:1.3;}
+.sub-feature-sub{font-size:0.66rem;font-weight:500;color:rgba(10,31,16,0.6);line-height:1.2;}
+.sub-timer{display:flex;align-items:center;gap:8px;background:rgba(197,151,58,0.08);border:1.5px solid #C5973A;border-radius:10px;padding:8px 14px;margin-bottom:1rem;font-size:0.78rem;color:rgba(10,31,16,0.7);}
+.sub-timer-count{font-weight:700;color:#C5973A;font-size:1.3rem;font-variant-numeric:tabular-nums;min-width:50px;}
+.sub-form-col form{display:flex;flex-direction:column;gap:9px;}
+.sub-field{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1.5px solid #d9d2c8;background:#fff;transition:border-color 0.25s ease;}
+.sub-field:focus-within{border-color:#1a7a3a;}
+.sub-field-icon{flex-shrink:0;color:#C5973A;opacity:0.8;}
+.sub-input{flex:1;border:none;outline:none;background:none;color:#0a1f10;font-family:"DM Sans",sans-serif;font-size:0.9rem;}
+.sub-input::placeholder{color:rgba(10,31,16,0.4);}
+.sub-terms{display:flex;align-items:flex-start;gap:8px;margin:4px 0 2px;}
+.sub-terms input[type="checkbox"]{margin-top:3px;flex-shrink:0;width:15px;height:15px;cursor:pointer;accent-color:#1a7a3a;}
+.sub-terms label{font-size:0.7rem;color:rgba(10,31,16,0.65);line-height:1.45;cursor:pointer;}
+.sub-terms a{color:#1a7a3a;text-decoration:underline;}
+.sub-submit{padding:13px;border-radius:10px;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#fff;font-family:"DM Sans",sans-serif;font-size:0.92rem;font-weight:700;border:none;cursor:pointer;letter-spacing:0.02em;transition:all 0.3s ease;margin-top:4px;}
+.sub-submit:hover:not(:disabled){background:linear-gradient(135deg,#1e8c42,#27b84f);transform:translateY(-1px);}
+.sub-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.sub-skip{display:block;width:100%;text-align:center;margin-top:0.5rem;padding:5px;font-size:0.75rem;color:rgba(10,31,16,0.45);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
+.sub-skip:hover{color:rgba(10,31,16,0.75);}
+.sub-success{text-align:center;padding:1rem 0;}
+.sub-success-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#1a7a3a,#22a04a);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;}
+.sub-success h3{font-family:"Playfair Display",serif;font-size:1.5rem;color:#0a1f10;margin-bottom:0.5rem;}
+.sub-success p{color:rgba(10,31,16,0.7);font-size:0.9rem;line-height:1.5;}
+@media(max-width:767px){
+  .sub-overlay{padding:0.75rem;}
+  .sub-card{width:94vw;max-width:94vw;max-height:88vh;flex-direction:column;}
+  .sub-img-col{display:none;}
+  .sub-form-col{flex:1;width:100%;padding:1rem 0.9rem;overflow-y:auto;justify-content:flex-start;}
+  .sub-close{top:8px;right:8px;width:28px;height:28px;font-size:0.85rem;}
+  .sub-badge{font-size:0.55rem;padding:3px 9px;margin-bottom:0.4rem;}
+  .sub-headline{font-size:1.2rem;margin-bottom:0.4rem;line-height:1.15;}
+  .sub-subtext{font-size:0.7rem;margin-bottom:0.45rem;line-height:1.4;}
+  .sub-features{display:none;}
+  .sub-iframe-wrap{height:62vh;}
+  .sub-feature-icon{width:22px;height:22px;}
+  .sub-feature-label{font-size:0.65rem;}
+  .sub-feature-sub{font-size:0.6rem;}
+  .sub-timer{padding:5px 10px;margin-bottom:0.45rem;font-size:0.65rem;gap:5px;}
+  .sub-timer-count{font-size:1rem;}
+  .sub-form-col form{gap:5px;}
+  .sub-field{padding:6px 10px;border-radius:8px;}
+  .sub-input{font-size:0.8rem;}
+  .sub-terms{margin:3px 0 2px;}
+  .sub-terms label{font-size:0.65rem;line-height:1.35;}
+  .sub-submit{padding:9px;font-size:0.82rem;margin-top:2px;border-radius:8px;}
+  .sub-skip{font-size:0.65rem;margin-top:3px;padding:3px;}
+}
+
+@media(min-width:768px){
+  .sub-card{max-width:620px;max-height:88vh;}
+  .sub-img-col{flex:0 0 42%;}
+  .sub-form-col{flex:0 0 58%;padding:1.5rem;justify-content:flex-start;}
+  .sub-badge{margin-bottom:0.7rem;}
+  .sub-headline{font-size:1.5rem;margin-bottom:0.7rem;}
+  .sub-subtext{font-size:0.85rem;margin-bottom:0.7rem;}
+  .sub-features{margin-bottom:0.7rem;}
+  .sub-feature-icon{width:28px;height:28px;}
+  .sub-timer{padding:6px 10px;margin-bottom:0.7rem;font-size:0.75rem;}
+  .sub-timer-count{font-size:1.1rem;}
+  .sub-form-col form{gap:7px;}
+  .sub-field{padding:7px 12px;}
+  .sub-input{font-size:0.85rem;}
+  .sub-terms label{font-size:0.75rem;}
+  .sub-submit{padding:11px;font-size:0.95rem;}
+  .sub-skip{font-size:0.8rem;margin-top:0.6rem;}
+}
+@media(max-width:900px){
+  .scroll-row{height:185px;}
+  .masonry-item{min-width:130px;}
+}
+@media(max-width:600px){
+  .hero{height:70vh;min-height:400px;}
+  .masonry-wall{gap:6px;}
+  .scroll-row{height:140px;}
+  .masonry-item{margin-right:6px;border-radius:4px;min-width:100px;}
+  .gallery-section{padding:2rem 0.75rem;}
+}
+
+/* STICKY TAP TO CALL — mobile only */
+.sticky-call{display:none;}
+@media(max-width:767px){
+  .sticky-call{display:block;position:fixed;bottom:0;left:0;right:0;z-index:999;background:#FBDF80;transition:transform 0.3s ease;}
+  .sticky-call.dismissed{transform:translateY(100%);}
+  .sticky-call-link{display:block;color:#0d2818;font-family:"DM Sans",sans-serif;font-weight:700;font-size:1rem;padding:1rem;text-align:center;text-decoration:none;}
+  .sticky-dismiss{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;background:rgba(13,40,24,0.15);border:none;color:#0d2818;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;}
+  .hero-cta{display:none;}
+  body{padding-bottom:70px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="desktop-left">
+    <a href="tel:5619005658" class="icon-btn" title="Call us">
+      <img src="images/icon-phone-custom.png" alt="Call">
+    </a>
+    <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="icon-btn" title="Text us">
+      <img src="images/icon-text-custom.png" alt="Text">
+    </a>
+    <a href="https://maps.app.goo.gl/rVxA8JvowELWe8N29?g_st=ic" target="_blank" class="icon-btn" title="Directions">
+      <img src="images/icon-directions-custom.png" alt="Directions">
+    </a>
+  </div>
+
+  <div class="row1">
+    <img src="sylvester.jpeg" alt="Sylvester Palm Nursery logo" class="logo-img">
+    <div class="name-block">
+      <span class="co-name">Sylvester Palm Nursery</span>
+      <span class="co-tagline">Celebrating 26 Years in Business</span>
+    </div>
+  </div>
+
+  <div class="row2">
+    <a href="tel:5619005658" class="icon-btn" title="Call us">
+      <img src="images/icon-phone-custom.png" alt="Call">
+    </a>
+    <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="icon-btn" title="Text us">
+      <img src="images/icon-text-custom.png" alt="Text">
+    </a>
+    <a href="https://maps.app.goo.gl/rVxA8JvowELWe8N29?g_st=ic" target="_blank" class="icon-btn" title="Directions">
+      <img src="images/icon-directions-custom.png" alt="Directions">
+    </a>
+    <a href="https://www.instagram.com/sylvesterpalmnursery?igsh=d25yZnVicHh0ZDJ5&amp;utm_source=qr" target="_blank" class="ig-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @sylvesterpalmnursery
+    </a>
+    <a href="https://www.facebook.com/SylvesterPalmNursery" target="_blank" class="fb-btn" title="Facebook" aria-label="Facebook">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.313 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/gallery/palm_14.jpg">
+    <source src="https://res.cloudinary.com/dtqr9dhos/video/upload/f_mp4,vc_h264,q_auto,h_1080/farm.mp4_h5gty0.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <p class="hero-tagline">Serving South Florida, Georgia, Texas, Louisiana &amp; California Since 2000</p>
+    <h1 class="hero-title">Premium Sylvester Palms &mdash; Grown in <em>South Florida</em> for 26 Years</h1>
+    <a href="tel:5619005658" class="hero-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Us Today
+    </a>
+    <button class="hero-offer-btn" id="heroOfferBtn" onclick="openSubscribePopup()">🌴 Claim $50 Off</button>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <p class="section-label">Our Collection</p>
+  <h2 class="section-title">Browse Our Palms</h2>
+  <div class="masonry-wall" id="grid"></div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div class="trust-text">
+      <span class="trust-bold">26 Years</span>
+      <span class="trust-sub">Family Owned &amp; Operated</span>
+    </div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    </div>
+    <div class="trust-text">
+      <span class="trust-bold">Nationwide</span>
+      <span class="trust-sub">Shipping Available</span>
+    </div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="trust-text">
+      <span class="trust-bold">Licensed &amp;</span>
+      <span class="trust-sub">Insured</span>
+    </div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    </div>
+    <div class="trust-text">
+      <span class="trust-bold">Cash, Check, Card</span>
+      <span class="trust-sub">&amp; Zelle Accepted</span>
+    </div>
+  </div>
+</div>
+
+<!-- GOOGLE REVIEWS SECTION -->
+<section class="reviews-section">
+  <div class="reviews-header">
+    <div class="reviews-google-badge">
+      <span class="google-logo">
+        <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+      </span>
+      <div class="reviews-rating-row">
+        <span class="reviews-stars">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <span class="reviews-rating-num">5.0</span>
+      </div>
+    </div>
+    <p class="section-label">What Our Customers Say</p>
+    <h2 class="section-title">Trusted by Florida Homeowners for 26 Years</h2>
+  </div>
+
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-top">
+        <span class="review-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <div class="review-google-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+      </div>
+      <p class="review-text">"Great people and the most beautiful palms!!!"</p>
+      <div class="review-author">
+        <div class="review-avatar">N<img src="images/reviews/nicole.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="review-meta">
+          <span class="review-name">Nicole Turner</span>
+          <span class="review-location">March 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <span class="review-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <div class="review-google-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+      </div>
+      <p class="review-text">"Great experience purchasing palm trees from this business. The trees were high quality, competitive prices, and the customer service was excellent. The staff was friendly and helpful throughout the whole process. I highly recommend them and will definitely be back! 🌴"</p>
+      <div class="review-author">
+        <div class="review-avatar">C<img src="images/reviews/carmen.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="review-meta">
+          <span class="review-name">Carmen Feldman</span>
+          <span class="review-location">March 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <span class="review-stars">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        </span>
+        <div class="review-google-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+      </div>
+      <p class="review-text">"Fast, friendly, and efficient service. Carlos was excellent, will be buying palms from him again."</p>
+      <div class="review-author">
+        <div class="review-avatar">J<img src="images/reviews/jeffrey.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="review-meta">
+          <span class="review-name">Jeffrey Santos</span>
+          <span class="review-location">March 2026</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reviews-cta">
+    <a href="https://www.google.com/maps/place/Sylvester+Palm+Nursery/@26.0812311,-83.718623,7z/data=!4m8!3m7!1s0x230b721d8b34f9c3:0xf9d69254e6b6ef1a!8m2!3d26.105297!4d-81.0768305!9m1!1b1!16s%2Fg%2F11z14576hz?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="reviews-link">
+      Read All Reviews on Google
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-card">
+    <p class="contact-eyebrow">Ready When You Are</p>
+    <h2 class="contact-heading">Get Your Sylvester Palm Today</h2>
+    <a href="tel:5619005658" class="contact-phone">(561) 900-5658</a>
+    <p class="contact-sub">Family-grown in Delray Beach, Florida &mdash; delivering across South Florida, Georgia, Texas, Louisiana &amp; California</p>
+    <div class="contact-actions">
+      <a href="tel:5619005658" class="contact-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="contact-btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Text Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="fs-overlay" id="fsOverlay">
+  <div id="fsContent"></div>
+  <button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button>
+  <button class="fs-close" onclick="closeFS()">&#x2715;</button>
+</div>
+
+<!-- SUBSCRIBE POPUP -->
+<div class="sub-overlay" id="subscribePopup">
+  <div class="sub-card">
+    <button class="sub-close" onclick="closeSubscribePopup()" aria-label="Close">&#x2715;</button>
+
+    <div class="sub-img-col">
+      <img src="images/popup-palm.jpg" alt="Sylvester Palm" class="sub-img">
+    </div>
+
+    <div class="sub-form-col">
+      <div id="subForm">
+                <div class="sub-iframe-wrap" id="subIframeWrap">
+          <iframe
+            width="100%" height="1000"
+            src="https://d6ff3ed7.sibforms.com/serve/MUIFABdLvrPqUKViTNfvkNkCUgfm2N-LM1x_FozepiFDuwLcxomFJHwU4n_arMDa6FwfWbSeHzeQPrPR1eWNeS8wGDeY7RBKX4ZqmLGpjtpUxkz5vaDcB5AujzzU_-2uR3o4pmOTdSDGIWwkbn70EZxRC1WX7qtElNjJa6dx_RtRmyPUhHCra8o3TNihXZ7VqjVJ7DuRBnqC2VVp7w=="
+            frameborder="0" scrolling="no" allowfullscreen
+            style="display:block;border:none;margin-top:-80px;"></iframe>
+        </div>
+
+        <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
+      </div>
+
+      <div id="subSuccess" class="sub-success" style="display:none;">
+        <div class="sub-success-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>You're In! 🌴</h3>
+        <p>Your <strong>$50 off</strong> is locked in — just mention it when you order.<br>Keep an eye on your phone for a confirmation text.</p>
+        <button type="button" class="sub-submit" style="margin-top:1.25rem;width:100%;" onclick="closeSubscribePopup()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes logoSpinY{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
+.footer-logo-spin{width:92px;height:92px;display:block;margin:0 auto 1rem;animation:logoSpinY 7s linear infinite;transform-style:preserve-3d;border-radius:50%;background:#ffffff;padding:8px;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+</style>
+<footer class="site-footer">
+  <img src="images/logo-spin.png" alt="Sylvester Palm Nursery logo" class="footer-logo-spin" loading="lazy" onerror="this.remove()">
+  Sylvester Palm Nursery &middot; South Florida &middot; (561) 900-5658
+  <span class="footer-tag">Family-Grown in Delray Beach, Florida Since 2000 🌴</span>
+</footer>
+
+<script>
+const palms=[
+  {img:"images/gallery/palm_0.jpg"},{img:"images/gallery/palm_1.jpg"},{img:"images/gallery/palm_2.jpg"},
+  {img:"images/gallery/palm_3.jpg"},{img:"images/gallery/palm_4.jpg"},{img:"images/gallery/palm_5.jpg"},
+  {img:"images/gallery/palm_6.jpg"},{img:"images/gallery/palm_7.jpg"},{img:"images/gallery/palm_8.jpg"},
+  {img:"images/gallery/palm_9.jpg"},{img:"images/gallery/palm_10.jpg"},{img:"images/gallery/palm_11.jpg"},
+  {img:"images/gallery/palm_12.jpg"},{img:"images/gallery/palm_13.jpg"},
+  {img:"images/gallery/preview.webp"},{img:"images/gallery/preview_1.webp"},{img:"images/gallery/preview_2.webp"},
+  {img:"images/gallery/preview_3.webp"},{img:"images/gallery/preview_4.webp"},{img:"images/gallery/preview_5.webp"},
+  {img:"images/gallery/preview_6.webp"},{img:"images/gallery/preview_7.webp"},{img:"images/gallery/preview_8.webp"},
+  {img:"images/gallery/preview_9.webp"},{img:"images/gallery/preview_10.webp"},{img:"images/gallery/preview_11.webp"},
+  {img:"images/gallery/preview_12.webp"},{img:"images/gallery/preview_13.webp"},{img:"images/gallery/preview_14.webp"},
+  {img:"images/gallery/preview_15.webp"},{img:"images/gallery/preview_16.webp"},{img:"images/gallery/preview_17.webp"},
+  {img:"images/gallery/preview_18.webp"},{img:"images/gallery/preview_19.webp"},
+  {img:"images/gallery/palm_15.jpg"},{img:"images/gallery/palm_16.jpg"},{img:"sylvester.jpeg"}
+];
+
+const PALM_SIZE="5 ft";
+
+const grid=document.getElementById("grid");
+
+function rowCount(){
+  var w=window.innerWidth;
+  if(w<=600)return 4;
+  return 3;
+}
+
+function makeItem(i,isDup){
+  var item=document.createElement("div");
+  item.className="masonry-item"+(isDup?" dup":"");
+  if(isDup)item.setAttribute("aria-hidden","true");
+  var img=document.createElement("img");
+  img.src=palms[i].img;img.alt="Sylvester Palm";img.decoding="async";
+  item.appendChild(img);
+  var ov=document.createElement("div");
+  ov.className="item-overlay";
+  ov.innerHTML='<span class="item-label">'+PALM_SIZE+'</span>';
+  item.appendChild(ov);
+  item.addEventListener("click",function(){openFS(i);});
+  return item;
+}
+
+function buildWall(){
+  var n=rowCount();
+  grid.innerHTML="";
+  var tracks=[];
+  for(var r=0;r<n;r++){
+    var row=document.createElement("div");
+    row.className="scroll-row";
+    var track=document.createElement("div");
+    track.className="scroll-track dir-left";
+    var perImage=10.5+r*1.4;
+    var imgsInRow=Math.ceil((palms.length-r)/n);
+    var dur=Math.max(40,imgsInRow*perImage);
+    track.style.animationDuration=dur.toFixed(1)+"s";
+    row.appendChild(track);
+    grid.appendChild(row);
+    tracks.push(track);
+  }
+  var perRow=[];for(var k=0;k<n;k++)perRow.push([]);
+  palms.forEach(function(p,i){perRow[i%n].push(i);});
+  perRow.forEach(function(indices,r){
+    var track=tracks[r];
+    for(var rep=0;rep<2;rep++){
+      indices.forEach(function(idx){track.appendChild(makeItem(idx,rep===1));});
+    }
+  });
+}
+
+var lastRows=rowCount();
+buildWall();
+
+var rzT=null;
+window.addEventListener("resize",function(){
+  clearTimeout(rzT);
+  rzT=setTimeout(function(){
+    var n=rowCount();
+    if(n!==lastRows){lastRows=n;buildWall();}
+  },250);
+});
+
+var currentFSIndex=-1;
+function openFS(i){
+  currentFSIndex=i;
+  document.getElementById("fsContent").innerHTML='<img src="'+palms[i].img+'"><div class="fs-size">'+PALM_SIZE+'</div>';
+  document.getElementById("fsOverlay").classList.add("open");
+  document.body.style.overflow="hidden";
+  if(grid) grid.classList.add("wall-paused");
+  var sc=document.getElementById("stickyCall");
+  if(sc) sc.style.display="none";
+}
+function closeFS(){
+  document.getElementById("fsOverlay").classList.remove("open");
+  currentFSIndex=-1;
+  document.body.style.overflow="";
+  if(grid) grid.classList.remove("wall-paused");
+  var sc=document.getElementById("stickyCall");
+  if(sc && !sessionStorage.getItem("stickyCallDismissed")) sc.style.display="block";
+}
+function likePhoto(){
+  if(currentFSIndex<0)return;
+  var imgSrc=palms[currentFSIndex].img;
+  var photoRef=window.location.origin+"/"+imgSrc;
+  var body=encodeURIComponent("Hi! I need a quote for this palm 🌴 "+photoRef);
+  window.location.href="sms:+15619005658?body="+body;
+}
+document.getElementById("fsOverlay").addEventListener("click",function(e){if(e.target===document.getElementById("fsOverlay"))closeFS();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();});
+
+(function(){
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  v.muted = true;
+  v.defaultMuted = true;
+  v.setAttribute('muted','');
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
+
+  function tryPlay(){
+    var p = v.play();
+    if (p !== undefined) p.catch(function(){});
+  }
+
+  tryPlay();
+  v.addEventListener('loadedmetadata', tryPlay);
+  v.addEventListener('canplay', tryPlay);
+  var kickAttempts = 0;
+  var kick = setInterval(function(){
+    kickAttempts++;
+    if (!v.paused || kickAttempts > 12){ clearInterval(kick); return; }
+    tryPlay();
+  }, 700);
+  v.addEventListener('pause', function(){
+    if (!document.hidden) setTimeout(tryPlay, 300);
+  });
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) tryPlay();
+  });
+  ['touchstart','click','scroll'].forEach(function(evt){
+    document.addEventListener(evt, tryPlay, {once:true, passive:true});
+  });
+})();
+(function(){
+  var STORAGE_KEY = 'spn_popup_state';
+  var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+
+  function getState(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch(e){ return {}; }
+  }
+  function setState(state){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+  function shouldShow(){
+    var state = getState();
+    if (state.subscribed) return false;
+    if (state.dismissedAt && (Date.now() - state.dismissedAt) < THIRTY_DAYS) return false;
+    return true;
+  }
+
+  var btn = document.getElementById('heroOfferBtn');
+  var overlay = document.getElementById('subscribePopup');
+  var timerInterval = null;
+
+  function startTimer(){
+    var seconds = 300;
+    var el = document.getElementById('subTimerCount');
+    clearInterval(timerInterval);
+    timerInterval = setInterval(function(){
+      seconds--;
+      if (seconds <= 0){ clearInterval(timerInterval); seconds = 0; }
+      var m = Math.floor(seconds / 60);
+      var s = seconds % 60;
+      if (el) el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+  }
+  function stopTimer(){
+    clearInterval(timerInterval);
+  }
+  function hideBtn(){
+    if (btn) btn.classList.remove('visible');
+  }
+
+  window.openSubscribePopup = function(){
+    if (!overlay) return;
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    startTimer();
+  };
+
+  window.closeSubscribePopup = function(){
+    if (!overlay) return;
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+    stopTimer();
+    var state = getState();
+    if (!state.subscribed) {
+      state.dismissedAt = Date.now();
+      setState(state);
+      hideBtn();
+    }
+  };
+
+  if (overlay) {
+    overlay.addEventListener('click', function(e){
+      if (e.target === this) closeSubscribePopup();
+    });
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeSubscribePopup();
+  });
+
+  if (btn && shouldShow()) btn.classList.add('visible');
+
+  window.markSubscribed = function() {
+    var state = getState();
+    state.subscribed = true;
+    setState(state);
+    stopTimer();
+    hideBtn();
+  };
+})();
+
+</script>
+<div class="sticky-call" id="stickyCall">
+  <a href="tel:+15619005658" class="sticky-call-link">📞 Tap to Call — (561) 900-5658</a>
+  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">&#x2715;</button>
+</div>
+<script>
+(function(){var b=document.getElementById("stickyCall");if(b&&sessionStorage.getItem("stickyCallDismissed"))b.style.display="none";})();
+</script>
+<script>
+(function() {
+  window.addEventListener('message', function(e) {
+    if (e && e.data === 'brevo-subscribed') {
+      if (window.markSubscribed) window.markSubscribed();
+      var f = document.getElementById('subForm');
+      var s = document.getElementById('subSuccess');
+      if (f) f.style.display = 'none';
+      if (s) s.style.display = 'block';
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  function nthWeekday(y, m, dow, n){
+    var first = new Date(y, m, 1);
+    var offset = (dow - first.getDay() + 7) % 7;
+    return new Date(y, m, 1 + offset + (n - 1) * 7);
+  }
+  function lastWeekday(y, m, dow){
+    var last = new Date(y, m + 1, 0);
+    var offset = (last.getDay() - dow + 7) % 7;
+    return new Date(y, m, last.getDate() - offset);
+  }
+  function shift(date, days){ var d = new Date(date); d.setDate(d.getDate() + days); return d; }
+  function win(start, end, theme){ theme.start = start; theme.end = end; return theme; }
+
+  function buildWindows(y){
+    var mothers = nthWeekday(y, 4, 0, 2);
+    var memorial = lastWeekday(y, 4, 1);
+    var fathers = nthWeekday(y, 5, 0, 3);
+    var labor = nthWeekday(y, 8, 1, 1);
+    var thanks = nthWeekday(y, 10, 4, 4);
+    var cyberMon = shift(thanks, 4);
+
+    return [
+      win(new Date(y,1,1), new Date(y,1,14), {
+        btn:"\uD83C\uDF39 Claim $50 Off"}),
+      win(shift(mothers,-12), mothers, {
+        btn:"\uD83C\uDF3A Claim $50 Off"}),
+      win(shift(memorial,-7), memorial, {
+        btn:"\uD83C\uDDFA\uD83C\uDDF8 Claim $50 Off"}),
+      win(shift(fathers,-12), fathers, {
+        btn:"\uD83C\uDF34 Claim $50 Off"}),
+      win(new Date(y,5,25), new Date(y,6,5), {
+        btn:"\uD83C\uDDFA\uD83C\uDDF8 Claim $50 Off"}),
+      win(shift(labor,-7), labor, {
+        btn:"\u2600\uFE0F Claim $50 Off"}),
+      win(new Date(y,10,4), new Date(y,10,11), {
+        btn:"\uD83C\uDDFA\uD83C\uDDF8 Claim $50 Off"}),
+      win(shift(thanks,-9), thanks, {
+        btn:"\uD83C\uDF42 Claim $50 Off"}),
+      win(shift(thanks,1), cyberMon, {
+        btn:"\uD83C\uDF34 Claim $50 Off"}),
+      win(new Date(y,11,1), new Date(y,11,25), {
+        btn:"\uD83C\uDF84 Claim $50 Off"}),
+      win(new Date(y,11,26), new Date(y+1,0,5), {
+        btn:"\uD83C\uDF89 Claim $50 Off"}),
+      win(new Date(y,5,1), new Date(y,5,24), {
+        btn:"\u2600\uFE0F Claim $50 Off"})
+    ];
+  }
+
+  function activeTheme(){
+    var now = new Date();
+    now.setHours(0,0,0,0);
+    var years = [now.getFullYear() - 1, now.getFullYear()];
+    for (var yi = 0; yi < years.length; yi++){
+      var list = buildWindows(yi === 0 ? years[0] : years[1]);
+      for (var i = 0; i < list.length; i++){
+        var t = list[i];
+        var s = new Date(t.start); s.setHours(0,0,0,0);
+        var e = new Date(t.end); e.setHours(23,59,59,999);
+        if (now >= s && now <= e) return t;
+      }
+    }
+    return null;
+  }
+
+  function applyTheme(){
+    var t = activeTheme();
+    if (!t) return;
+    var btn = document.getElementById('heroOfferBtn');
+    if (btn) btn.textContent = t.btn;
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', applyTheme);
+  } else {
+    applyTheme();
+  }
+})();
+</script>
+</body>
+</html>
