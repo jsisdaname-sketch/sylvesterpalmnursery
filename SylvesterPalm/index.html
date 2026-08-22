@@ -396,6 +396,10 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 #subIframeWrap .klaviyo-form form{flex-direction:column!important;padding:8px!important;}
 #subIframeWrap .klaviyo-form form>div{width:100%!important;max-width:100%!important;flex:0 0 auto!important;}
 #subIframeWrap .klaviyo-form form>div:not(:first-child){display:none!important;}
+/* Let the whole form (including the SIGN ME UP button) be reachable instead of trapping it in a 480px scroll box */
+#subIframeWrap{height:auto!important;max-height:none!important;overflow:visible!important;}
+/* Klaviyo text inherits the site's white body colour otherwise, which makes the consent copy invisible on cream */
+#subIframeWrap .klaviyo-form{color:#2a2118;}
 </style></head>
 <body>
 
