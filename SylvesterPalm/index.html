@@ -15,6 +15,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://sylvesterpalmnursery.com/sylvester.jpeg" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Klaviyo onsite (renders the subscribe form) -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/STwg5g/klaviyo.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{background:#0d2818;font-family:"DM Sans",sans-serif;color:#ffffff;min-height:100vh;width:100%;overflow-x:hidden;}
@@ -383,7 +385,7 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 }
 </style>
 <style>
-/* Give the Brevo form more room on phones so the country dropdown isn't squished */
+/* Give the sign-up form more room on phones so the country dropdown isn't squished */
 @media(max-width:767px){
   .sub-overlay{padding:0.4rem;}
   .sub-card{width:98vw;max-width:98vw;}
@@ -637,12 +639,9 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 
     <div class="sub-form-col">
       <div id="subForm">
-                <div class="sub-iframe-wrap" id="subIframeWrap">
-          <iframe
-            width="100%" height="1000"
-            src="https://d6ff3ed7.sibforms.com/serve/MUIFABdLvrPqUKViTNfvkNkCUgfm2N-LM1x_FozepiFDuwLcxomFJHwU4n_arMDa6FwfWbSeHzeQPrPR1eWNeS8wGDeY7RBKX4ZqmLGpjtpUxkz5vaDcB5AujzzU_-2uR3o4pmOTdSDGIWwkbn70EZxRC1WX7qtElNjJa6dx_RtRmyPUhHCra8o3TNihXZ7VqjVJ7DuRBnqC2VVp7w=="
-            frameborder="0" scrolling="no" allowfullscreen
-            style="display:block;border:none;margin-top:-80px;"></iframe>
+        <div class="sub-iframe-wrap" id="subIframeWrap">
+          <!-- Klaviyo embedded sign-up form (First Name, Last Name, Phone) -->
+          <div class="klaviyo-form-UfvmD4"></div>
         </div>
 
         <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
@@ -903,14 +902,16 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 </script>
 <script>
 (function() {
-  window.addEventListener('message', function(e) {
-    if (e && e.data === 'brevo-subscribed') {
-      if (window.markSubscribed) window.markSubscribed();
-      var f = document.getElementById('subForm');
-      var s = document.getElementById('subSuccess');
-      if (f) f.style.display = 'none';
-      if (s) s.style.display = 'block';
-    }
+  function showSuccess(){
+    if (window.markSubscribed) window.markSubscribed();
+    var f = document.getElementById('subForm');
+    var s = document.getElementById('subSuccess');
+    if (f) f.style.display = 'none';
+    if (s) s.style.display = 'block';
+  }
+  // Klaviyo fires this on its embedded form once a submission succeeds
+  window.addEventListener('klaviyoForms', function(e) {
+    if (e && e.detail && e.detail.type === 'submit') showSuccess();
   });
 })();
 </script>
