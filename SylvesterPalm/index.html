@@ -400,6 +400,16 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 #subIframeWrap{height:auto!important;max-height:none!important;overflow:visible!important;}
 /* Klaviyo text inherits the site's white body colour otherwise, which makes the consent copy invisible on cream */
 #subIframeWrap .klaviyo-form{color:#2a2118;}
+/* A flex child will not scroll unless min-height is 0. Without this the SIGN ME UP button
+   falls below the card's hidden overflow and cannot be seen or clicked. */
+.sub-form-col{min-height:0;}
+/* Klaviyo's legal disclosure at full size pushes the button off the card. Keep it readable but compact. */
+#subIframeWrap .klaviyo-disclosure,#subIframeWrap .klaviyo-disclosure p{font-size:10px!important;line-height:1.4!important;}
+/* Shown when the form cannot load or a submit does not come back */
+.sub-problem{margin-top:0.6rem;padding:10px 12px;border-radius:10px;background:#fdecec;border:1px solid #e5a5a5;color:#8a2323;font-size:0.78rem;line-height:1.45;text-align:center;}
+.sub-problem-link{display:inline-block;margin:6px 5px 0;padding:7px 13px;border-radius:8px;background:#1a7a3a;color:#fff;text-decoration:none;font-weight:700;font-size:0.75rem;}
+.sub-consent-note{margin-top:0.55rem;font-size:0.6rem;line-height:1.4;color:rgba(10,31,16,0.55);text-align:center;}
+.sub-consent-note a{color:#1a7a3a;text-decoration:underline;}
 </style></head>
 <body>
 
@@ -633,13 +643,13 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 <div class="fs-overlay" id="fsOverlay">
   <div id="fsContent"></div>
   <button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button>
-  <button class="fs-close" onclick="closeFS()">&#x2715;</button>
+  <button class="fs-close" onclick="closeFS()">✕</button>
 </div>
 
 <!-- SUBSCRIBE POPUP -->
 <div class="sub-overlay" id="subscribePopup">
   <div class="sub-card">
-    <button class="sub-close" onclick="closeSubscribePopup()" aria-label="Close">&#x2715;</button>
+    <button class="sub-close" onclick="closeSubscribePopup()" aria-label="Close">✕</button>
 
     <div class="sub-img-col">
       <img src="images/popup-palm.jpg" alt="Sylvester Palm" class="sub-img">
@@ -648,9 +658,18 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
     <div class="sub-form-col">
       <div id="subForm">
         <div class="sub-iframe-wrap" id="subIframeWrap">
-          <!-- Klaviyo embedded sign-up form (First Name, Last Name, Phone) -->
+          <!-- Klaviyo embedded sign-up form (First Name, Last Name, Phone).
+               Klaviyo's own script fills this div in. Form ID UfvmD4, account STwg5g. -->
           <div class="klaviyo-form-UfvmD4"></div>
         </div>
+
+        <div id="subProblem" class="sub-problem" style="display:none;">
+          <span class="sub-problem-text"></span><br>
+          <a href="tel:+15619005658" class="sub-problem-link">Call (561) 900-5658</a>
+          <a href="sms:+15619005658" class="sub-problem-link">Text us</a>
+        </div>
+
+        <p class="sub-consent-note">By entering your number you agree to receive recurring automated marketing texts from Sylvester Palm Nursery. Consent is not a condition of purchase. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. <a href="/terms.html">Terms</a> &middot; <a href="/privacy.html">Privacy Policy</a></p>
 
         <button type="button" class="sub-skip" onclick="closeSubscribePopup()">No thanks, I'll pay full price</button>
       </div>
@@ -839,39 +858,27 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 
   var btn = document.getElementById('heroOfferBtn');
   var overlay = document.getElementById('subscribePopup');
-  var timerInterval = null;
+  var hasOpened = false;
 
-  function startTimer(){
-    var seconds = 300;
-    var el = document.getElementById('subTimerCount');
-    clearInterval(timerInterval);
-    timerInterval = setInterval(function(){
-      seconds--;
-      if (seconds <= 0){ clearInterval(timerInterval); seconds = 0; }
-      var m = Math.floor(seconds / 60);
-      var s = seconds % 60;
-      if (el) el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    }, 1000);
-  }
-  function stopTimer(){
-    clearInterval(timerInterval);
-  }
+  /* ---- How soon the popup shows itself. These two numbers are the only knobs. ---- */
+  var AUTO_OPEN_AFTER_MS = 6000;       /* 6 seconds on the page ... */
+  var AUTO_OPEN_AFTER_SCROLL = 0.25;   /* ... or once they scroll 25% down, whichever is first */
+
   function hideBtn(){
     if (btn) btn.classList.remove('visible');
   }
 
   window.openSubscribePopup = function(){
     if (!overlay) return;
+    hasOpened = true;
     overlay.classList.add('show');
     document.body.style.overflow = 'hidden';
-    startTimer();
   };
 
   window.closeSubscribePopup = function(){
     if (!overlay) return;
     overlay.classList.remove('show');
     document.body.style.overflow = '';
-    stopTimer();
     var state = getState();
     if (!state.subscribed) {
       state.dismissedAt = Date.now();
@@ -895,32 +902,112 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     var state = getState();
     state.subscribed = true;
     setState(state);
-    stopTimer();
     hideBtn();
   };
+
+  /* ---- Open the popup on its own. Previously it only opened if someone
+         clicked the Claim $50 Off button, which most visitors never saw. ---- */
+  function autoOpen(){
+    if (hasOpened) return;
+    if (!shouldShow()) return;
+    var fs = document.getElementById('fsOverlay');
+    if (fs && fs.classList.contains('open')) return;   /* don't interrupt the photo viewer */
+    window.openSubscribePopup();
+  }
+
+  if (shouldShow()) {
+    setTimeout(autoOpen, AUTO_OPEN_AFTER_MS);
+
+    window.addEventListener('scroll', function onScroll(){
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && (window.pageYOffset / max) >= AUTO_OPEN_AFTER_SCROLL) {
+        window.removeEventListener('scroll', onScroll);
+        autoOpen();
+      }
+    }, {passive:true});
+
+    /* Desktop only: catch them on the way to the close button */
+    if (!('ontouchstart' in window)) {
+      document.addEventListener('mouseout', function(e){
+        if (!e.relatedTarget && e.clientY <= 0) autoOpen();
+      });
+    }
+  }
 })();
 
 </script>
 <div class="sticky-call" id="stickyCall">
   <a href="tel:+15619005658" class="sticky-call-link">📞 Tap to Call — (561) 900-5658</a>
-  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">&#x2715;</button>
+  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">✕</button>
 </div>
 <script>
 (function(){var b=document.getElementById("stickyCall");if(b&&sessionStorage.getItem("stickyCallDismissed"))b.style.display="none";})();
 </script>
 <script>
 (function() {
+  var WATCHDOG_MS = 12000;      /* how long to wait for Klaviyo to confirm before admitting failure */
+  var RENDER_CHECK_MS = 7000;   /* how long to wait for Klaviyo's form to appear at all */
+  var watchdog = null;
+  var settled = false;
+
+  function el(id){ return document.getElementById(id); }
+
   function showSuccess(){
+    settled = true;
+    clearTimeout(watchdog);
     if (window.markSubscribed) window.markSubscribed();
-    var f = document.getElementById('subForm');
-    var s = document.getElementById('subSuccess');
+    var f = el('subForm');
+    var s = el('subSuccess');
     if (f) f.style.display = 'none';
     if (s) s.style.display = 'block';
   }
-  // Klaviyo fires this on its embedded form once a submission succeeds
+
+  function showProblem(msg){
+    var box = el('subProblem');
+    if (!box) return;
+    var t = box.querySelector('.sub-problem-text');
+    if (t) t.textContent = msg;
+    box.style.display = 'block';
+  }
+  function hideProblem(){
+    var box = el('subProblem');
+    if (box) box.style.display = 'none';
+  }
+
+  /* Klaviyo fires this on its embedded form once a submission actually succeeds.
+     Nothing else is allowed to show the "You're In!" panel. */
   window.addEventListener('klaviyoForms', function(e) {
-    if (e && e.detail && e.detail.type === 'submit') showSuccess();
+    if (!e || !e.detail) return;
+    if (e.detail.type === 'submit') showSuccess();
   });
+
+  /* If someone hits SIGN ME UP and nothing comes back, tell them, instead of
+     leaving them to assume it worked. */
+  var wrap = el('subIframeWrap');
+  if (wrap) {
+    wrap.addEventListener('click', function(e){
+      var b = (e.target && e.target.closest) ? e.target.closest('button') : null;
+      if (!b) return;
+      if (!/sign|submit|join/i.test(b.textContent || '')) return;
+      hideProblem();
+      clearTimeout(watchdog);
+      watchdog = setTimeout(function(){
+        if (settled) return;
+        /* If Klaviyo is showing its own validation message, let that speak for itself */
+        var txt = wrap.innerText || '';
+        if (/valid|required|enter a|must be|already/i.test(txt)) return;
+        showProblem("We couldn't save your number just now. Call or text us and we'll lock in your $50 off.");
+      }, WATCHDOG_MS);
+    }, true);
+  }
+
+  /* If Klaviyo's script never loads (ad blocker, bad connection), don't leave an empty box */
+  setTimeout(function(){
+    var holder = document.querySelector('.klaviyo-form-UfvmD4');
+    if (holder && holder.children.length === 0) {
+      showProblem("Our sign-up form didn't load. Call or text us and we'll apply your $50 off by hand.");
+    }
+  }, RENDER_CHECK_MS);
 })();
 </script>
 
@@ -1031,5 +1118,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   v.addEventListener('stalled',function(){v.load();go();});
   v.addEventListener('error',function(){v.load();go();});
 })();
-</script></body>
+</script>
+<script async id="netlify-rum-container" src="/.netlify/scripts/rum" data-netlify-rum-site-id="c54383bb-1448-476c-baba-1003a62c336e" data-netlify-deploy-branch="main" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiYzU0MzgzYmItMTQ0OC00NzZjLWJhYmEtMTAwM2E2MmMzMzZlIiwiYWNjb3VudF9pZCI6IjY5YWEzMGQzOGZmYzMzNTM1YzcxZDA3OSIsImRlcGxveV9pZCI6IjZhODkwNDQyOTA4MDE4MDAwODMyMWIyNCIsImlzc3VlciI6Im5mc2VydmVyIn0.BUoK_yAG-QlsIooZGmheQwe_UEn8bJYwknATsKjUUoc"></script>
+</body>
 </html>
