@@ -405,6 +405,11 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 .sub-form-col{min-height:0;}
 /* Klaviyo's legal disclosure at full size pushes the button off the card. Keep it readable but compact. */
 #subIframeWrap .klaviyo-disclosure,#subIframeWrap .klaviyo-disclosure p{font-size:10px!important;line-height:1.4!important;}
+/* The "reply YES" step is the last thing between a signup and a real subscriber, so it gets the loudest treatment on the success panel */
+.sub-yes-box{display:inline-block;margin:0.2rem 0 0.9rem;padding:11px 22px;border-radius:12px;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#fff;font-family:"DM Sans",sans-serif;font-size:1rem;font-weight:700;line-height:1.2;box-shadow:0 6px 18px rgba(26,122,58,0.28);}
+.sub-yes-box strong{font-size:1.3rem;letter-spacing:0.07em;}
+.sub-success .sub-success-note{margin-top:0.9rem;margin-bottom:0;font-size:0.78rem;color:rgba(10,31,16,0.6);}
+.sub-success .sub-success-note a{color:#1a7a3a;font-weight:700;text-decoration:underline;}
 /* Shown when the form cannot load or a submit does not come back */
 .sub-problem{margin-top:0.6rem;padding:10px 12px;border-radius:10px;background:#fdecec;border:1px solid #e5a5a5;color:#8a2323;font-size:0.78rem;line-height:1.45;text-align:center;}
 .sub-problem-link{display:inline-block;margin:6px 5px 0;padding:7px 13px;border-radius:8px;background:#1a7a3a;color:#fff;text-decoration:none;font-weight:700;font-size:0.75rem;}
@@ -678,9 +683,11 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
         <div class="sub-success-icon">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h3>You're In! 🌴</h3>
-        <p>Your <strong>$50 off</strong> is locked in — just mention it when you order.<br>Keep an eye on your phone for a confirmation text.</p>
-        <button type="button" class="sub-submit" style="margin-top:1.25rem;width:100%;" onclick="closeSubscribePopup()">Done</button>
+        <h3>One Last Step 🌴</h3>
+        <div class="sub-yes-box">Reply <strong>YES</strong> to our text</div>
+        <p>We just texted you from <strong>(866) 970-6207</strong>. Replying YES is what locks in your <strong>$50 off</strong> — it takes two seconds.</p>
+        <p class="sub-success-note">No text after a minute? <a href="sms:+15619005658">Text us</a> or call <a href="tel:+15619005658">(561) 900-5658</a>.</p>
+        <button type="button" class="sub-submit" style="margin-top:1.25rem;width:100%;" onclick="closeSubscribePopup()">Got it</button>
       </div>
     </div>
   </div>
