@@ -157,6 +157,8 @@ export async function onRequestPost({ request, env }) {
       `Copy the proportions of IMAGE C exactly: the trunk is short and THICK (its width is about one third of its height, wider at the base, ` +
       `with big diamond-shaped leaf bases), and the crown of fronds spreads about 3 times as wide as the trunk is tall. Do NOT make a tall, thin or stretched trunk. ` +
       `When in doubt, make the palm SMALLER, never bigger. Match the photo's light, shadows, perspective and colors so it looks like a real photo. ` +
+      `Copy ONLY the palm itself from IMAGE C: do NOT copy its ground, the orange/brown fallen fibers, dead leaves, debris or background around its base. ` +
+      `The ground at the base of each new trunk must stay exactly what IMAGE A already has there (grass, mulch, soil or plants), with only a natural soft shadow. ` +
       `Keep everything else exactly the same. The final image must NOT contain any magenta, text, logos or watermarks. Return only the edited IMAGE A.`,
   });
   const out = await gemini(env, parts);
