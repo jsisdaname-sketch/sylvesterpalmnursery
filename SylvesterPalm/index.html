@@ -581,6 +581,48 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
 @media(min-width:901px){.story{grid-template-columns:1fr 1.1fr;gap:56px}}
 .footer-social{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:14px}
 .footer-social .ig-btn{margin-left:0}
+
+/* ── photo drop zone + walkthrough ── */
+.viz-drop{position:relative;display:grid;place-items:center;gap:6px;padding:18px 16px 22px;min-height:250px;border:2px dashed rgba(197,151,58,.55);border-radius:18px;background:radial-gradient(ellipse at 50% 85%,rgba(197,151,58,.10),transparent 60%),#fff;cursor:pointer;overflow:hidden;text-align:center;transition:border-color .25s,background-color .25s,transform .2s;-webkit-tap-highlight-color:transparent;outline:none}
+.viz-drop:hover,.viz-drop:focus-visible{border-color:#C5973A}
+.viz-drop:active{transform:scale(.985)}
+.drop-art{width:min(100%,360px);height:auto;fill:none;stroke:#C5973A;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.drop-art .corners{stroke:#0d2818;stroke-width:3;opacity:.35}
+.drop-art .draw path,.drop-art .draw rect,.drop-art .draw circle{stroke-dasharray:420;stroke-dashoffset:420;animation:dropDraw 2.4s ease forwards}
+.drop-art .draw path:nth-child(n+5){animation-delay:.5s}.drop-art .draw path:nth-child(n+9){animation-delay:1s}
+.drop-art .spot{fill:rgba(255,0,200,.18);stroke:#e040b0;stroke-dasharray:5 5;animation:spotPulse 1.8s ease-in-out infinite}
+@keyframes dropDraw{to{stroke-dashoffset:0}}
+@keyframes spotPulse{50%{opacity:.35}}
+.drop-txt{display:grid;gap:3px}.drop-txt b{font-size:1.15rem;color:#0d2818}.drop-txt small{color:#6b6b5e;font-size:.92rem}
+.drop-over{position:absolute;inset:0;display:grid;place-items:center;background:rgba(26,122,58,.92);color:#fff;font-weight:800;font-size:1.15rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.viz-drop.dragging{border-color:#1a7a3a;border-style:solid}.viz-drop.dragging .drop-over{opacity:1}
+.drop-tips-btn{display:block;margin:10px auto 0;background:none;border:0;color:#1a7a3a;font:700 .95rem Calibri,Carlito,"DM Sans",sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:8px}
+.coach{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:16px;background:rgba(5,18,9,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:coachFade .25s ease}
+.coach[hidden]{display:none}
+@keyframes coachFade{from{opacity:0}}
+.coach-card{position:relative;width:min(100%,420px);background:#fdf8f0;color:#1d2a1f;border-radius:22px;padding:22px 22px 18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);font-family:Calibri,Carlito,"DM Sans",sans-serif;animation:coachUp .35s cubic-bezier(.2,1.2,.4,1)}
+@keyframes coachUp{from{transform:translateY(30px) scale(.96);opacity:0}}
+.coach-x{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:none;font-size:1.8rem;color:#6b6b5e;cursor:pointer}
+.coach-slide{display:none;text-align:center}.coach-slide.on{display:block;animation:slideIn .35s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(18px)}}
+.coach-art{width:100%;max-width:260px;height:auto;fill:none;stroke:#0d2818;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin:4px auto 6px;display:block}
+.coach-art .hl{stroke:#C5973A;stroke-width:3}
+.coach-art .paint{fill:rgba(255,0,200,.25);stroke:#e040b0;animation:spotPulse 1.6s ease-in-out infinite}
+.coach-art .finger{fill:#fdf8f0;animation:fingerRub 1.6s ease-in-out infinite}
+@keyframes fingerRub{0%,100%{transform:translateX(-14px)}50%{transform:translateX(10px)}}
+.coach-slide h4{font-size:1.3rem;margin:0 0 6px;color:#0d2818}
+.coach-slide p{margin:0;font-size:1.05rem;line-height:1.5;color:#3d3d33}
+.coach-dots{display:flex;justify-content:center;gap:7px;margin:16px 0 14px}
+.coach-dots i{width:8px;height:8px;border-radius:8px;background:#d8cdb5;transition:all .3s}.coach-dots i.on{width:24px;background:#1a7a3a}
+.coach-nav{display:grid;grid-template-columns:1fr 2fr;gap:10px}
+.coach-nav button{min-height:50px;border-radius:14px;border:0;font:700 1.05rem Calibri,Carlito,"DM Sans",sans-serif;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#fff;transition:transform .15s}
+.coach-nav button:active{transform:scale(.96)}
+.coach-nav .ghost{background:#efe7d6;color:#0d2818}.coach-nav .ghost[disabled]{opacity:.4}
+.mark-tip{display:flex;align-items:center;gap:8px}
+.mt-hand{display:inline-block;font-size:1.3rem;animation:fingerRub 1.4s ease-in-out infinite}
+.viz-quality{background:#fff6e0;border:1px solid #e8cf8a;color:#6b4e00;border-radius:12px;padding:10px 14px;font-size:.95rem;line-height:1.45;margin-bottom:10px}
+.viz-quality.good{background:#eaf6ee;border-color:#9fd3b0;color:#14532d}
+@media (prefers-reduced-motion:reduce){.drop-art .draw *{animation:none!important;stroke-dashoffset:0!important}}
 .faq{padding:4rem 1.25rem;max-width:760px;margin:0 auto}
 .faq details{border-bottom:1px solid rgba(197,151,58,0.3);padding:16px 4px}
 .faq summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:10px}
@@ -611,7 +653,7 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="hero">
   <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/hero/hero-desktop.jpg">
     <source src="images/hero/hero-desktop.mp4" type="video/mp4">
   </video>
@@ -636,7 +678,7 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="steps">
+<section class="steps" id="steps">
   <div class="step"><span class="step-n">1</span><div><b>Pick your Sylvester</b><span>Hand-picked from our family farm</span></div></div>
   <div class="step"><span class="step-n">2</span><div><b>See it in your yard</b><span>Free AI preview from a photo of your space</span></div></div>
   <div class="step"><span class="step-n">3</span><div><b>Call or text for your price</b><span>We deliver it, family-grown since 2000</span></div></div>
@@ -688,15 +730,31 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
   <div class="viz-card">
     <div class="viz-step" id="vizPhotoStep">
       <div class="viz-h"><span class="viz-n">1</span>Your yard photo</div>
-      <label class="viz-drop" for="vizFile" id="vizDrop">
-        <input type="file" accept="image/*" id="vizFile">
-        <span class="viz-drop-txt"><span class="viz-cam">&#128247;</span><b>Take or choose a photo</b><small>Stand back so we can see the whole spot</small></span>
-      </label>
+      <div class="viz-drop" id="vizDrop" role="button" tabindex="0" aria-label="Add a photo of your yard">
+        <input type="file" accept="image/*" id="vizFile" hidden>
+        <svg class="drop-art" viewBox="0 0 400 230" aria-hidden="true">
+          <g class="corners"><path d="M14 44V14h30M356 14h30v30M386 186v30h-30M44 216H14v-30"/></g>
+          <g class="draw">
+            <circle cx="330" cy="52" r="16"/>
+            <path d="M60 196h290"/>
+            <path d="M88 196V118l72-52 72 52v78"/><path d="M74 128l86-62 86 62"/>
+            <path d="M144 196v-40h32v40"/><rect x="104" y="128" width="26" height="22" rx="2"/><rect x="190" y="128" width="26" height="22" rx="2"/>
+            <path d="M296 196c2-24 2-48-2-72"/>
+            <path d="M291 186h10M291 174h10M292 162h9M292 150h8M292 138h7"/>
+            <path d="M294 122c-22-10-42-6-54 6M294 122c-16-18-36-22-50-18M294 122c-4-22-14-34-30-40M294 122c8-22 22-30 38-30M294 122c20-12 40-10 52 2M294 122c22 0 36 10 42 26M294 122c-18 2-32 12-38 28"/>
+            <ellipse class="spot" cx="296" cy="200" rx="30" ry="6"/>
+          </g>
+        </svg>
+        <span class="drop-txt"><b>Drop your yard photo here</b><small>or tap to take / choose one</small></span>
+        <span class="drop-over">Let go to add your photo &#127796;</span>
+      </div>
+      <button type="button" class="drop-tips-btn" id="vizTipsBtn">&#128247; How to take the perfect photo</button>
     </div>
     <div class="viz-step" id="vizMarkStep" hidden>
+      <div class="viz-quality" id="vizQuality" hidden></div>
       <div class="viz-h"><span class="viz-n">2</span>Paint where you want it</div>
       <p class="viz-hint">Rub your finger over the spot on the ground where you want it. <b>Already a tree there?</b> Paint over its trunk and we'll remove the whole tree and put yours in its place.</p>
-      <div class="mark-stage" id="markStage"><img id="markImg" alt="Your yard"><canvas id="markCanvas" aria-label="Paint the spot for your palm"></canvas><span class="mark-tip" id="markTip">&#9757; Paint here</span></div>
+      <div class="mark-stage" id="markStage"><img id="markImg" alt="Your yard"><canvas id="markCanvas" aria-label="Paint the spot for your palm"></canvas><span class="mark-tip" id="markTip"><span class="mt-hand">&#128070;</span>Rub your finger over the spot</span></div>
       <div class="mark-tools"><button type="button" id="markUndo">&#8630; Undo</button><button type="button" id="markClear">Clear</button><button type="button" id="markNew">New photo</button></div>
     </div>
     <div class="viz-step">
@@ -740,10 +798,31 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
       </div>
     </div>
   </div>
+  <div class="coach" id="vizCoach" hidden role="dialog" aria-modal="true" aria-label="Photo tips">
+    <div class="coach-card">
+      <button type="button" class="coach-x" id="coachX" aria-label="Close">&times;</button>
+      <div class="coach-slides" id="coachSlides">
+        <div class="coach-slide on">
+          <svg viewBox="0 0 240 150" class="coach-art"><rect x="70" y="10" width="100" height="130" rx="14"/><path d="M90 108h60M98 108V80l22-16 22 16v28"/><path d="M146 108c1-10 1-18-1-26M145 84c-8-4-14-2-18 2M145 84c6-6 12-6 18-2M145 84c2-8 6-10 12-12"/><path class="hl" d="M40 75h-28M28 65l-14 10 14 10M200 75h28M212 65l14 10-14 10"/></svg>
+          <h4>1. Step back</h4><p>Stand about <b>15&ndash;30 ft away</b> so the whole spot <b>and part of your house</b> fit in the photo. The house helps our AI get the size right.</p>
+        </div>
+        <div class="coach-slide">
+          <svg viewBox="0 0 240 150" class="coach-art"><circle cx="190" cy="34" r="16"/><path class="hl" d="M190 8v8M190 52v8M164 34h8M208 34h8M172 16l5 5M203 47l5 5M208 16l-5 5M177 47l-5 5"/><rect x="60" y="40" width="70" height="100" rx="12"/><path d="M40 118h110" class="hl"/><path d="M70 60h50v56H70z"/></svg>
+          <h4>2. Daylight, phone straight</h4><p>Take it in <b>daylight</b>, hold the phone <b>straight up</b> at chest height and <b>don't zoom</b>. Sideways works great for wide yards.</p>
+        </div>
+        <div class="coach-slide">
+          <svg viewBox="0 0 240 150" class="coach-art"><path d="M20 120h200"/><path d="M50 120V70l40-28 40 28v50"/><ellipse class="hl paint" cx="175" cy="114" rx="30" ry="12"/><path class="finger" d="M190 92c0-8 10-8 10 0v-14c0-8 10-8 10 0v26c6-4 12 0 8 8l-10 16h-26l-6-18c-2-8 6-10 10-4z"/></svg>
+          <h4>3. Show the ground</h4><p>Make sure the <b>ground where the palm goes</b> is in the photo. Next, you'll <b>paint that spot</b> with your finger. Paint over any tree you want replaced.</p>
+        </div>
+      </div>
+      <div class="coach-dots" id="coachDots"><i class="on"></i><i></i><i></i></div>
+      <div class="coach-nav"><button type="button" id="coachBack" class="ghost">Back</button><button type="button" id="coachNext">Next</button></div>
+    </div>
+  </div>
 </section>
 
 <!-- GALLERY -->
-<section class="gallery-section">
+<section class="gallery-section" id="gallery">
   <p class="section-label">Our Collection</p>
   <h2 class="section-title">Browse Our Palms</h2>
   <div class="masonry-wall" id="grid"></div>
@@ -808,7 +887,7 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
 </div>
 
 <!-- GOOGLE REVIEWS SECTION -->
-<section class="reviews-section">
+<section class="reviews-section" id="reviews">
   <div class="reviews-header">
     <div class="reviews-google-badge">
       <span class="google-logo">
@@ -921,7 +1000,7 @@ header.topbar.scrolled{background:rgba(10,31,16,.97);box-shadow:0 8px 24px -12px
   <details><summary>Who are you?</summary><p>A family-owned palm farm in South Florida, growing palms since 2000.</p></details>
 </section>
 
-<section class="contact-section">
+<section class="contact-section" id="contact">
   <div class="contact-card">
     <p class="contact-eyebrow">Ready When You Are</p>
     <h2 class="contact-heading">Get Your Sylvester Palm Today</h2>
@@ -1577,6 +1656,87 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     setOn(cur)}
   addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
   links.forEach(function(a){a.addEventListener("click",function(){setOn(a.getAttribute("data-sec"))})});
+})();
+</script>
+
+<script>
+/* ════ Anonymous visit stats (no names/phones/IPs) → our own Cloudflare, read by Claude for reports ════ */
+(function(){
+  var URL_="https://sp-visualizer.pages.dev/api/track";
+  if(/bot|crawl|spider|headless/i.test(navigator.userAgent))return;
+  var sid,ret=false;try{sid=sessionStorage.getItem("spSid");if(!sid){sid=Math.random().toString(36).slice(2,12)+Date.now().toString(36);sessionStorage.setItem("spSid",sid)}
+    ret=!!localStorage.getItem("spSeen");localStorage.setItem("spSeen","1")}catch(_){sid=Math.random().toString(36).slice(2,14)}
+  var q=new URLSearchParams(location.search),start=Date.now(),vis=0,lastTick=Date.now(),maxScroll=0,swipes=0,clicks={},secs={},order=[],cur="hero";
+  var ref="";try{ref=document.referrer?new URL(document.referrer).hostname:""}catch(_){}
+  if(ref===location.hostname)ref="";
+  function tick(){var now=Date.now();if(document.visibilityState==="visible"){var d=(now-lastTick)/1000;vis+=d;if(cur)secs[cur]=(secs[cur]||0)+d}lastTick=now}
+  setInterval(tick,1000);
+  /* which section is in the middle of the screen */
+  var ids=["hero","steps","palms","visualize","gallery","story","why","reviews","faq","contact"],els=ids.map(function(i){return document.getElementById(i)}).filter(Boolean);
+  function which(){var mid=innerHeight/2,c=null;els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)c=e.id});
+    if(c&&c!==cur){tick();cur=c;if(order.indexOf(c)<0)order.push(c)}}
+  order.push("hero");
+  addEventListener("scroll",function(){var h=document.documentElement,p=Math.round(100*(scrollY+innerHeight)/h.scrollHeight);if(p>maxScroll)maxScroll=Math.min(100,p);which()},{passive:true});
+  /* swipes = finger drags on phones, wheel bursts on computers */
+  var moved=false;addEventListener("touchstart",function(){moved=false},{passive:true});
+  addEventListener("touchmove",function(){if(!moved){moved=true;swipes++}},{passive:true});
+  var wt=0;addEventListener("wheel",function(){var n=Date.now();if(n-wt>400)swipes++;wt=n},{passive:true});
+  /* taps that matter */
+  function c(k){clicks[k]=(clicks[k]||0)+1}
+  document.addEventListener("click",function(e){var a=e.target.closest("a,button");if(!a)return;var h=a.getAttribute("href")||"";
+    if(/^tel:/.test(h))c("call");else if(/^sms:/.test(h))c(a.id==="vizText"?"text_after_preview":"text");
+    else if(/instagram/.test(h))c("instagram");else if(/facebook/.test(h))c("facebook");else if(/maps/.test(h))c("directions");
+    else if(h==="#visualize"||a.classList.contains("pb-try"))c("try_preview_btn");
+    else if(a.id==="vizGo")c("preview_start");else if(a.id==="vizSave")c("preview_save");else if(a.id==="heroOfferBtn")c("offer_50");
+    else if(a.closest("#tbNav"))c("tab_"+(a.getAttribute("data-sec")||""));
+    else if(a.classList.contains("pp")||a.closest("#vizSize"))c("palm_pick")},true);
+  document.addEventListener("change",function(e){if(e.target&&e.target.id==="vizFile")c("photo_uploaded")},true);
+  var vr=document.getElementById("vizResult");if(vr)new MutationObserver(function(){if(!vr.hidden)c("preview_done")}).observe(vr,{attributes:true,attributeFilter:["hidden"]});
+  document.addEventListener("toggle",function(e){if(e.target.tagName==="DETAILS"&&e.target.open)c("faq_open")},true);
+  var sent=0;
+  function send(){if(sent>=8)return;tick();sent++;var r={};Object.keys(secs).forEach(function(k){r[k]=Math.round(secs[k])});
+    var body=JSON.stringify({sid:sid,start:start,dur:Math.round(vis),scroll:maxScroll,swipes:swipes,secs:r,order:order,last:cur,clicks:clicks,
+      dev:matchMedia("(pointer:coarse)").matches?"mobile":"desktop",ref:ref,utm:q.get("utm_source")||q.get("ref")||"",lang:(navigator.language||"").slice(0,5),page:location.pathname,ret:ret});
+    try{navigator.sendBeacon(URL_,new Blob([body],{type:"text/plain"}))}catch(_){}}
+  setTimeout(send,15000);setTimeout(send,60000);setTimeout(send,180000);
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")send()});
+  addEventListener("pagehide",send);
+})();
+</script>
+
+<script>
+/* photo drop zone: tap → walkthrough the first time, then the photo picker; drag & drop on computers; quick photo check */
+(function(){
+  var drop=document.getElementById("vizDrop"),file=document.getElementById("vizFile"),coach=document.getElementById("vizCoach");if(!drop||!file||!coach)return;
+  var slides=coach.querySelectorAll(".coach-slide"),dots=coach.querySelectorAll(".coach-dots i"),i=0,next=document.getElementById("coachNext"),back=document.getElementById("coachBack");
+  function seen(){try{return localStorage.getItem("spCoach")==="1"}catch(_){return false}}
+  function show(n){i=n;slides.forEach(function(s,k){s.classList.toggle("on",k===i)});dots.forEach(function(d,k){d.classList.toggle("on",k===i)});
+    back.disabled=i===0;next.innerHTML=i===slides.length-1?"&#128247; Choose my photo":"Next"}
+  function open(){show(0);coach.hidden=false;document.body.style.overflow="hidden";next.focus()}
+  function close(){coach.hidden=true;document.body.style.overflow="";try{localStorage.setItem("spCoach","1")}catch(_){}}
+  next.onclick=function(){if(i<slides.length-1)show(i+1);else{close();file.click()}};
+  back.onclick=function(){if(i>0)show(i-1)};
+  document.getElementById("coachX").onclick=close;
+  coach.addEventListener("click",function(e){if(e.target===coach)close()});
+  document.addEventListener("keydown",function(e){if(!coach.hidden&&e.key==="Escape")close()});
+  var sx=0;coach.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+  coach.addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-sx;if(d<-40&&i<slides.length-1)show(i+1);if(d>40&&i>0)show(i-1)});
+  document.getElementById("vizTipsBtn").onclick=open;
+  function pick(){if(seen())file.click();else open()}
+  drop.addEventListener("click",pick);
+  drop.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick()}});
+  ["dragenter","dragover"].forEach(function(t){drop.addEventListener(t,function(e){e.preventDefault();drop.classList.add("dragging")})});
+  ["dragleave","drop"].forEach(function(t){drop.addEventListener(t,function(e){e.preventDefault();drop.classList.remove("dragging")})});
+  drop.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files;if(f&&f.length&&/^image\//.test(f[0].type)){try{file.files=f}catch(_){var dt=new DataTransfer();dt.items.add(f[0]);file.files=dt.files}file.dispatchEvent(new Event("change"))}});
+  /* quick photo check: too small or too dark */
+  var q=document.getElementById("vizQuality");
+  file.addEventListener("change",function(){var f=file.files&&file.files[0];if(!f||!q)return;var im=new Image(),u=URL.createObjectURL(f);
+    im.onload=function(){var c=document.createElement("canvas");c.width=40;c.height=40;var x=c.getContext("2d");x.drawImage(im,0,0,40,40);var d=x.getImageData(0,0,40,40).data,sum=0;
+      for(var k=0;k<d.length;k+=4)sum+=0.299*d[k]+0.587*d[k+1]+0.114*d[k+2];var lum=sum/(d.length/4),small=Math.min(im.naturalWidth,im.naturalHeight)<600;
+      if(lum<55){q.className="viz-quality";q.innerHTML="&#127769; This photo looks a bit <b>dark</b>. It will still work, but a daylight photo gives the most realistic result.";q.hidden=false}
+      else if(small){q.className="viz-quality";q.innerHTML="&#128269; This photo is <b>small</b>. For the sharpest result, use the original photo from your camera.";q.hidden=false}
+      else{q.className="viz-quality good";q.innerHTML="&#9989; Great photo! Now paint the spot where you want your palm.";q.hidden=false}
+      URL.revokeObjectURL(u)};im.src=u});
 })();
 </script>
 </body>

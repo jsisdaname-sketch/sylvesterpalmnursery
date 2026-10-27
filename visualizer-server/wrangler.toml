@@ -5,3 +5,7 @@ compatibility_date = "2026-10-01"
 [[kv_namespaces]]
 binding = "LIMITS"
 id = "c8e62a52265044c281befe0949b9dd13"
+
+[[kv_namespaces]]
+binding = "STATS"
+id = "fa358efd43044b159163d36ed42cda7b"
