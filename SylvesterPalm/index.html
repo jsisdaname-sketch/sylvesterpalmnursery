@@ -816,6 +816,36 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 @media(max-width:767px){body{padding-bottom:0}}
 /* gallery: no green fade on the edges */
 .masonry-wall{-webkit-mask-image:none!important;mask-image:none!important}
+
+/* ── reviews: one card at a time, light section ── */
+.rv{background:#faf7ef;color:#0d2818;padding:4.2rem 20px 4.4rem;text-align:center;overflow:hidden}
+.rv-badge{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;background:#fff;border:1px solid rgba(13,40,24,.1);box-shadow:0 6px 20px -12px rgba(0,0,0,.25);font-size:.95rem}
+.rv-badge .rv-g{width:20px;height:20px}
+.rv-badge b{font-size:1.1rem}
+.rv-badge-stars{color:#f5b301;letter-spacing:1px}
+.rv-badge i{width:1px;height:18px;background:rgba(13,40,24,.18)}
+.rv-badge-txt{font:600 .72rem "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5c6b60}
+.rv-title{font:700 clamp(2.2rem,7.5vw,4rem)/1.05 "Playfair Display",serif;letter-spacing:-.015em;margin:1.2rem auto 0;max-width:14ch}
+.rv-title::after{content:"";display:block;width:64px;height:3px;border-radius:3px;background:linear-gradient(90deg,#f6a04d,#e8702a);margin:1rem auto 0}
+.rv-stage{position:relative;display:grid;max-width:720px;margin:2.2rem auto 0;touch-action:pan-y}
+.rv-slide{grid-area:1/1;text-align:left;background:#fff;border:1px solid rgba(13,40,24,.08);border-radius:24px;padding:26px 24px 28px;box-shadow:0 30px 60px -34px rgba(13,40,24,.45);opacity:0;transform:translateY(14px) scale(.98);filter:blur(4px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1),filter .55s;pointer-events:none}
+.rv-slide.on{opacity:1;transform:none;filter:none;pointer-events:auto}
+.rv-who{display:flex;align-items:center;gap:14px}
+.rv-slide{display:flex;flex-direction:column;justify-content:center}
+.rv-av{position:relative;flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;font:700 1.3rem "DM Sans",sans-serif;overflow:hidden;box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
+.rv-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rv-name{display:grid;gap:2px;min-width:0}.rv-name b{font-size:1.08rem}.rv-name small{color:#6b7a70;font-size:.85rem}
+.rv-who .rv-g{width:28px;height:28px;margin-left:auto;flex:none}
+.rv-stars{color:#f5b301;font-size:1.25rem;letter-spacing:2px;margin:16px 0 8px}
+.rv-slide blockquote{margin:0;font-size:clamp(1.12rem,3.6vw,1.4rem);line-height:1.55;color:#24342a}
+.rv-dots{display:flex;justify-content:center;gap:4px;margin-top:22px}
+.rv-dots button{width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative;padding:0}
+.rv-dots button::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:10px;background:rgba(13,40,24,.2);transition:all .3s}
+.rv-dots button.on::after{width:26px;margin-left:-13px;background:#e8702a}
+.rv-all{display:inline-flex;align-items:center;gap:12px;margin-top:20px;min-height:56px;padding:0 26px;border-radius:999px;background:#fff;border:1px solid rgba(13,40,24,.14);color:#0d2818;text-decoration:none;font:600 1.05rem "DM Sans",sans-serif;box-shadow:0 8px 22px -14px rgba(0,0,0,.35);transition:transform .15s}
+.rv-all .rv-g{width:24px;height:24px}.rv-all:active{transform:scale(.97)}
+@media(max-width:420px){.rv-badge{gap:7px;padding:9px 14px}.rv-badge-txt{font-size:.62rem;letter-spacing:.1em;white-space:nowrap}.rv-badge-stars{font-size:.85rem}}
+@media(min-width:900px){.rv{padding:6rem 28px}.rv-slide{padding:36px 40px 38px}}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -992,6 +1022,31 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 
 
 
+<!-- GOOGLE REVIEWS SECTION -->
+<section class="rv" id="reviews" aria-label="Customer reviews">
+  <div class="rv-badge"><svg class="rv-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><b>5.0</b><span class="rv-badge-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><i></i><span class="rv-badge-txt">Verified on Google</span></div>
+  <h2 class="rv-title">Don't take our word for it</h2>
+  <div class="rv-stage" id="rvStage" aria-roledescription="carousel" aria-live="polite">
+      <article class="rv-slide on" aria-roledescription="slide" aria-label="Review 1 of 3">
+        <div class="rv-who"><span class="rv-av" style="background:#7b2fa8">N<img src="images/reviews/nicole.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="rv-name"><b>Nicole Turner</b><small>Google review &middot; March 2026</small></span><svg class="rv-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div>
+        <div class="rv-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Great people and the most beautiful palms!!!</blockquote>
+      </article>
+      <article class="rv-slide" aria-roledescription="slide" aria-label="Review 2 of 3" aria-hidden="true">
+        <div class="rv-who"><span class="rv-av" style="background:#c2410c">C<img src="images/reviews/carmen.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="rv-name"><b>Carmen Feldman</b><small>Google review &middot; March 2026</small></span><svg class="rv-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div>
+        <div class="rv-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Great experience purchasing palm trees from this business. The trees were high quality, competitive prices, and the customer service was excellent. The staff was friendly and helpful throughout the whole process. I highly recommend them and will definitely be back! 🌴</blockquote>
+      </article>
+      <article class="rv-slide" aria-roledescription="slide" aria-label="Review 3 of 3" aria-hidden="true">
+        <div class="rv-who"><span class="rv-av" style="background:#1a7a3a">J<img src="images/reviews/jeffrey.jpg" alt="" loading="lazy" onerror="this.remove()"></span><span class="rv-name"><b>Jeffrey Santos</b><small>Google review &middot; March 2026</small></span><svg class="rv-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></div>
+        <div class="rv-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Fast, friendly, and efficient service. Carlos was excellent, will be buying palms from him again.</blockquote>
+      </article>
+  </div>
+  <div class="rv-dots" id="rvDots" role="tablist" aria-label="Choose a review"><button type="button" class="on" aria-label="Review 1"></button><button type="button" aria-label="Review 2"></button><button type="button" aria-label="Review 3"></button></div>
+  <a class="rv-all" href="https://www.google.com/maps/place/Sylvester+Palm+Nursery/@26.0812311,-83.718623,7z/data=!4m8!3m7!1s0x230b721d8b34f9c3:0xf9d69254e6b6ef1a!8m2!3d26.105297!4d-81.0768305!9m1!1b1!16s%2Fg%2F11z14576hz?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"><svg class="rv-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span>See all reviews on Google</span><span aria-hidden="true">&#8599;</span></a>
+</section>
+
 <!-- BACKGROUND / OUR STORY -->
 <section class="story" id="story">
   <figure class="story-photo"><img src="images/gallery/palm_3.jpg" alt="A Sylvester palm growing on our family farm" loading="lazy"><figcaption>On the farm, South Florida</figcaption></figure>
@@ -1055,108 +1110,7 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 
 </div>
 
-<!-- GOOGLE REVIEWS SECTION -->
-<section class="reviews-section" id="reviews">
-  <div class="reviews-header">
-    <div class="reviews-google-badge">
-      <span class="google-logo">
-        <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
-      </span>
-      <div class="reviews-rating-row">
-        <span class="reviews-stars">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        </span>
-        <span class="reviews-rating-num">5.0</span>
-      </div>
-    </div>
-    <p class="section-label">What Our Customers Say</p>
-    <h2 class="section-title">Trusted by Florida Homeowners for 26 Years</h2>
-  </div>
 
-  <div class="reviews-grid">
-
-    <div class="review-card">
-      <div class="review-top">
-        <span class="review-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        </span>
-        <div class="review-google-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-      </div>
-      <p class="review-text">"Great people and the most beautiful palms!!!"</p>
-      <div class="review-author">
-        <div class="review-avatar">N<img src="images/reviews/nicole.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
-        <div class="review-meta">
-          <span class="review-name">Nicole Turner</span>
-          <span class="review-location">March 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-card">
-      <div class="review-top">
-        <span class="review-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        </span>
-        <div class="review-google-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-      </div>
-      <p class="review-text">"Great experience purchasing palm trees from this business. The trees were high quality, competitive prices, and the customer service was excellent. The staff was friendly and helpful throughout the whole process. I highly recommend them and will definitely be back! 🌴"</p>
-      <div class="review-author">
-        <div class="review-avatar">C<img src="images/reviews/carmen.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
-        <div class="review-meta">
-          <span class="review-name">Carmen Feldman</span>
-          <span class="review-location">March 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-card">
-      <div class="review-top">
-        <span class="review-stars">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        </span>
-        <div class="review-google-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        </div>
-      </div>
-      <p class="review-text">"Fast, friendly, and efficient service. Carlos was excellent, will be buying palms from him again."</p>
-      <div class="review-author">
-        <div class="review-avatar">J<img src="images/reviews/jeffrey.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
-        <div class="review-meta">
-          <span class="review-name">Jeffrey Santos</span>
-          <span class="review-location">March 2026</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="reviews-cta">
-    <a href="https://www.google.com/maps/place/Sylvester+Palm+Nursery/@26.0812311,-83.718623,7z/data=!4m8!3m7!1s0x230b721d8b34f9c3:0xf9d69254e6b6ef1a!8m2!3d26.105297!4d-81.0768305!9m1!1b1!16s%2Fg%2F11z14576hz?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="reviews-link">
-      Read All Reviews on Google
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-    </a>
-  </div>
-</section>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -1264,7 +1218,7 @@ const palms=[
   {img:"images/gallery/preview_12.webp"},{img:"images/gallery/preview_13.webp"},{img:"images/gallery/preview_14.webp"},
   {img:"images/gallery/preview_15.webp"},{img:"images/gallery/preview_16.webp"},{img:"images/gallery/preview_17.webp"},
   {img:"images/gallery/preview_18.webp"},{img:"images/gallery/preview_19.webp"},
-  {img:"images/gallery/palm_15.jpg"},{img:"images/gallery/palm_16.jpg"},{img:"sylvester.jpeg"}
+  {img:"images/gallery/palm_15.jpg"},{img:"images/gallery/palm_16.jpg"}
 ];
 
 const PALM_SIZE="5 ft";
@@ -1938,6 +1892,20 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   var fv=document.getElementById("fsViz"),ov=document.getElementById("fsOverlay");
   if(fv&&ov){new MutationObserver(function(){if(ov.classList.contains("open"))fv.hidden=false}).observe(ov,{attributes:true,attributeFilter:["class"]});
     fv.addEventListener("click",function(){if(typeof closeFS==="function")closeFS();open()})}
+})();
+</script>
+
+<script>
+/* reviews carousel: auto-advance, dots, swipe; pauses when off screen or touched */
+(function(){
+  var st=document.getElementById("rvStage");if(!st)return;var sl=[].slice.call(st.querySelectorAll(".rv-slide")),dots=[].slice.call(document.querySelectorAll("#rvDots button")),i=0,t=null,vis=false;
+  var still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function go(n){i=(n+sl.length)%sl.length;sl.forEach(function(e,k){e.classList.toggle("on",k===i);e.setAttribute("aria-hidden",k!==i)});dots.forEach(function(d,k){d.classList.toggle("on",k===i);d.setAttribute("aria-selected",k===i)})}
+  function play(){stop();if(!still&&vis)t=setInterval(function(){go(i+1)},6000)}function stop(){clearInterval(t)}
+  dots.forEach(function(d,k){d.addEventListener("click",function(){go(k);play()})});
+  var x0=null;st.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;stop()},{passive:true});
+  st.addEventListener("touchend",function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)go(i+(d<0?1:-1));x0=null;play()});
+  new IntersectionObserver(function(en){vis=en[0].isIntersecting;vis?play():stop()},{threshold:.35}).observe(st);
 })();
 </script>
 </body>
