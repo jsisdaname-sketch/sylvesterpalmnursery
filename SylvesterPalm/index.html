@@ -750,6 +750,15 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
 @media(max-width:900px){.reviews-grid{align-items:flex-start}}
 .sc-short{display:none}
 @media(max-width:360px){.sc-long{display:none}.sc-short{display:inline}.hero .hero-viz-btn{font-size:.95rem;padding:0 14px}.hero-title{font-size:1.9rem}}
+
+/* header social icons */
+.ih-soc{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:transform .15s,filter .2s;-webkit-tap-highlight-color:transparent}
+.ih-soc svg{width:32px;height:32px;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}
+.ih-soc:active{transform:scale(.9)}
+.ih-soc:hover{filter:brightness(1.05)}
+.ih-actions{gap:2px}
+@media(max-width:360px){.ih-soc{width:40px}.ih-soc svg{width:29px;height:29px}.ih-brand img{height:38px}}
+@media(min-width:960px){.ih-actions{gap:6px;margin-left:16px}.ih-soc svg{width:34px;height:34px}}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -766,7 +775,9 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
       <a href="#why" data-sec="why">Why Us?</a>
     </nav>
     <div class="ih-actions">
-      <a class="ih-call" href="tel:5619005658" aria-label="Call (561) 900-5658"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(561) 900-5658</span></a>
+      <a class="ih-soc" href="https://www.facebook.com/SylvesterPalmNursery" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M15.12 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.88 1.96-1.88h1.52V4.92s-1.38-.24-2.69-.24c-2.74 0-4.53 1.66-4.53 4.67V12H5.53v3.47h3.05V24a12.1 12.1 0 0 0 3.74 0v-8.53z"/></svg></a>
+      <a class="ih-soc" href="https://www.instagram.com/sylvesterpalmnursery" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igg)"/><rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1.05" fill="#fff"/></svg></a>
+      <a class="ih-soc ih-wa" href="https://wa.me/15619005658?text=Hi!%20I%27m%20interested%20in%20your%20Sylvester%20Palms." target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M12.04 5.2a6.75 6.75 0 0 0-5.8 10.2l-.96 3.5 3.6-.94a6.75 6.75 0 1 0 3.16-12.76zm0 12.35a5.6 5.6 0 0 1-2.86-.78l-.2-.12-2.13.56.57-2.08-.14-.21a5.61 5.61 0 1 1 4.76 2.63zm3.08-4.2c-.17-.08-1-.49-1.15-.55-.16-.06-.27-.08-.38.09-.11.17-.44.55-.54.66-.1.11-.2.13-.37.04a4.6 4.6 0 0 1-2.3-2c-.17-.3.17-.28.5-.93.05-.11.03-.2-.02-.29-.04-.08-.38-.92-.52-1.26-.14-.33-.28-.28-.38-.29h-.33a.63.63 0 0 0-.46.21 1.93 1.93 0 0 0-.6 1.44 3.36 3.36 0 0 0 .7 1.78 7.7 7.7 0 0 0 2.95 2.6c1.1.48 1.53.52 2.08.44.34-.05 1-.41 1.15-.81.14-.4.14-.74.1-.81-.04-.07-.15-.11-.32-.2z"/></svg></a>
       <button type="button" class="ih-menu" id="ihMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="ihSheet"><span></span><span></span></button>
     </div>
   </div>
@@ -1822,7 +1833,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   function c(k){clicks[k]=(clicks[k]||0)+1}
   document.addEventListener("click",function(e){var a=e.target.closest("a,button");if(!a)return;var h=a.getAttribute("href")||"";
     if(/^tel:/.test(h))c("call");else if(/^sms:/.test(h))c(a.id==="vizText"?"text_after_preview":"text");
-    else if(/instagram/.test(h))c("instagram");else if(/facebook/.test(h))c("facebook");else if(/maps/.test(h))c("directions");
+    else if(/wa\.me|whatsapp/.test(h))c("whatsapp");else if(/instagram/.test(h))c("instagram");else if(/facebook/.test(h))c("facebook");else if(/maps/.test(h))c("directions");
     else if(h==="#visualize"||a.classList.contains("pb-try"))c("try_preview_btn");
     else if(a.id==="vizGo")c("preview_start");else if(a.id==="vizSave")c("preview_save");else if(a.id==="heroOfferBtn")c("offer_50");
     else if(a.closest("#tbNav,#tbMenu"))c("tab_"+(a.getAttribute("data-sec")||"viz"));else if(a.id==="ihMenuBtn")c("menu_open");
