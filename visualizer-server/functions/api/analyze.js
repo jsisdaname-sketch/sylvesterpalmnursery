@@ -21,7 +21,7 @@ const parseImg = (s) => /^data:(image\/(jpeg|png|webp));base64,([A-Za-z0-9+/=]+)
 const cors = (origin) => ({
   "Access-Control-Allow-Origin": origin,
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, X-Owner-Key",
   "Access-Control-Max-Age": "86400",
   Vary: "Origin",
 });
@@ -83,7 +83,8 @@ export async function onRequestPost({ request, env }) {
   const k = `an:${day}:${request.headers.get("CF-Connecting-IP") || "unknown"}`;
   if (env.LIMITS) {
     const n = +(await env.LIMITS.get(k)) || 0;
-    if (n >= PER_IP_PER_DAY) return json({ error: "limit_you" }, 429, origin);
+    const owner = !!env.OWNER_KEY && request.headers.get("X-Owner-Key") === env.OWNER_KEY;
+    if (!owner && n >= PER_IP_PER_DAY) return json({ error: "limit_you" }, 429, origin);
     await env.LIMITS.put(k, String(n + 1), { expirationTtl: 60 * 60 * 30 });
   }
 

@@ -35,7 +35,7 @@ function cors(origin) {
   return {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, X-Owner-Key",
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
   };
@@ -94,9 +94,10 @@ export async function onRequestPost({ request, env }) {
   const day = new Date().toISOString().slice(0, 10);
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   const kIp = `ip:${day}:${ip}`, kAll = `all:${day}`;
+  const owner = !!env.OWNER_KEY && request.headers.get("X-Owner-Key") === env.OWNER_KEY; // Jonathan's own link: no per-person limit
   if (env.LIMITS) {
     const [nIp, nAll] = await Promise.all([env.LIMITS.get(kIp), env.LIMITS.get(kAll)]);
-    if ((+nIp || 0) >= PER_IP_PER_DAY) return json({ error: "limit_you" }, 429, origin);
+    if (!owner && (+nIp || 0) >= PER_IP_PER_DAY) return json({ error: "limit_you" }, 429, origin);
     if ((+nAll || 0) >= SITE_PER_DAY) return json({ error: "limit_site" }, 429, origin);
   }
 

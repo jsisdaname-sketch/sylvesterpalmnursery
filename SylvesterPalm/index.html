@@ -1476,7 +1476,9 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   }
   function stage(n){Array.prototype.forEach.call($("vizProg").children,function(li){var k=+li.getAttribute("data-s");li.className=k<n?"done":k===n?"now":""})}
   var timers=[];
-  function post(url,data){return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})}
+  /* owner link (?owner=...) skips the per-person daily limit; remembered on this device */
+  var OWN="";try{var q=new URLSearchParams(location.search).get("owner");if(q){localStorage.setItem("spOwner",q);history.replaceState(null,"",location.pathname+location.hash)}OWN=localStorage.getItem("spOwner")||""}catch(_){}
+  function post(url,data){var h={"Content-Type":"application/json"};if(OWN)h["X-Owner-Key"]=OWN;return fetch(url,{method:"POST",headers:h,body:JSON.stringify(data)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})}
   function fail(x){
     timers.forEach(clearTimeout);load.hidden=true;go.hidden=false;go.disabled=false;
     var e=x&&x.j&&x.j.error;
