@@ -759,6 +759,27 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
 .ih-actions{gap:2px}
 @media(max-width:360px){.ih-soc{width:40px}.ih-soc svg{width:29px;height:29px}.ih-brand img{height:38px}}
 @media(min-width:960px){.ih-actions{gap:6px;margin-left:16px}.ih-soc svg{width:34px;height:34px}}
+
+/* ── AI tool as a full-screen sheet ── */
+.viz-modal{position:fixed;inset:0;z-index:400;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 3.2rem) 12px calc(var(--sab) + 2rem);border:0;animation:vizSheet .38s cubic-bezier(.2,.9,.2,1)}
+.viz-modal[hidden]{display:none}
+@keyframes vizSheet{from{transform:translateY(40px);opacity:0}}
+.viz-close{position:fixed;z-index:410;top:calc(var(--sat) + 10px);right:12px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(10,31,16,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
+html.viz-lock,html.viz-lock body{overflow:hidden}
+@media(min-width:768px){.viz-modal{padding-top:4rem}}
+/* gallery right under the specialty card */
+.palms{padding-bottom:1rem}
+.gallery-section{padding-top:1.5rem}
+.gal-hint{text-align:center;color:rgba(255,255,255,.6);font-size:.85rem;margin-top:14px}
+.gallery-section .palms-more{text-align:center;margin-top:10px;color:rgba(255,255,255,.75)}
+.gallery-section .palms-more a{color:var(--goldl);font-weight:700}
+/* photo viewer buttons */
+.fs-actions{position:absolute;left:50%;bottom:calc(24px + var(--sab));transform:translateX(-50%);display:flex;gap:10px;z-index:510;width:max-content;max-width:92vw}
+.fs-actions .like-btn{position:static;transform:none;min-height:50px;padding:0 20px}
+.fs-actions .like-btn:hover{transform:none}
+.fs-viz{min-height:50px;padding:0 20px;border-radius:50px;border:0;background:linear-gradient(135deg,#f3dc9b,var(--gold));color:var(--ink);font:800 .9rem "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.fs-viz[hidden]{display:none}
+.fs-size{bottom:calc(88px + var(--sab))}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -822,13 +843,6 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="steps" id="steps">
-  <div class="step"><span class="step-n">1</span><div><b>Pick your Sylvester</b><span>Hand-picked from our family farm</span></div></div>
-  <div class="step"><span class="step-n">2</span><div><b>See it in your yard</b><span>Free AI preview from a photo of your space</span></div></div>
-  <div class="step"><span class="step-n">3</span><div><b>Call or text for your price</b><span>We deliver it, family-grown since 2000</span></div></div>
-</section>
-
 <!-- OUR PALMS -->
 <section class="palms" id="palms">
   <p class="section-label">Home-Grown on Our Farm</p>
@@ -844,37 +858,23 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
       </div>
     </article>
   </div>
-  <div class="pc-rail">
-    <article class="palm-card prod">
-      <div class="palm-photo"><span class="pc-badge">3 ft trunk</span><img src="images/palms/sylvester-3ft-varnished.jpg" alt="3 ft varnished Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">Glossy finish</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
-        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-3ft-varnished">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 3 ft Varnished Sylvester Palm.">Text for price</a></div></div>
-    </article>
-    <article class="palm-card prod">
-      <div class="palm-photo"><span class="pc-badge">3 ft trunk</span><img src="images/palms/sylvester-3ft-normal.jpg" alt="3 ft normal Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">Natural trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
-        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-3ft-normal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 3 ft Normal Sylvester Palm.">Text for price</a></div></div>
-    </article>
-    <article class="palm-card prod">
-      <div class="palm-photo"><span class="pc-badge">4 ft trunk</span><img src="images/palms/sylvester-4ft-varnished.jpg" alt="4 ft varnished Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">Glossy finish</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
-        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-4ft-varnished">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 4 ft Varnished Sylvester Palm.">Text for price</a></div></div>
-    </article>
-    <article class="palm-card prod">
-      <div class="palm-photo"><span class="pc-badge">4 ft trunk</span><img src="images/palms/sylvester-4ft-normal.jpg" alt="4 ft normal Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">Natural trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
-        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-4ft-normal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 4 ft Normal Sylvester Palm.">Text for price</a></div></div>
-    </article>
-  </div>
-  <p class="pc-swipe" aria-hidden="true">Swipe to see all sizes &rarr;</p>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <p class="section-label">Our Collection</p>
+  <h2 class="section-title">Browse Our Palms</h2>
+  <div class="masonry-wall" id="grid"></div>
+  <p class="gal-hint">Tap any photo to see it up close</p>
   <p class="palms-more">Need a different size? <a href="sms:+15619005658&amp;body=Hi! What sizes of Sylvester Palms do you have?">Text us</a> and we'll send photos of what's on the farm.</p>
 </section>
 
 <!-- AI YARD PREVIEW -->
-<section class="viz" id="visualize">
+<section class="viz viz-modal" id="visualize" role="dialog" aria-modal="true" aria-label="See a Sylvester in your yard" hidden>
+  <button type="button" class="viz-close" id="vizClose" aria-label="Close">&times;</button>
   <p class="section-label">New &middot; Free</p>
   <h2 class="section-title">See a Sylvester in Your Yard</h2>
-  <p class="viz-sub">Take a photo of your yard, paint the spot, pick your palm, and see it there in about 20 seconds.</p>
+  <p class="viz-sub">Take a photo of your yard, paint the spot, pick your palm, and see it there in about 30 seconds.</p>
   <div class="viz-card">
     <div class="viz-step" id="vizPhotoStep">
       <div class="viz-h"><span class="viz-n">1</span>Your yard photo</div>
@@ -894,7 +894,7 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
       <div class="mark-tools"><button type="button" id="markUndo">&#8630; Undo</button><button type="button" id="markClear">Clear</button><button type="button" id="markNew">New photo</button></div>
     </div>
     <div class="viz-step">
-      <div class="viz-h"><span class="viz-n">3</span>Pick your palm</div>
+      <div class="viz-h"><span class="viz-n" id="vizPickN">2</span>Pick your palm</div>
       <div class="viz-chips size-chips" id="vizSize" role="radiogroup" aria-label="Trunk size">
         <button type="button" class="chip on" data-ft="3">3 ft trunk</button><button type="button" class="chip" data-ft="4">4 ft trunk</button>
       </div>
@@ -957,12 +957,7 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery-section" id="gallery">
-  <p class="section-label">Our Collection</p>
-  <h2 class="section-title">Browse Our Palms</h2>
-  <div class="masonry-wall" id="grid"></div>
-</section>
+
 
 <!-- BACKGROUND / OUR STORY -->
 <section class="story" id="story">
@@ -1162,7 +1157,7 @@ html.in-viz .sticky-call{transform:translateY(140%)!important}
 
 <div class="fs-overlay" id="fsOverlay">
   <div id="fsContent"></div>
-  <button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button>
+  <div class="fs-actions"><button type="button" class="fs-viz" id="fsViz">&#10024; See it in my yard</button><button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button></div>
   <button class="fs-close" onclick="closeFS()">✕</button>
 </div>
 
@@ -1835,7 +1830,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     if(/^tel:/.test(h))c("call");else if(/^sms:/.test(h))c(a.id==="vizText"?"text_after_preview":"text");
     else if(/wa\.me|whatsapp/.test(h))c("whatsapp");else if(/instagram/.test(h))c("instagram");else if(/facebook/.test(h))c("facebook");else if(/maps/.test(h))c("directions");
     else if(h==="#visualize"||a.classList.contains("pb-try"))c("try_preview_btn");
-    else if(a.id==="vizGo")c("preview_start");else if(a.id==="vizSave")c("preview_save");else if(a.id==="heroOfferBtn")c("offer_50");
+    else if(a.id==="vizGo")c("preview_start");else if(a.id==="fsViz")c("preview_from_photo");else if(a.id==="vizSave")c("preview_save");else if(a.id==="heroOfferBtn")c("offer_50");
     else if(a.closest("#tbNav,#tbMenu"))c("tab_"+(a.getAttribute("data-sec")||"viz"));else if(a.id==="ihMenuBtn")c("menu_open");
     else if(a.classList.contains("pp")||a.closest("#vizSize"))c("palm_pick")},true);
   document.addEventListener("change",function(e){if(e.target&&e.target.id==="vizFile")c("photo_uploaded")},true);
@@ -1885,6 +1880,34 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
       else if(small){q.className="viz-quality";q.innerHTML="&#128269; This photo is <b>small</b>. For the sharpest result, use the original photo from your camera.";q.hidden=false}
       else{q.className="viz-quality good";q.innerHTML="&#9989; Great photo! Now paint the spot where you want your palm.";q.hidden=false}
       URL.revokeObjectURL(u)};im.src=u});
+})();
+</script>
+
+<script>
+/* AI yard preview opens as a full-screen sheet: from "See one in my yard", the hero/menu buttons, or a gallery photo */
+(function(){
+  var m=document.getElementById("visualize");if(!m)return;
+  function opened(){try{return sessionStorage.getItem("vizOpened")==="1"}catch(_){return false}}
+  function open(){if(!m.hidden)return;m.hidden=false;document.documentElement.classList.add("viz-lock");m.scrollTop=0;
+    try{sessionStorage.setItem("vizOpened","1")}catch(_){}
+    try{history.pushState({viz:1},"")}catch(_){}
+    var sc=document.getElementById("stickyCall");if(sc)sc.dataset.prev=sc.style.display,sc.style.display="none";
+    setTimeout(function(){var c=document.getElementById("vizClose");c&&c.focus({preventScroll:true})},50)}
+  function close(fromPop){if(m.hidden)return;m.hidden=true;document.documentElement.classList.remove("viz-lock");
+    var sc=document.getElementById("stickyCall");if(sc&&!sessionStorage.getItem("stickyCallDismissed"))sc.style.display="";
+    if(!fromPop&&history.state&&history.state.viz){try{history.back()}catch(_){}}}
+  window.openYardPreview=open;
+  document.addEventListener("click",function(e){var a=e.target.closest('a[href="#visualize"]');if(!a)return;e.preventDefault();open()});
+  document.getElementById("vizClose").addEventListener("click",function(){close(false)});
+  addEventListener("popstate",function(){close(true)});
+  document.addEventListener("keydown",function(e){var coach=document.getElementById("vizCoach");if(e.key==="Escape"&&!m.hidden&&(!coach||coach.hidden))close(false)});
+  if(location.hash==="#visualize")open();
+  var ms=document.getElementById("vizMarkStep"),pn=document.getElementById("vizPickN");
+  if(ms&&pn)new MutationObserver(function(){pn.textContent=ms.hidden?"2":"3"}).observe(ms,{attributes:true,attributeFilter:["hidden"]});
+  /* gallery photo viewer: offer the AI tool if they haven't tried it yet */
+  var fv=document.getElementById("fsViz"),ov=document.getElementById("fsOverlay");
+  if(fv&&ov){new MutationObserver(function(){if(ov.classList.contains("open"))fv.hidden=opened()}).observe(ov,{attributes:true,attributeFilter:["class"]});
+    fv.addEventListener("click",function(){if(typeof closeFS==="function")closeFS();open()})}
 })();
 </script>
 </body>
