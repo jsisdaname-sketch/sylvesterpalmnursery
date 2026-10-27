@@ -846,25 +846,6 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 .rv-all .rv-g{width:24px;height:24px}.rv-all:active{transform:scale(.97)}
 @media(max-width:420px){.rv-badge{gap:7px;padding:9px 14px}.rv-badge-txt{font-size:.62rem;letter-spacing:.1em;white-space:nowrap}.rv-badge-stars{font-size:.85rem}}
 @media(min-width:900px){.rv{padding:6rem 28px}.rv-slide{padding:36px 40px 38px}}
-
-/* ── continuous flow: hero video melts into the palms section, title floats over the seam, photo fades in ── */
-.hero-overlay{background:linear-gradient(180deg,rgba(8,24,14,.25) 0%,rgba(8,24,14,0) 26%,rgba(13,40,24,.5) 58%,rgba(13,40,24,.94) 86%,#0d2818 100%)}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:90px;background:linear-gradient(180deg,rgba(13,40,24,0),#0d2818);z-index:1;pointer-events:none}
-.hero-overlay{z-index:2}
-.palms{background:#0d2818;padding-top:.6rem;margin-top:-1px}
-.palms .section-title{margin-bottom:1rem}
-.palms .section-title::after{display:none}
-.palm-card.featured{background:#0d2818}
-.palm-card.featured .palm-img{position:relative}
-.palm-card.featured .palm-img::before,.palm-card.featured .palm-img::after{content:"";position:absolute;left:0;right:0;pointer-events:none}
-.palm-card.featured .palm-img::before{top:0;height:38%;background:linear-gradient(180deg,#0d2818,rgba(13,40,24,0))}
-.palm-card.featured .palm-img::after{bottom:0;height:30%;background:linear-gradient(0deg,#0d2818,rgba(13,40,24,0))}
-@media(min-width:901px){
-  .palm-card.featured .palm-img::after{top:0;bottom:0;left:auto;right:0;width:22%;height:auto;background:linear-gradient(270deg,#0d2818,rgba(13,40,24,0))}
-  .palm-card.featured .palm-img::before{height:26%}
-}
-.gallery-section{background:#0d2818}
-@media(min-width:901px){.palms{padding-top:0;margin-top:-70px;position:relative;z-index:3}.palms .section-title{margin-bottom:.2rem}}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
