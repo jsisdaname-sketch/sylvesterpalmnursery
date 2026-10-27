@@ -846,6 +846,25 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 .rv-all .rv-g{width:24px;height:24px}.rv-all:active{transform:scale(.97)}
 @media(max-width:420px){.rv-badge{gap:7px;padding:9px 14px}.rv-badge-txt{font-size:.62rem;letter-spacing:.1em;white-space:nowrap}.rv-badge-stars{font-size:.85rem}}
 @media(min-width:900px){.rv{padding:6rem 28px}.rv-slide{padding:36px 40px 38px}}
+
+/* ── one background top to bottom ── */
+body,.palms,.gallery-section,.rv,.why-wrap,.trust-bar,.faq,.contact-section,.farmvid,.palm-card.featured{background:#0d2818!important}
+.why-wrap,.trust-bar,.contact-section,.site-footer{border-top-color:rgba(197,151,58,.18)}
+.rv{color:#fff}
+.rv-title{color:#fff}
+.rv-badge{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#fff}
+.rv-badge-txt{color:rgba(255,255,255,.7)}.rv-badge i{background:rgba(255,255,255,.2)}
+.rv-slide{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);box-shadow:0 30px 60px -34px rgba(0,0,0,.6)}
+.rv-name small{color:rgba(255,255,255,.6)}.rv-slide blockquote{color:rgba(255,255,255,.9)}
+.rv-dots button::after{background:rgba(255,255,255,.25)}
+.rv-all{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff}
+.palm-media{position:relative;overflow:hidden;background:#0a1f10}
+.pm-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.palm-card.featured .palm-media{aspect-ratio:4/5;max-height:78svh}
+@media(min-width:901px){.palm-card.featured .palm-media{aspect-ratio:auto;max-height:none;min-height:620px}}
+.farmvid{padding:3.5rem 20px 3rem;text-align:center}
+.fv-frame{max-width:440px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);aspect-ratio:3/4;background:#0a1f10}
+.fv-video{width:100%;height:100%;object-fit:cover;display:block}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -858,7 +877,6 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
     <nav class="ih-links" id="tbNav" aria-label="Sections">
       <a href="#palms" data-sec="palms">What We Offer</a>
       <a href="#faq" data-sec="faq">Questions</a>
-      <a href="#story" data-sec="story">Background</a>
       <a href="#why" data-sec="why">Why Us?</a>
     </nav>
     <div class="ih-actions">
@@ -872,7 +890,6 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
     <nav class="ih-sheet-nav" id="tbMenu" aria-label="Menu">
       <a href="#palms" data-sec="palms"><span>What We Offer</span><i aria-hidden="true">&rsaquo;</i></a>
       <a href="#faq" data-sec="faq"><span>Questions</span><i aria-hidden="true">&rsaquo;</i></a>
-      <a href="#story" data-sec="story"><span>Background</span><i aria-hidden="true">&rsaquo;</i></a>
       <a href="#why" data-sec="why"><span>Why Us?</span><i aria-hidden="true">&rsaquo;</i></a>
       <a href="#visualize" class="ih-sheet-viz"><span>&#10024; See a Sylvester in Your Yard</span><i aria-hidden="true">&rsaquo;</i></a>
     </nav>
@@ -913,7 +930,7 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
   <h2 class="section-title">Our Sylvester Palms</h2>
   <div class="palm-grid">
     <article class="palm-card featured">
-      <div class="palm-img" role="img" aria-label="Uplit Sylvester palms in front of a home at night" style="background-image:url('images/palms/featured-home-night.jpg')"></div>
+      <div class="palm-img palm-media"><video class="pm-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="images/palms/delivery-trailer.jpg" aria-label="Sylvester palms loaded on our trailer for delivery"></video></div>
       <div class="palm-body">
         <span class="palm-tag">Our specialty</span>
         <h3>The Sylvester Palm</h3>
@@ -1047,21 +1064,10 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
   <a class="rv-all" href="https://www.google.com/maps/place/Sylvester+Palm+Nursery/@26.0812311,-83.718623,7z/data=!4m8!3m7!1s0x230b721d8b34f9c3:0xf9d69254e6b6ef1a!8m2!3d26.105297!4d-81.0768305!9m1!1b1!16s%2Fg%2F11z14576hz?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"><svg class="rv-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span>See all reviews on Google</span><span aria-hidden="true">&#8599;</span></a>
 </section>
 
-<!-- BACKGROUND / OUR STORY -->
-<section class="story" id="story">
-  <figure class="story-photo"><img src="images/gallery/palm_3.jpg" alt="A Sylvester palm growing on our family farm" loading="lazy"><figcaption>On the farm, South Florida</figcaption></figure>
-  <div class="story-text">
-    <p class="section-label">Background</p>
-    <h2 class="story-title">A family farm,<br><em>since 2000.</em></h2>
-    <p class="story-lede">Sylvester Palm Nursery is a family-owned palm farm in South Florida.</p>
-    <p>For 26 years we've grown our Sylvester palms ourselves, from young trees to showpiece palms.</p>
-    <p>Every palm we sell is one we grew and hand-picked. When you call, you talk to the family, not a call center.</p>
-    <dl class="story-proof">
-      <div><dt>Since 2000</dt><dd>Family-owned &amp; operated</dd></div>
-      <div><dt>100% home-grown</dt><dd>Grown and hand-picked on our farm</dd></div>
-      <div><dt>5 states</dt><dd>FL, GA, TX, LA &amp; CA delivery</dd></div>
-    </dl>
-  </div>
+<!-- ON THE FARM VIDEO -->
+<section class="farmvid" id="farm">
+  <h2 class="section-title">On the Farm</h2>
+  <div class="fv-frame"><video class="fv-video" id="farmVideo" playsinline webkit-playsinline preload="metadata" poster="images/palms/farm-walk.jpg" controls aria-label="A walk through our Sylvester palms on the family farm"></video></div>
 </section>
 
 <div class="why-wrap" id="why">
@@ -1776,7 +1782,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&head.classList.contains("menu-open")){setMenu(false);btn.focus()}});
   sheet.addEventListener("click",function(e){if(e.target.closest("a"))setMenu(false)});
   addEventListener("resize",function(){if(innerWidth>=960&&head.classList.contains("menu-open"))setMenu(false)});
-  var secs=["palms","faq","story","why"].map(function(i){return document.getElementById(i)}).filter(Boolean).sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});
+  var secs=["palms","faq","why"].map(function(i){return document.getElementById(i)}).filter(Boolean).sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});
   var viz=document.getElementById("visualize"),sticky=document.getElementById("stickyCall"),ticking=false;
   function update(){ticking=false;head.classList.toggle("compact",scrollY>24);
     var y=head.offsetHeight+90,cur=null;secs.forEach(function(s){if(s.getBoundingClientRect().top<=y)cur=s.id});
@@ -1799,7 +1805,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   function tick(){var now=Date.now();if(document.visibilityState==="visible"){var d=(now-lastTick)/1000;vis+=d;if(cur)secs[cur]=(secs[cur]||0)+d}lastTick=now}
   setInterval(tick,1000);
   /* which section is in the middle of the screen */
-  var ids=["hero","steps","palms","visualize","gallery","story","why","reviews","faq","contact"],els=ids.map(function(i){return document.getElementById(i)}).filter(Boolean);
+  var ids=["hero","steps","palms","visualize","gallery","story","why","reviews","farm","faq","contact"],els=ids.map(function(i){return document.getElementById(i)}).filter(Boolean);
   function which(){var mid=innerHeight/2,c=null;els.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)c=e.id});
     if(c&&c!==cur){tick();cur=c;if(order.indexOf(c)<0)order.push(c)}}
   order.push("hero");
