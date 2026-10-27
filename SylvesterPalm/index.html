@@ -780,6 +780,20 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 .fs-viz{min-height:50px;padding:0 20px;border-radius:50px;border:0;background:linear-gradient(135deg,#f3dc9b,var(--gold));color:var(--ink);font:800 .9rem "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
 .fs-viz[hidden]{display:none}
 .fs-size{bottom:calc(88px + var(--sab))}
+
+/* hero video: tall farm clip, keep the palm crowns in frame on wide screens */
+.hero-video{object-position:50% 38%;filter:brightness(1.05) contrast(1.05) saturate(1.05)}
+/* orange call button */
+@media(max-width:767px){.sticky-call .sticky-call-link{background:linear-gradient(135deg,#f6a04d,#e8702a 55%,#d65a1c);color:#fff;text-shadow:0 1px 2px rgba(120,40,0,.35);box-shadow:0 8px 20px -8px rgba(232,112,42,.8)}}
+/* social icons: soft float + brand glow */
+@keyframes icoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes icoGlow{0%,100%{filter:drop-shadow(0 2px 4px rgba(0,0,0,.15))}50%{filter:drop-shadow(0 0 7px var(--glow)) drop-shadow(0 2px 4px rgba(0,0,0,.1))}}
+.ih-soc svg{animation:icoFloat 3.4s ease-in-out infinite,icoGlow 3.4s ease-in-out infinite}
+.ih-soc[aria-label="Facebook"]{--glow:rgba(24,119,242,.55)}
+.ih-soc[aria-label="Instagram"]{--glow:rgba(214,36,159,.5)}
+.ih-soc[aria-label="Instagram"] svg{animation-delay:.45s}
+.ih-soc.ih-wa{--glow:rgba(37,211,102,.6)}
+.ih-soc.ih-wa svg{animation-delay:.9s}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -819,13 +833,13 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 <div class="ih-scrim" id="ihScrim" hidden></div>
 
 <section class="hero" id="hero">
-  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/hero/hero-desktop.jpg">
-    <source src="images/hero/hero-desktop.mp4" type="video/mp4">
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/hero/hero-farm-desktop.jpg">
+    <source src="images/hero/hero-farm-desktop.mp4" type="video/mp4">
   </video>
   <script>
   /* Phones get the tall version of the video (real farm photo, slow camera move) */
   (function(){var v=document.getElementById('heroVideo');if(!v||window.innerWidth>700)return;
-    v.poster='images/hero/hero-mobile.jpg';var s=v.querySelector('source');s.src='images/hero/hero-mobile.mp4';v.load();})();
+    v.poster='images/hero/hero-farm-mobile.jpg';var s=v.querySelector('source');s.src='images/hero/hero-farm-mobile.mp4';v.load();})();
   </script>
   <div class="hero-overlay">
     <p class="hero-tagline">Family-Grown in South Florida Since 2000</p>
@@ -836,7 +850,6 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Call (561) 900-5658
       </a>
-      <a href="#visualize" class="hero-viz-btn">&#10024; See a Sylvester in Your Yard</a>
     </div>
     <button class="hero-offer-btn" id="heroOfferBtn" onclick="openSubscribePopup()">🌴 Claim $50 Off</button>
     <p class="hero-states">Delivering across Florida, Georgia, Texas, Louisiana &amp; California</p>
