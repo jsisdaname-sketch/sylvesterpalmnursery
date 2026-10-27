@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#faf7ef">
 <title>Sylvester Palm Trees For Sale | Sylvester Palm Nursery - FL</title>
 <meta name="description" content="Buy Sylvester Palm trees directly from our nursery in South Florida. Over 26 years growing premium Sylvester Palms for South Florida homes and businesses. Call us today">
 <link rel="icon" type="image/jpeg" href="/sylvester.jpeg">
@@ -542,38 +543,6 @@ html{scroll-behavior:smooth}
 .viz-result:not([hidden]){animation:stepIn .5s cubic-bezier(.2,.8,.2,1) both}
 @media (prefers-reduced-motion:reduce){.viz-step,.chip.on,.viz-go,.measure-scan,.viz-result{animation:none!important}}
 
-/* ── TOP BAR 2026: logo + modern pill tabs ── */
-html{scroll-behavior:smooth;scroll-padding-top:118px}
-@media(min-width:901px){html{scroll-padding-top:86px}}
-header.topbar{position:sticky;top:0;z-index:100;display:block;height:auto;padding:0;gap:0;background:rgba(10,31,16,.72);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid rgba(251,223,128,.14);transition:background .3s,box-shadow .3s}
-header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14px rgba(0,0,0,.7)}
-.tb-row{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:10px 14px 12px}
-.tb-brand{display:block;line-height:0;border-radius:12px;transition:transform .2s}
-.tb-brand:active{transform:scale(.96)}
-.tb-logo{height:46px;width:auto;border-radius:12px;padding:5px 9px;background:#fdf8f0;box-shadow:0 0 0 1px rgba(251,223,128,.35),0 6px 18px -8px rgba(0,0,0,.6)}
-.tb-nav{position:relative;align-self:stretch;display:grid;grid-template-columns:repeat(4,1fr);padding:4px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.tb-nav a{position:relative;z-index:1;text-align:center;text-decoration:none;color:rgba(255,255,255,.78);font-weight:700;font-size:.78rem;letter-spacing:.01em;padding:10px 4px;border-radius:999px;white-space:nowrap;transition:color .3s;-webkit-tap-highlight-color:transparent}
-.tb-nav a:hover{color:#fff}
-.tb-nav a.on{color:#0d2818}
-.tb-ink{position:absolute;z-index:0;top:4px;bottom:4px;left:4px;width:0;border-radius:999px;background:linear-gradient(135deg,#FBDF80,#C5973A);box-shadow:0 4px 14px -4px rgba(251,223,128,.6);opacity:0;transition:left .4s cubic-bezier(.3,1.3,.5,1),width .4s cubic-bezier(.3,1.3,.5,1),opacity .3s}
-@media(min-width:901px){
-  .tb-row{flex-direction:row;align-items:center;justify-content:space-between;padding:12px 28px}
-  .tb-logo{height:52px}
-  .tb-nav{align-self:auto;display:flex;gap:2px}
-  .tb-nav a{font-size:.95rem;padding:11px 22px}
-}
-/* Background section */
-.story{display:grid;gap:28px;max-width:1100px;margin:0 auto;padding:4.5rem 1.25rem;align-items:center}
-.story-photo{border-radius:20px;overflow:hidden;border:1px solid rgba(197,151,58,.4);box-shadow:0 30px 60px -30px rgba(0,0,0,.8);aspect-ratio:4/5;max-height:560px}
-.story-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.story-text .section-label,.story-text .section-title{text-align:left}
-.story-text .section-title::after{margin-left:0}
-.story-text p{color:rgba(255,255,255,.85);line-height:1.7;font-size:1.05rem;margin:0 0 1rem}
-.story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:1.4rem}
-.story-stats div{border:1px solid rgba(197,151,58,.4);border-radius:14px;padding:14px 8px;text-align:center;background:rgba(255,255,255,.03)}
-.story-stats b{display:block;font-family:"Playfair Display",serif;font-size:1.8rem;color:#FBDF80}
-.story-stats span{font-size:.78rem;color:rgba(255,255,255,.7)}
-@media(min-width:901px){.story{grid-template-columns:1fr 1.1fr;gap:56px}}
 .footer-social{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:14px}
 .footer-social .ig-btn{margin-left:0}
 
@@ -628,21 +597,194 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
 .faq summary:after{content:"+";color:#FBDF80;font-size:1.4rem;line-height:1}
 .faq details[open] summary:after{content:"\2212"}
 .faq details p{margin-top:10px;color:rgba(255,255,255,0.78);line-height:1.6}
+
+/* ════════ iOS 2026 DESIGN SYSTEM ════════ */
+:root{--ink:#0d2818;--ink2:#0a1f10;--ivory:#faf7ef;--gold:#C5973A;--champ:#e9cf8f;--goldl:#FBDF80;--cta:#1a7a3a;--hair:rgba(197,151,58,.28);--sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);--head:60px}
+html{scroll-padding-top:calc(var(--head) + var(--sat) + 16px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{overflow-x:clip}
+html.lock,html.lock body{overflow:hidden}
+:focus-visible{outline:2px solid var(--goldl);outline-offset:3px;border-radius:6px}
+#palms,#visualize,#vizResult{scroll-margin-top:calc(var(--head) + var(--sat) + 12px)}
+/* header */
+header.ios-head{position:sticky;top:0;z-index:300;display:block;height:auto;gap:0;padding:var(--sat) 0 0;flex-direction:initial;background:rgba(250,247,239,.95);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-bottom:.5px solid rgba(13,40,24,.14);transition:box-shadow .3s,background-color .3s}
+header.ios-head.compact{background:rgba(250,247,239,.97);box-shadow:0 8px 24px -16px rgba(0,0,0,.45)}
+.ih-row{max-width:1200px;margin:0 auto;height:var(--head);display:flex;align-items:center;gap:16px;padding:0 max(14px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));transition:height .25s ease}
+.ios-head.compact .ih-row{height:52px}
+.ih-brand{display:flex;align-items:center;min-height:44px;border-radius:8px}
+.ih-brand img{height:42px;width:auto;display:block;transition:height .25s ease}
+.ios-head.compact .ih-brand img{height:36px}
+.ih-links{display:none}
+.ih-actions{margin-left:auto;display:flex;align-items:center;gap:6px}
+.ih-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;height:44px;border-radius:22px;color:var(--cta);background:rgba(26,122,58,.1);text-decoration:none;font:700 .95rem "DM Sans",sans-serif;transition:background-color .2s,transform .15s}
+.ih-call span{display:none}
+.ih-call:active{transform:scale(.94)}
+.ih-menu{width:44px;height:44px;border:0;background:transparent;border-radius:22px;position:relative;cursor:pointer;color:var(--ink)}
+.ih-menu span{position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:currentColor;transition:transform .3s cubic-bezier(.2,.8,.2,1),top .3s}
+.ih-menu span:first-child{top:17px}.ih-menu span:last-child{top:25px}
+.menu-open .ih-menu span:first-child{top:21px;transform:rotate(45deg)}.menu-open .ih-menu span:last-child{top:21px;transform:rotate(-45deg)}
+.ih-sheet{position:absolute;left:0;right:0;top:100%;background:var(--ivory);border-radius:0 0 24px 24px;box-shadow:0 24px 50px -20px rgba(0,0,0,.55);padding:6px 18px 18px;max-height:calc(100svh - var(--head) - var(--sat));overflow:auto;overscroll-behavior:contain;transform:translateY(-10px);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.ih-sheet.show{transform:none;opacity:1}
+.ih-sheet[hidden]{display:none}
+.ih-sheet-nav a{display:flex;align-items:center;justify-content:space-between;min-height:56px;border-bottom:.5px solid rgba(13,40,24,.12);color:var(--ink);text-decoration:none;font:600 1.1rem "DM Sans",sans-serif}
+.ih-sheet-nav a i{font-style:normal;font-size:1.6rem;color:var(--gold);line-height:1}
+.ih-sheet-nav a.on{color:var(--cta)}
+.ih-sheet-nav .ih-sheet-viz{color:var(--cta);border-bottom:0}
+.ih-sheet-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.ih-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:14px;text-decoration:none;font:700 1rem "DM Sans",sans-serif;color:var(--ink);background:#efe8d7}
+.ih-btn.primary{background:var(--cta);color:#fff}
+.ih-scrim{position:fixed;inset:0;z-index:290;background:rgba(5,15,9,.4);opacity:0;transition:opacity .25s}
+.ih-scrim.show{opacity:1}.ih-scrim[hidden]{display:none}
+@media(min-width:960px){
+  :root{--head:74px}
+  .ios-head.compact .ih-row{height:62px}
+  .ih-brand img{height:54px}.ios-head.compact .ih-brand img{height:44px}
+  .ih-links{display:flex;gap:2px;margin-left:auto}
+  .ih-links a{padding:10px 16px;border-radius:999px;color:rgba(13,40,24,.75);text-decoration:none;font:600 .95rem "DM Sans",sans-serif;transition:background-color .2s,color .2s}
+  .ih-links a:hover{color:var(--ink);background:rgba(13,40,24,.05)}
+  .ih-links a.on{color:var(--ink);background:rgba(13,40,24,.08)}
+  .ih-actions{margin-left:12px}
+  .ih-call{background:var(--cta);color:#fff;padding:0 20px}.ih-call span{display:inline}
+  .ih-call:hover{background:#1e8c42}
+  .ih-menu{display:none}
+}
+/* hero */
+.hero{height:auto;min-height:min(calc(100svh - var(--head) - var(--sat)),900px)}
+.hero-overlay{justify-content:flex-end;padding:0 22px 40px;background:linear-gradient(180deg,rgba(8,24,14,.25) 0%,rgba(8,24,14,0) 28%,rgba(8,24,14,.45) 58%,rgba(8,24,14,.92) 100%)}
+.hero-tagline{letter-spacing:.2em;font-size:.72rem;margin-bottom:1rem}
+.hero-title{font-size:clamp(2.05rem,8.6vw,3.9rem);line-height:1.06;letter-spacing:-.01em;margin-bottom:.9rem;max-width:760px}
+.hero-sub{max-width:34ch;margin:0 auto 1.5rem;color:rgba(255,255,255,.86);font-size:1.02rem;line-height:1.5;opacity:0;animation:fadeUp .8s ease forwards .6s;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:380px;gap:10px}
+.hero .hero-viz-btn{order:1;justify-content:center;min-height:56px;border-radius:16px;background:linear-gradient(135deg,#f3dc9b,var(--gold));color:var(--ink);border:0;font-weight:800;box-shadow:0 12px 30px -12px rgba(197,151,58,.8)}
+.hero .hero-cta{order:2;display:inline-flex;justify-content:center;min-height:54px;padding:0 20px;border-radius:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:none}
+.hero-offer-btn{animation:none;margin-top:14px;padding:10px 18px;min-height:44px;font-size:.92rem;background:rgba(13,40,24,.55);border:1px solid rgba(251,223,128,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero-states{font-size:.78rem;margin-top:1rem;color:rgba(255,255,255,.75)}
+@media(min-width:768px){
+  .hero-overlay{justify-content:center;padding:2rem}
+  .hero-actions{flex-direction:row;justify-content:center;max-width:none;width:auto}
+  .hero .hero-cta{background:var(--cta);border:0;padding:0 32px}
+  .hero .hero-viz-btn{padding:0 30px}
+}
+/* steps */
+.step{padding:16px 20px}
+@media(max-width:800px){.steps{grid-template-columns:1fr}}
+/* palms */
+.palms{padding:4rem 20px 3rem}
+.palm-grid{display:block}
+.palm-card.featured{display:grid;grid-template-columns:1fr;border-radius:22px;margin-bottom:18px}
+.palm-card.featured .palm-img{min-height:230px}
+.palm-card.featured .palm-body{padding:22px}
+.palm-card.featured h3{font-size:1.7rem}
+.pc-rail{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.palm-card.prod{border-radius:20px;border-color:rgba(197,151,58,.25);background:linear-gradient(170deg,#11331f,#0a1f10)}
+.palm-photo{position:relative;aspect-ratio:4/5}
+.pc-badge{position:absolute;z-index:1;top:12px;left:12px;padding:6px 11px;border-radius:999px;background:rgba(250,247,239,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ink);font-size:.78rem;font-weight:800;letter-spacing:.02em}
+.palm-card.prod .palm-body{padding:16px 16px 18px;gap:6px}
+.palm-size{border:0;padding:0;color:var(--gold);font-size:.7rem;letter-spacing:.14em}
+.palm-card.prod h3{font-size:1.4rem}
+.palm-card.prod p{display:block;font-size:.9rem}
+.palm-btns{flex-direction:column;gap:8px;margin-top:8px}
+.palm-btns a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:13px;padding:0 12px}
+.pc-swipe{display:none}
+@media(min-width:901px){.palm-card.featured{grid-template-columns:1.15fr 1fr}.palm-card.featured .palm-img{min-height:340px}.palm-card.featured .palm-body{padding:40px}.palm-card.featured h3{font-size:2.1rem}.palm-card.featured .palm-btns{flex-direction:row}}
+@media(max-width:900px){
+  .pc-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:2px 20px 12px;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .pc-rail::-webkit-scrollbar{display:none}
+  .pc-rail .palm-card{flex:0 0 min(78%,320px);scroll-snap-align:start}
+  .pc-swipe{display:block;text-align:right;font-size:.82rem;color:rgba(255,255,255,.6);margin:4px 0 0}
+}
+/* AI preview */
+@media(max-width:600px){.viz{padding:3.5rem 12px}.viz-card{padding:18px 16px;border-radius:24px}}
+.viz-card{gap:22px}
+.viz-step+.viz-step{border-top:1px solid rgba(13,40,24,.08);padding-top:20px}
+.viz-go{min-height:58px;border-radius:16px}
+.viz-actions a,.viz-actions button{min-height:52px;border-radius:14px}
+.mark-tools button{min-height:46px;border-radius:12px}
+.ba{border-radius:18px}
+html.in-viz .sticky-call{transform:translateY(140%)!important}
+/* story */
+.story{display:grid;gap:26px;max-width:1120px;margin:0 auto;padding:4rem 20px 3.5rem;align-items:center}
+.story-photo{position:relative;margin:0 -20px;aspect-ratio:4/3.4;overflow:hidden;border-radius:0;border:0;box-shadow:none;max-height:none}
+.story-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.story-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,rgba(13,40,24,.75))}
+.story-photo figcaption{position:absolute;z-index:1;left:20px;bottom:14px;font-size:.78rem;letter-spacing:.06em;color:rgba(255,255,255,.85);font-style:italic}
+.story-text .section-label{text-align:left}
+.story-title{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(2.1rem,8vw,3rem);line-height:1.05;color:#fff;margin:.3rem 0 1.2rem;letter-spacing:-.01em}
+.story-title em{color:var(--goldl);font-style:italic;font-weight:400}
+.story-text p{color:rgba(255,255,255,.78);line-height:1.65;font-size:1.02rem;margin:0 0 .9rem;max-width:40ch}
+.story-text .story-lede{color:#fff;font-size:1.18rem;line-height:1.5}
+.story-proof{margin:1.6rem 0 0;border-top:1px solid var(--hair)}
+.story-proof div{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px solid var(--hair)}
+.story-proof dt{font-family:"Playfair Display",serif;font-size:1.25rem;color:var(--goldl);white-space:nowrap}
+.story-proof dd{margin:0;font-size:.88rem;color:rgba(255,255,255,.7);text-align:right}
+@media(min-width:901px){.story{grid-template-columns:1fr 1.05fr;gap:64px;padding:6rem 28px}.story-photo{margin:0;border-radius:22px;aspect-ratio:4/5}.story-photo figcaption{left:22px}}
+/* why us + reviews */
+.why-wrap{background:#0a1f10;border-top:1px solid var(--hair);padding-top:1.6rem}
+.why-label{margin-bottom:.2rem}
+.trust-bar{border-top:0}
+@media(max-width:900px){
+  .reviews-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -1rem 1.5rem;padding:4px 1rem 14px;scrollbar-width:none}
+  .reviews-grid::-webkit-scrollbar{display:none}
+  .review-card{flex:0 0 min(85%,340px);scroll-snap-align:center}
+}
+@media(hover:none){.review-card:hover,.palm-card.prod:hover .palm-photo img{transform:none}}
+.reviews-link{min-height:48px}
+/* faq */
+.faq summary{min-height:56px;align-items:center;padding:4px 0}
+.faq details{padding:6px 4px}
+.faq summary:after{content:"";width:9px;height:9px;border-right:2px solid var(--goldl);border-bottom:2px solid var(--goldl);transform:rotate(45deg);margin-right:6px;transition:transform .25s}
+.faq details[open] summary:after{content:"";transform:rotate(-135deg)}
+.faq details p{margin:2px 0 12px;max-width:60ch}
+/* contact + footer */
+@media(max-width:600px){.contact-section{padding:3.5rem 16px}.contact-card{padding:2.4rem 1.2rem}.contact-btn,.contact-btn-outline{width:100%;justify-content:center;min-height:54px;padding:0 20px}}
+.site-footer{padding-bottom:calc(2.5rem + var(--sab))}
+/* bottom call bar (phones) */
+@media(max-width:767px){
+  body{padding-bottom:calc(84px + var(--sab))}
+  .sticky-call{left:12px;right:12px;bottom:calc(10px + var(--sab));background:rgba(13,40,24,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(251,223,128,.25);border-radius:20px;padding:7px;box-shadow:0 16px 40px -14px rgba(0,0,0,.7);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .sticky-call .sticky-call-link{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;margin-right:100px;padding:0 12px;border-radius:14px;background:linear-gradient(135deg,#f3dc9b,var(--gold));color:var(--ink);font-size:1rem;font-weight:800}
+  .sticky-text-link{position:absolute;right:51px;top:7px;width:50px;height:50px;display:grid;place-items:center;border-radius:14px;color:var(--goldl);background:rgba(255,255,255,.08);border:1px solid rgba(251,223,128,.3)}
+  .sticky-dismiss{position:absolute;right:7px;top:50%;transform:translateY(-50%);width:40px;height:40px;background:transparent;color:rgba(255,255,255,.6);font-size:1.1rem}
+}
+
+@media(max-width:767px){.hero .hero-cta{display:none}.hero-tagline{letter-spacing:.14em;font-size:.68rem}.story{padding-top:0}}
+@media(max-width:900px){.reviews-grid{align-items:flex-start}}
+.sc-short{display:none}
+@media(max-width:360px){.sc-long{display:none}.sc-short{display:inline}.hero .hero-viz-btn{font-size:.95rem;padding:0 14px}.hero-title{font-size:1.9rem}}
+/* forms: 16px inputs so iPhone never zooms */
+.sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
 </style></head>
 <body>
 
-<header class="topbar" id="top">
-  <div class="tb-row">
-    <a class="tb-brand" href="#top" aria-label="Sylvester Palm Nursery, back to top"><img src="images/logo-wide.png" alt="Sylvester Palm Nursery" class="tb-logo"></a>
-    <nav class="tb-nav" id="tbNav" aria-label="Sections">
-      <span class="tb-ink" id="tbInk"></span>
+<header class="ios-head" id="top">
+  <div class="ih-row">
+    <a class="ih-brand" href="#hero" aria-label="Sylvester Palm Nursery, back to top"><img src="images/logo-mark.png" alt="Sylvester Palm Nursery" width="393" height="245"></a>
+    <nav class="ih-links" id="tbNav" aria-label="Sections">
       <a href="#palms" data-sec="palms">What We Offer</a>
       <a href="#faq" data-sec="faq">Questions</a>
       <a href="#story" data-sec="story">Background</a>
       <a href="#why" data-sec="why">Why Us?</a>
     </nav>
+    <div class="ih-actions">
+      <a class="ih-call" href="tel:5619005658" aria-label="Call (561) 900-5658"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(561) 900-5658</span></a>
+      <button type="button" class="ih-menu" id="ihMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="ihSheet"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="ih-sheet" id="ihSheet" hidden>
+    <nav class="ih-sheet-nav" id="tbMenu" aria-label="Menu">
+      <a href="#palms" data-sec="palms"><span>What We Offer</span><i aria-hidden="true">&rsaquo;</i></a>
+      <a href="#faq" data-sec="faq"><span>Questions</span><i aria-hidden="true">&rsaquo;</i></a>
+      <a href="#story" data-sec="story"><span>Background</span><i aria-hidden="true">&rsaquo;</i></a>
+      <a href="#why" data-sec="why"><span>Why Us?</span><i aria-hidden="true">&rsaquo;</i></a>
+      <a href="#visualize" class="ih-sheet-viz"><span>&#10024; See a Sylvester in Your Yard</span><i aria-hidden="true">&rsaquo;</i></a>
+    </nav>
+    <div class="ih-sheet-cta">
+      <a href="tel:5619005658" class="ih-btn primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a>
+      <a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="ih-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text</a>
+    </div>
   </div>
 </header>
+<div class="ih-scrim" id="ihScrim" hidden></div>
 
 <section class="hero" id="hero">
   <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/hero/hero-desktop.jpg">
@@ -656,10 +798,11 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
   <div class="hero-overlay">
     <p class="hero-tagline">Family-Grown in South Florida Since 2000</p>
     <h1 class="hero-title">Premium Sylvester Palms &mdash; Grown in <em>South Florida</em> for 26 Years</h1>
+    <p class="hero-sub">Home-grown and hand-picked on our family farm. See one in your yard before you buy.</p>
     <div class="hero-actions">
       <a href="tel:5619005658" class="hero-cta">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Call Us Today
+        Call (561) 900-5658
       </a>
       <a href="#visualize" class="hero-viz-btn">&#10024; See a Sylvester in Your Yard</a>
     </div>
@@ -689,27 +832,30 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
         <div class="palm-btns"><a class="pb-try" href="#visualize">&#10024; See one in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Sylvester Palm.">Text for price</a></div>
       </div>
     </article>
+  </div>
+  <div class="pc-rail">
     <article class="palm-card prod">
-      <div class="palm-photo"><img src="images/palms/sylvester-3ft-varnished.jpg" alt="3 ft varnished Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">3 ft trunk</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
+      <div class="palm-photo"><span class="pc-badge">3 ft trunk</span><img src="images/palms/sylvester-3ft-varnished.jpg" alt="3 ft varnished Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-body"><span class="palm-size">Glossy finish</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
         <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-3ft-varnished">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 3 ft Varnished Sylvester Palm.">Text for price</a></div></div>
     </article>
     <article class="palm-card prod">
-      <div class="palm-photo"><img src="images/palms/sylvester-3ft-normal.jpg" alt="3 ft normal Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">3 ft trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
+      <div class="palm-photo"><span class="pc-badge">3 ft trunk</span><img src="images/palms/sylvester-3ft-normal.jpg" alt="3 ft normal Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-body"><span class="palm-size">Natural trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
         <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-3ft-normal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 3 ft Normal Sylvester Palm.">Text for price</a></div></div>
     </article>
     <article class="palm-card prod">
-      <div class="palm-photo"><img src="images/palms/sylvester-4ft-varnished.jpg" alt="4 ft varnished Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">4 ft trunk</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
+      <div class="palm-photo"><span class="pc-badge">4 ft trunk</span><img src="images/palms/sylvester-4ft-varnished.jpg" alt="4 ft varnished Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-body"><span class="palm-size">Glossy finish</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
         <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-4ft-varnished">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 4 ft Varnished Sylvester Palm.">Text for price</a></div></div>
     </article>
     <article class="palm-card prod">
-      <div class="palm-photo"><img src="images/palms/sylvester-4ft-normal.jpg" alt="4 ft normal Sylvester palm from our farm" loading="lazy"></div>
-      <div class="palm-body"><span class="palm-size">4 ft trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
+      <div class="palm-photo"><span class="pc-badge">4 ft trunk</span><img src="images/palms/sylvester-4ft-normal.jpg" alt="4 ft normal Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-body"><span class="palm-size">Natural trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
         <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-4ft-normal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 4 ft Normal Sylvester Palm.">Text for price</a></div></div>
     </article>
   </div>
+  <p class="pc-swipe" aria-hidden="true">Swipe to see all sizes &rarr;</p>
   <p class="palms-more">Need a different size? <a href="sms:+15619005658&amp;body=Hi! What sizes of Sylvester Palms do you have?">Text us</a> and we'll send photos of what's on the farm.</p>
 </section>
 
@@ -809,21 +955,24 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
 
 <!-- BACKGROUND / OUR STORY -->
 <section class="story" id="story">
-  <div class="story-photo"><img src="images/gallery/palm_3.jpg" alt="Sylvester palms growing on our family farm" loading="lazy"></div>
+  <figure class="story-photo"><img src="images/gallery/palm_3.jpg" alt="A Sylvester palm growing on our family farm" loading="lazy"><figcaption>On the farm, South Florida</figcaption></figure>
   <div class="story-text">
     <p class="section-label">Background</p>
-    <h2 class="section-title">A Family Farm Since 2000</h2>
-    <p>Sylvester Palm Nursery is a family-owned palm farm in South Florida. For 26 years we've grown our Sylvester palms ourselves, from young trees to showpiece palms, right here on our farm.</p>
+    <h2 class="story-title">A family farm,<br><em>since 2000.</em></h2>
+    <p class="story-lede">Sylvester Palm Nursery is a family-owned palm farm in South Florida.</p>
+    <p>For 26 years we've grown our Sylvester palms ourselves, from young trees to showpiece palms.</p>
     <p>Every palm we sell is one we grew and hand-picked. When you call, you talk to the family, not a call center.</p>
-    <div class="story-stats">
-      <div><b>26</b><span>years growing</span></div>
-      <div><b>100%</b><span>home-grown</span></div>
-      <div><b>5</b><span>states we deliver to</span></div>
-    </div>
+    <dl class="story-proof">
+      <div><dt>Since 2000</dt><dd>Family-owned &amp; operated</dd></div>
+      <div><dt>100% home-grown</dt><dd>Grown and hand-picked on our farm</dd></div>
+      <div><dt>5 states</dt><dd>FL, GA, TX, LA &amp; CA delivery</dd></div>
+    </dl>
   </div>
 </section>
 
-<div class="trust-bar" id="why">
+<div class="why-wrap" id="why">
+<p class="section-label why-label">Why Us?</p>
+<div class="trust-bar">
   <div class="trust-item">
     <div class="trust-icon">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBDF80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -863,6 +1012,8 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
       <span class="trust-sub">&amp; Zelle Accepted</span>
     </div>
   </div>
+</div>
+
 </div>
 
 <!-- GOOGLE REVIEWS SECTION -->
@@ -1301,7 +1452,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 
 </script>
 <div class="sticky-call" id="stickyCall">
-  <a href="tel:+15619005658" class="sticky-call-link">📞 Tap to Call — (561) 900-5658</a>
+  <a href="tel:+15619005658" class="sticky-call-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="sc-long">Call (561) 900-5658</span><span class="sc-short">Call us</span></a><a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="sticky-text-link" aria-label="Text us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
   <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">✕</button>
 </div>
 <script>
@@ -1623,18 +1774,25 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 <script async id="netlify-rum-container" src="/.netlify/scripts/rum" data-netlify-rum-site-id="c54383bb-1448-476c-baba-1003a62c336e" data-netlify-deploy-branch="main" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiYzU0MzgzYmItMTQ0OC00NzZjLWJhYmEtMTAwM2E2MmMzMzZlIiwiYWNjb3VudF9pZCI6IjY5YWEzMGQzOGZmYzMzNTM1YzcxZDA3OSIsImRlcGxveV9pZCI6IjZhODkwNDQyOTA4MDE4MDAwODMyMWIyNCIsImlzc3VlciI6Im5mc2VydmVyIn0.BUoK_yAG-QlsIooZGmheQwe_UEn8bJYwknATsKjUUoc"></script>
 
 <script>
-/* top bar: active tab follows the section you're reading, sliding gold underline */
+/* iOS header: compact on scroll, active section, menu sheet; hide the bottom call bar while using the AI tool */
 (function(){
-  var nav=document.getElementById("tbNav"),ink=document.getElementById("tbInk"),bar=document.querySelector("header.topbar");if(!nav)return;
-  var links=[].slice.call(nav.querySelectorAll("a"));
-  function setOn(id){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("data-sec")===id)});var a=nav.querySelector("a.on");
-    if(a){ink.style.left=a.offsetLeft+"px";ink.style.width=a.offsetWidth+"px";ink.style.opacity=1}else ink.style.opacity=0}
-  var secs=links.map(function(a){return document.getElementById(a.getAttribute("data-sec"))}).filter(Boolean).sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});
-  function onScroll(){bar.classList.toggle("scrolled",scrollY>10);var y=scrollY+bar.offsetHeight+80,cur=null;
-    secs.forEach(function(s){if(s.getBoundingClientRect().top+scrollY<=y)cur=s.id});
-    setOn(cur)}
-  addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
-  links.forEach(function(a){a.addEventListener("click",function(){setOn(a.getAttribute("data-sec"))})});
+  var head=document.getElementById("top"),btn=document.getElementById("ihMenuBtn"),sheet=document.getElementById("ihSheet"),scrim=document.getElementById("ihScrim");if(!head)return;
+  var links=[].slice.call(document.querySelectorAll("#tbNav a,#tbMenu a[data-sec]"));
+  function setMenu(open){btn.setAttribute("aria-expanded",open);btn.setAttribute("aria-label",open?"Close menu":"Open menu");head.classList.toggle("menu-open",open);
+    if(open){sheet.hidden=false;scrim.hidden=false;requestAnimationFrame(function(){sheet.classList.add("show");scrim.classList.add("show")});document.documentElement.classList.add("lock");var f=sheet.querySelector("a");f&&f.focus({preventScroll:true})}
+    else{sheet.classList.remove("show");scrim.classList.remove("show");document.documentElement.classList.remove("lock");setTimeout(function(){if(!head.classList.contains("menu-open")){sheet.hidden=true;scrim.hidden=true}},280)}}
+  btn.addEventListener("click",function(){setMenu(btn.getAttribute("aria-expanded")!=="true")});
+  scrim.addEventListener("click",function(){setMenu(false)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&head.classList.contains("menu-open")){setMenu(false);btn.focus()}});
+  sheet.addEventListener("click",function(e){if(e.target.closest("a"))setMenu(false)});
+  addEventListener("resize",function(){if(innerWidth>=960&&head.classList.contains("menu-open"))setMenu(false)});
+  var secs=["palms","faq","story","why"].map(function(i){return document.getElementById(i)}).filter(Boolean).sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});
+  var viz=document.getElementById("visualize"),sticky=document.getElementById("stickyCall"),ticking=false;
+  function update(){ticking=false;head.classList.toggle("compact",scrollY>24);
+    var y=head.offsetHeight+90,cur=null;secs.forEach(function(s){if(s.getBoundingClientRect().top<=y)cur=s.id});
+    links.forEach(function(a){var on=a.getAttribute("data-sec")===cur;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current")});
+    if(viz&&sticky){var r=viz.getBoundingClientRect();document.documentElement.classList.toggle("in-viz",r.top<innerHeight*0.6&&r.bottom>innerHeight*0.4)}}
+  addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});addEventListener("resize",update);update();
 })();
 </script>
 
@@ -1667,7 +1825,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     else if(/instagram/.test(h))c("instagram");else if(/facebook/.test(h))c("facebook");else if(/maps/.test(h))c("directions");
     else if(h==="#visualize"||a.classList.contains("pb-try"))c("try_preview_btn");
     else if(a.id==="vizGo")c("preview_start");else if(a.id==="vizSave")c("preview_save");else if(a.id==="heroOfferBtn")c("offer_50");
-    else if(a.closest("#tbNav"))c("tab_"+(a.getAttribute("data-sec")||""));
+    else if(a.closest("#tbNav,#tbMenu"))c("tab_"+(a.getAttribute("data-sec")||"viz"));else if(a.id==="ihMenuBtn")c("menu_open");
     else if(a.classList.contains("pp")||a.closest("#vizSize"))c("palm_pick")},true);
   document.addEventListener("change",function(e){if(e.target&&e.target.id==="vizFile")c("photo_uploaded")},true);
   var vr=document.getElementById("vizResult");if(vr)new MutationObserver(function(){if(!vr.hidden)c("preview_done")}).observe(vr,{attributes:true,attributeFilter:["hidden"]});
