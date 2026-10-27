@@ -794,6 +794,26 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 .ih-soc[aria-label="Instagram"] svg{animation-delay:.45s}
 .ih-soc.ih-wa{--glow:rgba(37,211,102,.6)}
 .ih-soc.ih-wa svg{animation-delay:.9s}
+
+/* specialty section: edge to edge, no card outline */
+.palms{padding:2.2rem 0 .5rem;max-width:none}
+.palms .section-title{margin-bottom:1.4rem}
+.palm-grid{max-width:none}
+.palm-card.featured{border:0;border-radius:0;background:linear-gradient(180deg,#0f2c1a,#0a1f10);box-shadow:none;margin:0}
+.palm-card.featured .palm-img{min-height:0;aspect-ratio:4/3;background-position:center 60%}
+.palm-card.featured .palm-body{padding:24px 20px 30px;max-width:640px}
+.palm-tag{background:rgba(232,112,42,.14);color:#f6a04d;border:1px solid rgba(232,112,42,.45)}
+.palm-card.featured .pb-try{background:linear-gradient(135deg,#f6a04d,#e8702a 55%,#d65a1c);color:#fff;border:0;text-shadow:0 1px 2px rgba(120,40,0,.3);box-shadow:0 10px 24px -10px rgba(232,112,42,.85)}
+.palm-card.featured .pb-price{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+@media(min-width:901px){
+  .palm-card.featured{grid-template-columns:1.35fr 1fr;align-items:stretch}
+  .palm-card.featured .palm-img{aspect-ratio:auto;min-height:560px}
+  .palm-card.featured .palm-body{padding:56px 48px;max-width:620px;justify-content:center;gap:14px}
+  .palm-card.featured .palm-body p{flex:none;font-size:1.05rem}
+  .palm-card.featured .palm-btns{margin-top:12px}
+}
+/* no floating call bar anymore */
+@media(max-width:767px){body{padding-bottom:0}}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -858,11 +878,10 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 
 <!-- OUR PALMS -->
 <section class="palms" id="palms">
-  <p class="section-label">Home-Grown on Our Farm</p>
   <h2 class="section-title">Our Sylvester Palms</h2>
   <div class="palm-grid">
     <article class="palm-card featured">
-      <div class="palm-img" style="background-image:url('images/hero/sylvester-row-dusk.jpg')"></div>
+      <div class="palm-img" role="img" aria-label="Uplit Sylvester palms in front of a home at night" style="background-image:url('images/palms/featured-home-night.jpg')"></div>
       <div class="palm-body">
         <span class="palm-tag">Our specialty</span>
         <h3>The Sylvester Palm</h3>
@@ -1470,10 +1489,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 })();
 
 </script>
-<div class="sticky-call" id="stickyCall">
-  <a href="tel:+15619005658" class="sticky-call-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="sc-long">Call (561) 900-5658</span><span class="sc-short">Call us</span></a><a href="sms:+15619005658&amp;body=Hi, I'm interested in your Sylvester Palms!" class="sticky-text-link" aria-label="Text us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
-  <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss" onclick="(function(b){b.style.transition='transform 0.3s ease';b.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none'},320);sessionStorage.setItem('stickyCallDismissed','1')})(document.getElementById('stickyCall'));return false;">✕</button>
-</div>
+
 <script>
 (function(){var b=document.getElementById("stickyCall");if(b&&sessionStorage.getItem("stickyCallDismissed"))b.style.display="none";})();
 </script>
