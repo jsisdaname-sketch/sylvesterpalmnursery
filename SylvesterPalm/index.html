@@ -814,6 +814,8 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 }
 /* no floating call bar anymore */
 @media(max-width:767px){body{padding-bottom:0}}
+/* gallery: no green fade on the edges */
+.masonry-wall{-webkit-mask-image:none!important;mask-image:none!important}
 /* forms: 16px inputs so iPhone never zooms */
 .sub-input,#subIframeWrap input,#subIframeWrap select,#subIframeWrap textarea{font-size:16px!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-tagline,.hero-title,.hero-sub,.hero-actions,.hero-cta{opacity:1!important}}
@@ -894,7 +896,6 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 
 <!-- GALLERY -->
 <section class="gallery-section" id="gallery">
-  <p class="section-label">Our Collection</p>
   <h2 class="section-title">Browse Our Palms</h2>
   <div class="masonry-wall" id="grid"></div>
   <p class="gal-hint">Tap any photo to see it up close</p>
@@ -1189,7 +1190,7 @@ html.viz-lock,html.viz-lock body{overflow:hidden}
 
 <div class="fs-overlay" id="fsOverlay">
   <div id="fsContent"></div>
-  <div class="fs-actions"><button type="button" class="fs-viz" id="fsViz">&#10024; See it in my yard</button><button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button></div>
+  <div class="fs-actions"><button type="button" class="fs-viz" id="fsViz">&#10024; Show me in my backyard</button><button class="like-btn" id="likeBtn" onclick="likePhoto()">💬 Get a Quote</button></div>
   <button class="fs-close" onclick="closeFS()">✕</button>
 </div>
 
@@ -1935,7 +1936,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   if(ms&&pn)new MutationObserver(function(){pn.textContent=ms.hidden?"2":"3"}).observe(ms,{attributes:true,attributeFilter:["hidden"]});
   /* gallery photo viewer: offer the AI tool if they haven't tried it yet */
   var fv=document.getElementById("fsViz"),ov=document.getElementById("fsOverlay");
-  if(fv&&ov){new MutationObserver(function(){if(ov.classList.contains("open"))fv.hidden=opened()}).observe(ov,{attributes:true,attributeFilter:["class"]});
+  if(fv&&ov){new MutationObserver(function(){if(ov.classList.contains("open"))fv.hidden=false}).observe(ov,{attributes:true,attributeFilter:["class"]});
     fv.addEventListener("click",function(){if(typeof closeFS==="function")closeFS();open()})}
 })();
 </script>
