@@ -415,6 +415,80 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 .sub-problem-link{display:inline-block;margin:6px 5px 0;padding:7px 13px;border-radius:8px;background:#1a7a3a;color:#fff;text-decoration:none;font-weight:700;font-size:0.75rem;}
 .sub-consent-note{margin-top:0.55rem;font-size:0.6rem;line-height:1.4;color:rgba(10,31,16,0.55);text-align:center;}
 .sub-consent-note a{color:#1a7a3a;text-decoration:underline;}
+
+/* ════════ MAKEOVER 2026 ════════ */
+html{scroll-behavior:smooth}
+#palms,#visualize,#vizResult{scroll-margin-top:120px}
+.hero{height:92vh;}
+.hero-video{filter:brightness(1.12) contrast(1.05) saturate(1.05);}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;opacity:0;animation:fadeUp 0.8s ease forwards 0.7s;}
+.hero-viz-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;background:rgba(13,40,24,0.55);border:1.5px solid #FBDF80;color:#FBDF80;font-weight:800;font-size:1rem;text-decoration:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.hero-viz-btn:hover{background:#FBDF80;color:#0d2818;}
+.hero-states{margin-top:1.2rem;font-size:0.8rem;color:rgba(255,255,255,0.85);text-shadow:0 2px 8px rgba(0,0,0,0.8);}
+@media(max-width:767px){.hero-viz-btn{font-size:1.02rem;padding:16px 26px}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(197,151,58,0.35);border-top:1px solid rgba(197,151,58,0.35);border-bottom:1px solid rgba(197,151,58,0.35);}
+.step{background:#0a1f10;display:flex;gap:14px;align-items:center;padding:22px 24px;}
+.step b{display:block;font-size:1rem;color:#fff}.step span:not(.step-n){font-size:0.82rem;color:rgba(255,255,255,0.65)}
+.step-n{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid #C5973A;color:#FBDF80;display:grid;place-items:center;font-family:"Playfair Display",serif;font-weight:900;font-size:1.1rem}
+@media(max-width:800px){.steps{grid-template-columns:1fr}.step{padding:16px 20px}}
+.palms{padding:4.5rem 1.5rem 3rem;max-width:1200px;margin:0 auto;}
+.palm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.palm-card{background:linear-gradient(160deg,#123a22,#0a1f10);border:1px solid rgba(197,151,58,0.3);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.palm-card.featured{grid-column:span 4;display:grid;grid-template-columns:1.1fr 1fr}
+.palm-img{min-height:300px;background-size:cover;background-position:center}
+.palm-mono{height:110px;display:grid;place-items:center;font-family:"Playfair Display",serif;font-size:3rem;font-weight:900;color:#C5973A;background:radial-gradient(circle at 50% 40%,rgba(197,151,58,0.18),transparent 70%)}
+.palm-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.palm-card.featured .palm-body{padding:36px;justify-content:center}
+.palm-tag{align-self:flex-start;font-size:0.68rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#0d2818;background:#FBDF80;padding:5px 10px;border-radius:50px}
+.palm-card h3{font-family:"Playfair Display",serif;font-size:1.35rem;color:#fff}
+.palm-card.featured h3{font-size:2.1rem}
+.palm-card p{font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.55;flex:1}
+.palm-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.palm-btns a{flex:1 1 auto;text-align:center;padding:11px 12px;border-radius:50px;font-weight:700;font-size:0.86rem;text-decoration:none;white-space:nowrap}
+.pb-try{background:#1a7a3a;color:#fff}.pb-price{border:1.5px solid #C5973A;color:#FBDF80}
+@media(max-width:900px){.palm-grid{grid-template-columns:1fr 1fr}.palm-card.featured{grid-column:span 2;grid-template-columns:1fr}.palm-img{min-height:240px}.palm-card.featured .palm-body{padding:22px}}
+@media(max-width:520px){.palm-grid{grid-template-columns:1fr}.palm-card.featured{grid-column:auto}.palm-mono{height:80px;font-size:2.3rem}}
+.viz{padding:4.5rem 1.25rem;background:radial-gradient(ellipse at top,#16492b,#0a1f10 70%);border-top:1px solid rgba(197,151,58,0.35);border-bottom:1px solid rgba(197,151,58,0.35);}
+.viz .section-title{margin-bottom:0.8rem}
+.viz-sub{text-align:center;max-width:560px;margin:0 auto 2rem;color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.6}
+.viz-card{max-width:720px;margin:0 auto;background:#fdf8f0;color:#1d2a1f;border-radius:22px;padding:24px;box-shadow:0 30px 70px -25px rgba(0,0,0,0.7);display:grid;gap:20px}
+.viz-h{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;margin-bottom:10px;color:#0d2818}
+.viz-h.small{font-size:0.9rem;margin:14px 0 8px}
+.viz-n{width:28px;height:28px;border-radius:50%;background:#0d2818;color:#FBDF80;display:grid;place-items:center;font-size:0.9rem}
+.viz-drop{position:relative;display:grid;place-items:center;min-height:190px;border:2px dashed #C5973A;border-radius:16px;background:#fff;cursor:pointer;overflow:hidden;text-align:center}
+.viz-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.viz-drop img{width:100%;max-height:340px;object-fit:cover;display:block}
+.viz-drop-txt{display:grid;gap:4px;padding:20px;pointer-events:none}.viz-cam{font-size:2.4rem}.viz-drop-txt b{font-size:1.05rem}.viz-drop-txt small{color:#6b6b5e}
+.viz-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid #d8cdb5;background:#fff;color:#1d2a1f;border-radius:50px;padding:11px 18px;font:700 0.95rem "DM Sans",sans-serif;cursor:pointer;min-height:44px}
+.chip.on{background:#0d2818;border-color:#0d2818;color:#FBDF80}
+.viz-go{border:0;border-radius:14px;padding:18px;font:800 1.15rem "DM Sans",sans-serif;background:linear-gradient(135deg,#1a7a3a,#22a04a);color:#fff;cursor:pointer;box-shadow:0 10px 26px -10px rgba(26,122,58,0.8)}
+.viz-go:disabled{background:#c9c3b5;box-shadow:none;cursor:not-allowed}
+.viz-loading{display:grid;justify-items:center;gap:6px;padding:10px;color:#0d2818}.viz-loading small{color:#6b6b5e}
+.viz-loading[hidden],.viz-err[hidden],.viz-result[hidden],.viz-drop img[hidden]{display:none}
+.viz-spin{width:42px;height:42px;border-radius:50%;border:4px solid #e6dcc6;border-top-color:#1a7a3a;animation:vizspin 0.9s linear infinite}
+@keyframes vizspin{to{transform:rotate(360deg)}}
+.viz-err{background:#fdecec;border:1px solid #e5a5a5;color:#8a2323;border-radius:12px;padding:14px;font-size:0.95rem;line-height:1.5;text-align:center}
+.viz-err a{color:#1a7a3a;font-weight:800}
+.ba{position:relative;border-radius:16px;overflow:hidden;user-select:none;background:#000}
+.ba img{display:block;width:100%;height:auto}
+.ba-before{position:absolute;inset:0;width:50%;overflow:hidden;border-right:2px solid #fff}
+.ba-before img{height:100%;width:auto;max-width:none}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-handle{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,0.4);pointer-events:none}
+.ba-handle:after{content:"\2194";position:absolute;inset:0;display:grid;place-items:center;color:#0d2818;font-weight:900;font-size:20px}
+.ba-tag{position:absolute;top:10px;padding:4px 10px;border-radius:50px;background:rgba(0,0,0,0.55);color:#fff;font-size:0.75rem;font-weight:700}.ba-tag.l{left:10px}.ba-tag.r{right:10px}
+.viz-note{font-size:0.8rem;color:#6b6b5e;text-align:center;margin-top:10px}
+.viz-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.viz-actions a,.viz-actions button{display:flex;align-items:center;justify-content:center;gap:6px;padding:15px;border-radius:12px;font:800 1rem "DM Sans",sans-serif;text-decoration:none;cursor:pointer;border:0}
+.viz-text{grid-column:span 2;background:#1a7a3a;color:#fff}.viz-save{background:#0d2818;color:#FBDF80}.viz-again{background:#efe7d6;color:#0d2818}
+.faq{padding:4rem 1.25rem;max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid rgba(197,151,58,0.3);padding:16px 4px}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:#FBDF80;font-size:1.4rem;line-height:1}
+.faq details[open] summary:after{content:"\2212"}
+.faq details p{margin-top:10px;color:rgba(255,255,255,0.78);line-height:1.6}
 </style></head>
 <body>
 
@@ -460,17 +534,119 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
 </header>
 
 <section class="hero">
-  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/gallery/palm_14.jpg">
-    <source src="https://res.cloudinary.com/dtqr9dhos/video/upload/f_mp4,vc_h264,q_auto,h_1080/farm.mp4_h5gty0.mp4" type="video/mp4">
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/hero/hero-desktop.jpg">
+    <source src="images/hero/hero-desktop.mp4" type="video/mp4">
   </video>
+  <script>
+  /* Phones get the tall version of the video (real farm photo, slow camera move) */
+  (function(){var v=document.getElementById('heroVideo');if(!v||window.innerWidth>700)return;
+    v.poster='images/hero/hero-mobile.jpg';var s=v.querySelector('source');s.src='images/hero/hero-mobile.mp4';v.load();})();
+  </script>
   <div class="hero-overlay">
-    <p class="hero-tagline">Serving South Florida, Georgia, Texas, Louisiana &amp; California Since 2000</p>
+    <p class="hero-tagline">Family-Grown in South Florida Since 2000</p>
     <h1 class="hero-title">Premium Sylvester Palms &mdash; Grown in <em>South Florida</em> for 26 Years</h1>
-    <a href="tel:5619005658" class="hero-cta">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Call Us Today
-    </a>
+    <div class="hero-actions">
+      <a href="tel:5619005658" class="hero-cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Us Today
+      </a>
+      <a href="#visualize" class="hero-viz-btn">&#10024; See a Palm in Your Yard</a>
+    </div>
     <button class="hero-offer-btn" id="heroOfferBtn" onclick="openSubscribePopup()">🌴 Claim $50 Off</button>
+    <p class="hero-states">Delivering across Florida, Georgia, Texas, Louisiana &amp; California</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps">
+  <div class="step"><span class="step-n">1</span><div><b>Pick your palm</b><span>Sylvester, Bismarck, Coconut, Foxtail or Royal</span></div></div>
+  <div class="step"><span class="step-n">2</span><div><b>See it in your yard</b><span>Free AI preview from a photo of your space</span></div></div>
+  <div class="step"><span class="step-n">3</span><div><b>Call or text for your price</b><span>We deliver it, family-grown since 2000</span></div></div>
+</section>
+
+<!-- OUR PALMS -->
+<section class="palms" id="palms">
+  <p class="section-label">Home-Grown on Our Farm</p>
+  <h2 class="section-title">Our Palms</h2>
+  <div class="palm-grid">
+    <article class="palm-card featured">
+      <div class="palm-img" style="background-image:url('images/hero/sylvester-row-dusk.jpg')"></div>
+      <div class="palm-body">
+        <span class="palm-tag">Our specialty</span>
+        <h3>Sylvester Palm</h3>
+        <p>The showpiece palm: a thick diamond-cut trunk and a full, round silver-green crown. Stunning with uplighting at night.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Sylvester Palm.">Text for price</a></div>
+      </div>
+    </article>
+    <article class="palm-card">
+      <div class="palm-mono">B</div>
+      <div class="palm-body"><h3>Bismarck Palm</h3><p>Huge silver-blue fan leaves that stop people in their tracks.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="bismarck">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Bismarck Palm.">Text for price</a></div></div>
+    </article>
+    <article class="palm-card">
+      <div class="palm-mono">C</div>
+      <div class="palm-body"><h3>Coconut Palm</h3><p>The classic tropical look: a tall, graceful curving trunk.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="coconut">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Coconut Palm.">Text for price</a></div></div>
+    </article>
+    <article class="palm-card">
+      <div class="palm-mono">F</div>
+      <div class="palm-body"><h3>Foxtail Palm</h3><p>A smooth trunk and full, bushy fronds that look like a fox's tail.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="foxtail">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Foxtail Palm.">Text for price</a></div></div>
+    </article>
+    <article class="palm-card">
+      <div class="palm-mono">R</div>
+      <div class="palm-body"><h3>Royal Palm</h3><p>Tall, smooth, column-like trunks for a grand entrance.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="royal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Royal Palm.">Text for price</a></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- AI YARD PREVIEW -->
+<section class="viz" id="visualize">
+  <p class="section-label">New &middot; Free</p>
+  <h2 class="section-title">See a Palm in Your Yard</h2>
+  <p class="viz-sub">Take a photo of your yard, pick a palm, and see how it would look there. It takes about 20 seconds.</p>
+  <div class="viz-card">
+    <div class="viz-step">
+      <div class="viz-h"><span class="viz-n">1</span>Your yard photo</div>
+      <label class="viz-drop" for="vizFile" id="vizDrop">
+        <input type="file" accept="image/*" id="vizFile">
+        <img id="vizThumb" alt="" hidden>
+        <span class="viz-drop-txt" id="vizDropTxt"><span class="viz-cam">&#128247;</span><b>Take or choose a photo</b><small>Stand back so we can see the spot</small></span>
+      </label>
+    </div>
+    <div class="viz-step">
+      <div class="viz-h"><span class="viz-n">2</span>Pick a palm</div>
+      <div class="viz-chips" id="vizPalms" role="radiogroup" aria-label="Palm type">
+        <button type="button" class="chip on" data-palm="sylvester">Sylvester</button>
+        <button type="button" class="chip" data-palm="bismarck">Bismarck</button>
+        <button type="button" class="chip" data-palm="coconut">Coconut</button>
+        <button type="button" class="chip" data-palm="foxtail">Foxtail</button>
+        <button type="button" class="chip" data-palm="royal">Royal</button>
+      </div>
+      <div class="viz-h small">How many?</div>
+      <div class="viz-chips" id="vizCount" role="radiogroup" aria-label="How many palms">
+        <button type="button" class="chip on" data-n="1">1</button><button type="button" class="chip" data-n="2">2</button><button type="button" class="chip" data-n="3">3</button>
+      </div>
+    </div>
+    <button type="button" class="viz-go" id="vizGo" disabled>&#10024; Show Me My Yard</button>
+    <div class="viz-loading" id="vizLoading" hidden><span class="viz-spin"></span><b>Planting your palm&hellip;</b><small>About 20 seconds</small></div>
+    <div class="viz-err" id="vizErr" hidden></div>
+    <div class="viz-result" id="vizResult" hidden>
+      <div class="ba" id="ba">
+        <img id="baAfter" alt="Your yard with the palm (AI preview)">
+        <div class="ba-before" id="baBeforeWrap"><img id="baBefore" alt="Your yard now"></div>
+        <span class="ba-tag l">Before</span><span class="ba-tag r">After</span>
+        <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Slide to compare before and after">
+        <span class="ba-handle" id="baHandle"></span>
+      </div>
+      <p class="viz-note">AI preview to help you picture it. Your real palm will be hand-picked from our farm and may look a little different.</p>
+      <div class="viz-actions">
+        <a class="viz-text" id="vizText" href="sms:+15619005658">&#128172; Text Us for a Price</a>
+        <a class="viz-save" id="vizSave" download="my-yard-with-palm.png">&#11015; Save Picture</a>
+        <button type="button" class="viz-again" id="vizAgain">Try another</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -624,6 +800,17 @@ header{border-bottom:1px solid rgba(197,151,58,0.28);}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
     </a>
   </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <p class="section-label">Good to Know</p>
+  <h2 class="section-title">Questions</h2>
+  <details><summary>Do you deliver?</summary><p>Yes. We deliver across South Florida and serve customers in Georgia, Texas, Louisiana and California. Call or text us with your address.</p></details>
+  <details><summary>How much does a palm cost?</summary><p>Every palm is different in size and shape. Text us a photo of your space (or your AI preview) and we'll send you a price.</p></details>
+  <details><summary>How can I pay?</summary><p>Cash, check, card and Zelle.</p></details>
+  <details><summary>Is the AI yard preview exact?</summary><p>It's a picture to help you imagine the look. Your real palm is hand-picked from our farm, so it may look a little different.</p></details>
+  <details><summary>Who are you?</summary><p>A family-owned palm farm in South Florida, growing palms since 2000.</p></details>
 </section>
 
 <section class="contact-section">
@@ -1124,6 +1311,55 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   // If the download stalls mid-way, restart it
   v.addEventListener('stalled',function(){v.load();go();});
   v.addEventListener('error',function(){v.load();go();});
+})();
+</script>
+<script>
+/* ════ AI yard preview ════ */
+(function(){
+  var API="https://sp-visualizer.pages.dev/api/visualize";
+  var PH="+15619005658";
+  var NAMES={sylvester:"Sylvester",bismarck:"Bismarck",coconut:"Coconut",foxtail:"Foxtail",royal:"Royal"};
+  var $=function(id){return document.getElementById(id)};
+  var file=$("vizFile"),thumb=$("vizThumb"),txt=$("vizDropTxt"),go=$("vizGo"),load=$("vizLoading"),err=$("vizErr"),res=$("vizResult");
+  if(!file)return;
+  var photo=null,palm="sylvester",count=1;
+  function pick(group,attr,val){Array.prototype.forEach.call($(group).querySelectorAll(".chip"),function(c){c.classList.toggle("on",c.getAttribute(attr)===String(val))})}
+  $("vizPalms").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;palm=b.getAttribute("data-palm");pick("vizPalms","data-palm",palm)});
+  $("vizCount").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;count=+b.getAttribute("data-n");pick("vizCount","data-n",count)});
+  document.querySelectorAll(".pb-try").forEach(function(a){a.addEventListener("click",function(){palm=a.getAttribute("data-palm");pick("vizPalms","data-palm",palm)})});
+  function showErr(h){err.innerHTML=h;err.hidden=false}
+  file.addEventListener("change",function(){
+    var f=file.files&&file.files[0];if(!f)return;err.hidden=true;
+    var img=new Image(),url=URL.createObjectURL(f);
+    img.onload=function(){
+      var max=1280,w=img.naturalWidth,h=img.naturalHeight,k=Math.min(1,max/Math.max(w,h));
+      var c=document.createElement("canvas");c.width=Math.round(w*k);c.height=Math.round(h*k);
+      c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+      photo=c.toDataURL("image/jpeg",0.85);thumb.src=photo;thumb.hidden=false;txt.style.display="none";go.disabled=false;URL.revokeObjectURL(url);
+    };
+    img.onerror=function(){showErr("We couldn't open that photo. Try a different one, or take a new photo.")};
+    img.src=url;
+  });
+  var help=' <a href="sms:'+PH+'">Text us your photo</a> and we\'ll help you pick the right palm.';
+  go.addEventListener("click",function(){
+    if(!photo)return;go.disabled=true;go.hidden=true;err.hidden=true;res.hidden=true;load.hidden=false;
+    fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({image:photo,palm:palm,count:count})})
+    .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
+    .then(function(x){
+      load.hidden=true;go.hidden=false;go.disabled=false;
+      if(!x.ok||!x.j.image){
+        var e=x.j&&x.j.error;
+        showErr(e==="limit_you"?"You've used today's free previews."+help:e==="too_big"?"That photo is too big. Try a smaller one.":"Our yard preview is busy right now."+help);return;}
+      $("baAfter").src=x.j.image;$("baBefore").src=photo;$("vizSave").href=x.j.image;
+      var n=count+" "+NAMES[palm]+" Palm"+(count>1?"s":"");
+      $("vizText").href="sms:"+PH+"&body="+encodeURIComponent("Hi! I tried the yard preview on your website and I'm interested in "+n+". Can you send me a price? I'll send you my photo.");
+      res.hidden=false;setTimeout(syncBA,50);res.scrollIntoView({behavior:"smooth",block:"center"});
+    })
+    .catch(function(){load.hidden=true;go.hidden=false;go.disabled=false;showErr("No connection right now."+help)});
+  });
+  function syncBA(){var v=$("baRange").value,wrap=$("baBeforeWrap"),ba=$("ba");wrap.style.width=v+"%";$("baHandle").style.left=v+"%";$("baBefore").style.width=ba.clientWidth+"px"}
+  $("baRange").addEventListener("input",syncBA);window.addEventListener("resize",syncBA);
+  $("vizAgain").addEventListener("click",function(){res.hidden=true;photo=null;thumb.hidden=true;txt.style.display="";file.value="";go.disabled=true;$("vizDrop").scrollIntoView({behavior:"smooth",block:"center"})});
 })();
 </script>
 <script async id="netlify-rum-container" src="/.netlify/scripts/rum" data-netlify-rum-site-id="c54383bb-1448-476c-baba-1003a62c336e" data-netlify-deploy-branch="main" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiYzU0MzgzYmItMTQ0OC00NzZjLWJhYmEtMTAwM2E2MmMzMzZlIiwiYWNjb3VudF9pZCI6IjY5YWEzMGQzOGZmYzMzNTM1YzcxZDA3OSIsImRlcGxveV9pZCI6IjZhODkwNDQyOTA4MDE4MDAwODMyMWIyNCIsImlzc3VlciI6Im5mc2VydmVyIn0.BUoK_yAG-QlsIooZGmheQwe_UEn8bJYwknATsKjUUoc"></script>

@@ -1,0 +1,7 @@
+name = "sp-visualizer"
+pages_build_output_dir = "public"
+compatibility_date = "2026-10-01"
+
+[[kv_namespaces]]
+binding = "LIMITS"
+id = "c8e62a52265044c281befe0949b9dd13"
