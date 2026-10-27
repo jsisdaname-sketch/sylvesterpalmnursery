@@ -107,7 +107,8 @@ export async function onRequestPost({ request, env }) {
 
   const word = count === 1 ? "one" : count === 2 ? "two" : "three";
   const s = count > 1 ? "s" : "";
-  const spot = body.spot ? parseImg(body.spot) : null; // photo with a small magenta dot where the trunk base goes
+  const spot = body.spot ? parseImg(body.spot) : null; // photo with magenta guide bars: bottom = trunk base, top = top of trunk (measured by /api/analyze)
+  const removeList = (Array.isArray(body.remove) ? body.remove : []).map((x) => String(x).slice(0, 300)).filter((x) => x && !/^nothing$/i.test(x)).slice(0, 3);
   if (spot && spot[3].length > MAX_B64) return json({ error: "too_big" }, 413, origin);
 
   // STEP 1 (only when they painted): erase whatever is in the painted area.
@@ -119,7 +120,8 @@ export async function onRequestPost({ request, env }) {
       { text: "IMAGE B - the same photo with an area painted bright magenta:" },
       { inline_data: { mime_type: marked[1], data: marked[3] } },
       { text:
-          "Edit IMAGE A like a professional photo retoucher. Any tree, palm, bush or plant that is inside or touches the magenta area in IMAGE B " +
+          (removeList.length ? "Things to erase: " + removeList.map((x, i) => `(${i + 1}) ${x}`).join("; ") + ". " : "") +
+          "Edit IMAGE A like a professional photo retoucher. Every tree, palm, bush or plant that is inside or touches ANY of the magenta areas in IMAGE B " +
           "must be erased COMPLETELY: its whole trunk from the ground up AND its entire crown, fronds and leaves, including every part that sticks out " +
           "above or beside the painted area. No leftover trunk, stump, frond, shadow or blur. Rebuild what was behind it (house wall, windows, sky, fence, " +
           "other plants, mulch, soil or grass) so it looks like it was never there. If nothing is there, leave the photo as is. Change nothing else, " +
@@ -132,7 +134,9 @@ export async function onRequestPost({ request, env }) {
   // STEP 2: plant our palm.
   const parts = [{ text: "IMAGE A - the customer's yard photo:" }, { inline_data: { mime_type: base.mime, data: base.data } }];
   if (spot || marked) {
-    parts.push({ text: "IMAGE B - the yard with a magenta mark showing where the palm" + s + " must stand:" });
+    parts.push({ text: spot
+      ? "IMAGE B - the yard with magenta GUIDE BARS, one per palm. Each bar was measured from the windows, doors and roof in the photo: the BOTTOM of the bar is where the trunk meets the ground, the TOP of the bar is exactly where the trunk ends and the fronds start:"
+      : "IMAGE B - the yard with the magenta area showing where the palm" + s + " must stand:" });
     parts.push({ inline_data: { mime_type: (spot || marked)[1], data: (spot || marked)[3] } });
   }
   parts.push({ text: "IMAGE C - the exact palm from our nursery that they picked:" });
@@ -141,7 +145,11 @@ export async function onRequestPost({ request, env }) {
     text:
       `Edit IMAGE A. Plant ${word} palm${s} that look exactly like the palm in IMAGE C: a Sylvester palm, ${palm.finish}, same crown shape and frond color. ` +
       (spot || marked
-        ? `The base of the trunk must stand on the ground at the magenta mark in IMAGE B (the mark only shows WHERE, not how big). `
+        ? (spot
+          ? `Plant exactly one palm on each magenta guide bar in IMAGE B (${word} in total). Each trunk must start on the ground at the bottom of its bar and ` +
+            `end exactly at the top of its bar: the trunk height MUST match the bar height precisely, not taller and not shorter. ` +
+            `Each palm stands on its own, apart from the others. `
+          : `The base of the trunk must stand on the ground in the magenta area of IMAGE B (the area only shows WHERE, not how big). `)
         : `Put the palm${s} on the ground in the most natural open spot${s} (lawn, garden bed or beside the driveway). `) +
       `SIZE IS CRITICAL. ${SIZE[palm.ft]} Use the doors, windows, roof line, fences, cars and people in the photo as a ruler ` +
       `(a front door is about 6.7 ft tall, a window sill about 3 ft off the ground, a car about 5 ft tall, an adult about 5.7 ft). ` +

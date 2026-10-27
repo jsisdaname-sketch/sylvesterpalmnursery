@@ -14,7 +14,7 @@
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://sylvesterpalmnursery.com/sylvester.jpeg" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;600;700;800;900&family=Carlito:wght@400;700&display=swap" rel="stylesheet">
 <!-- Klaviyo onsite (renders the subscribe form) -->
 <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/STwg5g/klaviyo.js"></script>
 <style>
@@ -507,6 +507,40 @@ html{scroll-behavior:smooth}
 .pp span{padding:10px 12px;font-size:0.82rem;color:#6b6b5e;display:grid}.pp i{font-style:normal}.size-chips{margin-bottom:10px}.pp b{font-size:1rem;color:#0d2818}
 .pp.on{border-color:#1a7a3a;box-shadow:0 0 0 3px rgba(26,122,58,0.25)}
 .pp.on span{background:#0d2818;color:#FBDF80}.pp.on b{color:#fff}
+
+/* ── yard preview: Calibri look + touch animations ── */
+.viz-card,.viz-card button,.viz-card a,.viz-card .chip,.viz-card .viz-go,.viz-card .viz-actions a,.viz-card .viz-actions button,.viz-card .mark-tools button{font-family:Calibri,Carlito,"DM Sans",sans-serif}
+.viz-card{font-size:1.06rem}
+.viz-h{font-size:1.15rem;letter-spacing:.01em}
+.viz-step{animation:stepIn .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes stepIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.chip,.pp,.viz-go,.mark-tools button,.viz-actions a,.viz-actions button,.pb-try,.pb-price{position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background-color .25s,border-color .25s,color .25s}
+.chip:active,.pp:active,.viz-go:active:not(:disabled),.mark-tools button:active,.viz-actions a:active,.viz-actions button:active{transform:scale(.95)}
+.ripple{position:absolute;border-radius:50%;pointer-events:none;background:rgba(197,151,58,.35);transform:scale(0);animation:rip .6s ease-out forwards}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+.chip.on{animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+.pp{transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s,border-color .25s}
+.pp img{transition:transform .5s,filter .3s;filter:saturate(.85)}
+.pp.on{transform:translateY(-3px)}.pp.on img{transform:scale(1.05);filter:none}
+.pp::after{content:"\2713";position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:#1a7a3a;color:#fff;display:grid;place-items:center;font-weight:900;font-size:.95rem;transform:scale(0);transition:transform .3s cubic-bezier(.2,1.6,.4,1);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.pp.on::after{transform:scale(1)}
+.pp span,.pp b{transition:background-color .25s,color .25s}
+.viz-go:not(:disabled){animation:goGlow 2.4s ease-in-out infinite}
+@keyframes goGlow{50%{box-shadow:0 10px 30px -6px rgba(34,160,74,.75)}}
+.viz-prog{list-style:none;margin:6px 0 2px;padding:0;display:grid;gap:10px;width:100%;max-width:300px}
+.viz-prog li{display:flex;align-items:center;gap:10px;font-weight:700;color:#9a9484;transition:color .3s}
+.viz-prog li i{width:22px;height:22px;border-radius:50%;border:2.5px solid #d8cdb5;flex:none;position:relative;transition:all .3s}
+.viz-prog li.now{color:#0d2818}.viz-prog li.now i{border-color:#e6dcc6;border-top-color:#1a7a3a;animation:vizspin .8s linear infinite}
+.viz-prog li.done{color:#1a7a3a}.viz-prog li.done i{background:#1a7a3a;border-color:#1a7a3a}
+.viz-prog li.done i::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.measure-wrap{position:relative;border-radius:14px;overflow:hidden;width:100%;margin-bottom:8px}
+.measure-wrap[hidden]{display:none}
+.measure-wrap img{display:block;width:100%}
+.measure-scan{position:absolute;left:0;right:0;height:30%;background:linear-gradient(to bottom,transparent,rgba(251,223,128,.35),transparent);animation:scan 1.8s ease-in-out infinite;pointer-events:none}
+@keyframes scan{0%{top:-30%}100%{top:100%}}
+.viz-result:not([hidden]){animation:stepIn .5s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){.viz-step,.chip.on,.viz-go,.measure-scan,.viz-result{animation:none!important}}
 .faq{padding:4rem 1.25rem;max-width:760px;margin:0 auto}
 .faq details{border-bottom:1px solid rgba(197,151,58,0.3);padding:16px 4px}
 .faq summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:10px}
@@ -661,7 +695,15 @@ html{scroll-behavior:smooth}
       </div>
     </div>
     <button type="button" class="viz-go" id="vizGo" disabled>&#10024; Show Me My Yard</button>
-    <div class="viz-loading" id="vizLoading" hidden><span class="viz-spin"></span><b>Planting your palm&hellip;</b><small>About 30 seconds</small></div>
+    <div class="viz-loading" id="vizLoading" hidden>
+      <div class="measure-wrap" id="measureWrap" hidden><img id="measureImg" alt="Measured spots in your yard"><span class="measure-scan"></span></div>
+      <ol class="viz-prog" id="vizProg">
+        <li data-s="1"><i></i>Measuring your yard</li>
+        <li data-s="2"><i></i>Clearing the spot</li>
+        <li data-s="3"><i></i>Planting your palm</li>
+      </ol>
+      <small>About 30 seconds</small>
+    </div>
     <div class="viz-err" id="vizErr" hidden></div>
     <div class="viz-result" id="vizResult" hidden>
       <div class="ba" id="ba">
@@ -1409,22 +1451,70 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     return c.toDataURL("image/jpeg",0.86);
   }
   var help=' <a href="sms:'+PH+'">Text us your photo</a> and we\'ll show you how it would look.';
+  /* group painted strokes into separate spots (touching strokes = one spot) */
+  function regions(){
+    var boxes=strokes.map(function(st){var x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;st.p.forEach(function(q){x0=Math.min(x0,q[0]);y0=Math.min(y0,q[1]);x1=Math.max(x1,q[0]);y1=Math.max(y1,q[1])});var m=st.w/2;return[x0-m,y0-m,x1+m,y1+m]});
+    var par=boxes.map(function(_,i){return i});function f(i){return par[i]===i?i:(par[i]=f(par[i]))}
+    for(var i=0;i<boxes.length;i++)for(var j=i+1;j<boxes.length;j++){var A=boxes[i],B=boxes[j];if(A[0]<=B[2]&&B[0]<=A[2]&&A[1]<=B[3]&&B[1]<=A[3])par[f(i)]=f(j)}
+    var set={};boxes.forEach(function(_,i){set[f(i)]=1});return Object.keys(set).length;
+  }
+  /* draw the measured trunk bars: color=true makes the friendly version the customer sees */
+  function guide(spots,friendly){
+    var c=document.createElement("canvas");c.width=cv.width;c.height=cv.height;var g=c.getContext("2d");g.drawImage(img,0,0,c.width,c.height);
+    spots.forEach(function(sp){
+      var H=c.height,x=sp.x*c.width,y=sp.y*H,h=Math.max(H*0.04,Math.min(H*0.9,ft*sp.pxPerFt*H)),w=Math.max(6,h/3);
+      if(friendly){
+        g.fillStyle="rgba(251,223,128,0.35)";g.strokeStyle="#FBDF80";g.lineWidth=Math.max(2,c.width*0.004);
+        g.beginPath();g.rect(x-w/2,y-h,w,h);g.fill();g.stroke();
+        g.beginPath();g.moveTo(x-w,y-h);g.lineTo(x+w,y-h);g.moveTo(x-w,y);g.lineTo(x+w,y);g.stroke();
+        var fs=Math.max(14,c.width*0.032);g.font="700 "+fs+"px Calibri, Carlito, sans-serif";var t=ft+" ft";var tw=g.measureText(t).width+fs*0.8;
+        g.fillStyle="#0d2818";g.beginPath();g.roundRect?g.roundRect(x+w*0.7,y-h/2-fs*0.75,tw,fs*1.5,fs*0.75):g.rect(x+w*0.7,y-h/2-fs*0.75,tw,fs*1.5);g.fill();
+        g.fillStyle="#FBDF80";g.fillText(t,x+w*0.7+fs*0.4,y-h/2+fs*0.35);
+      }else{g.fillStyle="#ff00ff";g.fillRect(x-w/2,y-h,w,h)}
+    });
+    return c.toDataURL("image/jpeg",0.86);
+  }
+  function stage(n){Array.prototype.forEach.call($("vizProg").children,function(li){var k=+li.getAttribute("data-s");li.className=k<n?"done":k===n?"now":""})}
+  var timers=[];
+  function post(url,data){return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})}
+  function fail(x){
+    timers.forEach(clearTimeout);load.hidden=true;go.hidden=false;go.disabled=false;
+    var e=x&&x.j&&x.j.error;
+    showErr(!x?"No connection right now."+help:e==="limit_you"?"You've used today's free previews."+help:e==="too_big"?"That photo is too big. Try a smaller one.":"Our yard preview is busy right now."+help);
+  }
   go.addEventListener("click",function(){
-    if(!photo)return;go.disabled=true;go.hidden=true;err.hidden=true;res.hidden=true;load.hidden=false;
-    load.scrollIntoView({behavior:"smooth",block:"center"});
-    fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({image:photo,marked:markedImage(),spot:spotImage(),palm:pid(),count:count})})
-    .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
-    .then(function(x){
-      load.hidden=true;go.hidden=false;go.disabled=false;
-      if(!x.ok||!x.j.image){
-        var e=x.j&&x.j.error;
-        showErr(e==="limit_you"?"You've used today's free previews."+help:e==="too_big"?"That photo is too big. Try a smaller one.":"Our yard preview is busy right now."+help);return;}
-      $("baAfter").src=x.j.image;$("baBefore").src=photo;$("vizSave").href=x.j.image;
-      var n=(count>1?count+" x ":"")+pname();
-      $("vizText").href="sms:"+PH+"&body="+encodeURIComponent("Hi! I tried the yard preview on your website and I'm interested in the "+n+". Can you send me a price? I'll send you my photo.");
-      res.hidden=false;setTimeout(syncBA,50);res.scrollIntoView({behavior:"smooth",block:"center"});
-    })
-    .catch(function(){load.hidden=true;go.hidden=false;go.disabled=false;showErr("No connection right now."+help)});
+    if(!photo)return;go.disabled=true;go.hidden=true;err.hidden=true;res.hidden=true;load.hidden=false;$("measureWrap").hidden=true;
+    stage(1);load.scrollIntoView({behavior:"smooth",block:"center"});
+    var marked=markedImage(),n=count,remove=[],spotImg=null;
+    var measure=marked?post(API.replace(/visualize$/,"analyze"),{image:photo,marked:marked,count:count,regions:regions()}).then(function(x){
+        if(x.ok&&x.j.spots&&x.j.spots.length){
+          n=x.j.spots.length;remove=x.j.spots.map(function(s){return s.remove});spotImg=guide(x.j.spots,false);
+          $("measureImg").src=guide(x.j.spots,true);$("measureWrap").hidden=false;
+        }
+      }).catch(function(){}):Promise.resolve();
+    measure.then(function(){
+      stage(marked?2:3);
+      if(marked)timers.push(setTimeout(function(){stage(3)},13000));
+      return post(API,{image:photo,marked:marked,spot:spotImg||spotImage(),remove:remove,palm:pid(),count:n});
+    }).then(function(x){
+      if(!x.ok||!x.j.image)return fail(x);
+      timers.forEach(clearTimeout);stage(4);
+      setTimeout(function(){
+        load.hidden=true;go.hidden=false;go.disabled=false;
+        $("baAfter").src=x.j.image;$("baBefore").src=photo;$("vizSave").href=x.j.image;
+        var nm=(n>1?n+" x ":"")+pname();
+        $("vizText").href="sms:"+PH+"&body="+encodeURIComponent("Hi! I tried the yard preview on your website and I'm interested in the "+nm+". Can you send me a price? I'll send you my photo.");
+        res.hidden=false;setTimeout(syncBA,50);res.scrollIntoView({behavior:"smooth",block:"center"});
+      },500);
+    }).catch(function(){fail(null)});
+  });
+  /* touch ripple + tiny haptic on every option */
+  document.querySelector(".viz-card").addEventListener("pointerdown",function(e){
+    var b=e.target.closest(".chip,.pp,.viz-go,.mark-tools button,.viz-actions a,.viz-actions button");if(!b||b.disabled)return;
+    var r=b.getBoundingClientRect(),d=Math.max(r.width,r.height)*2,sp=document.createElement("span");
+    sp.className="ripple";sp.style.width=sp.style.height=d+"px";sp.style.left=(e.clientX-r.left-d/2)+"px";sp.style.top=(e.clientY-r.top-d/2)+"px";
+    b.appendChild(sp);setTimeout(function(){sp.remove()},650);
+    try{navigator.vibrate&&navigator.vibrate(8)}catch(_){}
   });
   function syncBA(){var v=$("baRange").value,ba=$("ba");$("baBeforeWrap").style.width=v+"%";$("baHandle").style.left=v+"%";$("baBefore").style.width=ba.clientWidth+"px"}
   $("baRange").addEventListener("input",syncBA);window.addEventListener("resize",syncBA);
