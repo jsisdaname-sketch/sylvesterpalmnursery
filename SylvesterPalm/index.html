@@ -578,7 +578,7 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
 .footer-social .ig-btn{margin-left:0}
 
 /* ── photo drop zone + walkthrough ── */
-.viz-drop{position:relative;display:grid;place-items:center;gap:6px;padding:18px 16px 22px;min-height:250px;border:2px dashed rgba(197,151,58,.55);border-radius:18px;background:radial-gradient(ellipse at 50% 85%,rgba(197,151,58,.10),transparent 60%),#fff;cursor:pointer;overflow:hidden;text-align:center;transition:border-color .25s,background-color .25s,transform .2s;-webkit-tap-highlight-color:transparent;outline:none}
+.viz-drop{position:relative;display:grid;place-items:center;gap:10px;padding:26px 18px 30px;min-height:250px;border:2px dashed rgba(214,180,110,.75);border-radius:22px;background:#faf7ef;cursor:pointer;overflow:hidden;text-align:center;transition:border-color .25s,background-color .25s,transform .2s;-webkit-tap-highlight-color:transparent;outline:none}
 .viz-drop:hover,.viz-drop:focus-visible{border-color:#C5973A}
 .viz-drop:active{transform:scale(.985)}
 .drop-art{width:min(100%,360px);height:auto;fill:none;stroke:#C5973A;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
@@ -588,7 +588,10 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
 .drop-art .spot{fill:rgba(255,0,200,.18);stroke:#e040b0;stroke-dasharray:5 5;animation:spotPulse 1.8s ease-in-out infinite}
 @keyframes dropDraw{to{stroke-dashoffset:0}}
 @keyframes spotPulse{50%{opacity:.35}}
-.drop-txt{display:grid;gap:3px}.drop-txt b{font-size:1.15rem;color:#0d2818}.drop-txt small{color:#6b6b5e;font-size:.92rem}
+.drop-sketch{width:min(100%,420px);height:auto;display:block;animation:sketchIn 1.1s ease both,sketchFloat 6s ease-in-out 1.1s infinite}
+@keyframes sketchIn{from{opacity:0;transform:translateY(8px) scale(.98)}}
+@keyframes sketchFloat{50%{transform:translateY(-3px)}}
+.drop-txt{display:grid;gap:4px}.drop-txt b{font-size:1.3rem;color:#0d2818;letter-spacing:-.005em}.drop-txt small{color:#77746a;font-size:1rem}
 .drop-over{position:absolute;inset:0;display:grid;place-items:center;background:rgba(26,122,58,.92);color:#fff;font-weight:800;font-size:1.15rem;opacity:0;pointer-events:none;transition:opacity .2s}
 .viz-drop.dragging{border-color:#1a7a3a;border-style:solid}.viz-drop.dragging .drop-over{opacity:1}
 .drop-tips-btn{display:block;margin:10px auto 0;background:none;border:0;color:#1a7a3a;font:700 .95rem Calibri,Carlito,"DM Sans",sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:8px}
@@ -720,19 +723,7 @@ header.topbar.scrolled{background:rgba(10,31,16,.92);box-shadow:0 10px 30px -14p
       <div class="viz-h"><span class="viz-n">1</span>Your yard photo</div>
       <div class="viz-drop" id="vizDrop" role="button" tabindex="0" aria-label="Add a photo of your yard">
         <input type="file" accept="image/*" id="vizFile" hidden>
-        <svg class="drop-art" viewBox="0 0 400 230" aria-hidden="true">
-          <g class="corners"><path d="M14 44V14h30M356 14h30v30M386 186v30h-30M44 216H14v-30"/></g>
-          <g class="draw">
-            <circle cx="330" cy="52" r="16"/>
-            <path d="M60 196h290"/>
-            <path d="M88 196V118l72-52 72 52v78"/><path d="M74 128l86-62 86 62"/>
-            <path d="M144 196v-40h32v40"/><rect x="104" y="128" width="26" height="22" rx="2"/><rect x="190" y="128" width="26" height="22" rx="2"/>
-            <path d="M296 196c2-24 2-48-2-72"/>
-            <path d="M291 186h10M291 174h10M292 162h9M292 150h8M292 138h7"/>
-            <path d="M294 122c-22-10-42-6-54 6M294 122c-16-18-36-22-50-18M294 122c-4-22-14-34-30-40M294 122c8-22 22-30 38-30M294 122c20-12 40-10 52 2M294 122c22 0 36 10 42 26M294 122c-18 2-32 12-38 28"/>
-            <ellipse class="spot" cx="296" cy="200" rx="30" ry="6"/>
-          </g>
-        </svg>
+        <img class="drop-sketch" src="images/yard-sketch.webp" alt="" width="812" height="467">
         <span class="drop-txt"><b>Drop your yard photo here</b><small>or tap to take / choose one</small></span>
         <span class="drop-over">Let go to add your photo &#127796;</span>
       </div>
