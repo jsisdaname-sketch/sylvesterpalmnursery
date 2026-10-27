@@ -3,11 +3,11 @@
 // and which of OUR real palms they picked. Gemini plants that exact palm in the marked spot
 // (removing any tree or bush already there) and returns the edited photo.
 // The Gemini key lives only here (Cloudflare secret GEMINI_API_KEY), never in the website code.
-// Limits: 4 previews per visitor per day, 50 per day for the whole site (max ~$2/day).
+// Limits: 4 previews per visitor per day, 30 per day for the whole site. Each preview = up to 2 AI images (~$0.08), so max ~$2.40/day.
 
 const MODEL = "gemini-3.1-flash-image";
 const PER_IP_PER_DAY = 4;
-const SITE_PER_DAY = 50;
+const SITE_PER_DAY = 30;
 const MAX_B64 = 4_200_000; // ~3 MB per image
 
 const ALLOWED = [
@@ -19,9 +19,17 @@ const ALLOWED = [
 
 // Our real palms. To add one: put a photo in public/refs/ and add a line here (and on the website).
 const PALMS = {
-  "sylvester-3ft-varnished": { file: "/refs/sylvester-3ft-varnished.jpg", desc: "a Sylvester palm with about 3 feet of clear trunk, the trunk's diamond-cut leaf bases varnished a glossy orange" },
-  "sylvester-3ft-normal": { file: "/refs/sylvester-3ft-normal.jpg", desc: "a Sylvester palm with about 3 feet of clear trunk, natural (unvarnished) golden-tan diamond-cut trunk" },
+  "sylvester-3ft-varnished": { ft: 3, file: "/refs/sylvester-3ft-varnished.jpg", finish: "varnished: the diamond-cut trunk is a glossy, rich orange" },
+  "sylvester-3ft-normal": { ft: 3, file: "/refs/sylvester-3ft-normal.jpg", finish: "natural (not varnished): golden-tan diamond-cut trunk" },
+  "sylvester-4ft-varnished": { ft: 4, file: "/refs/sylvester-4ft-varnished.jpg", finish: "varnished: the diamond-cut trunk is a glossy, rich orange" },
+  "sylvester-4ft-normal": { ft: 4, file: "/refs/sylvester-4ft-normal.jpg", finish: "natural (not varnished): golden-tan diamond-cut trunk" },
 };
+// How big the whole palm is, by trunk height (trunk = ground to where the fronds start).
+const SIZE = {
+  3: "The trunk (from the ground to where the fronds start) is only 3 feet tall: about an adult's hip height, the same as a kitchen counter or a typical window sill, less than half the height of a front door.",
+  4: "The trunk (from the ground to where the fronds start) is 4 feet tall: about an adult's lower chest, a bit above a typical window sill, about 60% of the height of a front door.",
+};
+
 
 function cors(origin) {
   return {
@@ -42,6 +50,24 @@ function toB64(buf) {
   const b = new Uint8Array(buf);
   for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000));
   return btoa(s);
+}
+
+async function gemini(env, parts) {
+  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
+    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseModalities: ["IMAGE"] } }),
+  });
+  if (!r.ok) {
+    const t = await r.text();
+    console.log("gemini error", r.status, t.slice(0, 400));
+    return { error: r.status === 429 || /billing|quota|credit/i.test(t) ? "busy" : "ai_failed" };
+  }
+  const data = await r.json();
+  const out = (data?.candidates?.[0]?.content?.parts || []).find((p) => p.inlineData || p.inline_data);
+  if (!out) return { error: "no_image" };
+  const d = out.inlineData || out.inline_data;
+  return { mime: d.mimeType || d.mime_type || "image/png", data: d.data };
 }
 
 export async function onRequestOptions({ request }) {
@@ -81,44 +107,52 @@ export async function onRequestPost({ request, env }) {
 
   const word = count === 1 ? "one" : count === 2 ? "two" : "three";
   const s = count > 1 ? "s" : "";
-  const parts = [];
-  parts.push({ text: "IMAGE A — the customer's real photo of their yard:" });
-  parts.push({ inline_data: { mime_type: photo[1], data: photo[3] } });
+  const spot = body.spot ? parseImg(body.spot) : null; // photo with a small magenta dot where the trunk base goes
+  if (spot && spot[3].length > MAX_B64) return json({ error: "too_big" }, 413, origin);
+
+  // STEP 1 (only when they painted): erase whatever is in the painted area.
+  let base = { mime: photo[1], data: photo[3] };
   if (marked) {
-    parts.push({ text: "IMAGE B — the same photo where the customer painted the exact spot they want, in bright magenta:" });
-    parts.push({ inline_data: { mime_type: marked[1], data: marked[3] } });
+    const cleared = await gemini(env, [
+      { text: "IMAGE A - a real photo of a yard:" },
+      { inline_data: { mime_type: photo[1], data: photo[3] } },
+      { text: "IMAGE B - the same photo with an area painted bright magenta:" },
+      { inline_data: { mime_type: marked[1], data: marked[3] } },
+      { text:
+          "Edit IMAGE A like a professional photo retoucher. Any tree, palm, bush or plant that is inside or touches the magenta area in IMAGE B " +
+          "must be erased COMPLETELY: its whole trunk from the ground up AND its entire crown, fronds and leaves, including every part that sticks out " +
+          "above or beside the painted area. No leftover trunk, stump, frond, shadow or blur. Rebuild what was behind it (house wall, windows, sky, fence, " +
+          "other plants, mulch, soil or grass) so it looks like it was never there. If nothing is there, leave the photo as is. Change nothing else, " +
+          "keep the exact same framing and size, and do not add anything. The result must contain no magenta. Return only the edited IMAGE A." },
+    ]);
+    if (cleared.error) return json({ error: cleared.error }, 502, origin);
+    base = cleared;
   }
-  parts.push({ text: "IMAGE C — the exact palm from our nursery that they picked:" });
+
+  // STEP 2: plant our palm.
+  const parts = [{ text: "IMAGE A - the customer's yard photo:" }, { inline_data: { mime_type: base.mime, data: base.data } }];
+  if (spot || marked) {
+    parts.push({ text: "IMAGE B - the yard with a magenta mark showing where the palm" + s + " must stand:" });
+    parts.push({ inline_data: { mime_type: (spot || marked)[1], data: (spot || marked)[3] } });
+  }
+  parts.push({ text: "IMAGE C - the exact palm from our nursery that they picked:" });
   parts.push({ inline_data: { mime_type: "image/jpeg", data: ref } });
   parts.push({
     text:
-      `Edit IMAGE A. Plant ${word} palm${s} that look exactly like the palm in IMAGE C (${palm.desc}): same trunk height, ` +
-      `trunk color and texture, and the same full crown of fronds. ` +
-      (marked
-        ? `Put the palm${s} ONLY inside the area painted magenta in IMAGE B, standing on the ground there. ` +
-          `If there is an existing tree, palm, bush or plant inside that painted area, remove it completely and fill in the ground ` +
-          `and background naturally behind the new palm${s}. Do not change anything outside the painted area. `
-        : `Put the palm${s} in the most natural open spot${s} on the ground (lawn, garden bed or beside the driveway). `) +
-      `Scale the palm${s} realistically for a palm with about 3 feet of trunk next to the house, doors, cars or fences in the photo. ` +
-      `Match the photo's light, shadows, perspective and colors so it looks like a real photo. ` +
-      `Keep the house, people, cars, sky and camera angle exactly the same. The final image must NOT contain any magenta paint, ` +
-      `text, logos or watermarks. Return only the edited version of IMAGE A.`,
+      `Edit IMAGE A. Plant ${word} palm${s} that look exactly like the palm in IMAGE C: a Sylvester palm, ${palm.finish}, same crown shape and frond color. ` +
+      (spot || marked
+        ? `The base of the trunk must stand on the ground at the magenta mark in IMAGE B (the mark only shows WHERE, not how big). `
+        : `Put the palm${s} on the ground in the most natural open spot${s} (lawn, garden bed or beside the driveway). `) +
+      `SIZE IS CRITICAL. ${SIZE[palm.ft]} Use the doors, windows, roof line, fences, cars and people in the photo as a ruler ` +
+      `(a front door is about 6.7 ft tall, a window sill about 3 ft off the ground, a car about 5 ft tall, an adult about 5.7 ft). ` +
+      `Copy the proportions of IMAGE C exactly: the trunk is short and THICK (its width is about one third of its height, wider at the base, ` +
+      `with big diamond-shaped leaf bases), and the crown of fronds spreads about 3 times as wide as the trunk is tall. Do NOT make a tall, thin or stretched trunk. ` +
+      `When in doubt, make the palm SMALLER, never bigger. Match the photo's light, shadows, perspective and colors so it looks like a real photo. ` +
+      `Keep everything else exactly the same. The final image must NOT contain any magenta, text, logos or watermarks. Return only the edited IMAGE A.`,
   });
-
-  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY },
-    body: JSON.stringify({ contents: [{ parts }], generationConfig: { responseModalities: ["IMAGE"] } }),
-  });
-  if (!r.ok) {
-    const t = await r.text();
-    console.log("gemini error", r.status, t.slice(0, 400));
-    return json({ error: r.status === 429 || /billing|quota|credit/i.test(t) ? "busy" : "ai_failed" }, 502, origin);
-  }
-  const data = await r.json();
-  const out = (data?.candidates?.[0]?.content?.parts || []).find((p) => p.inlineData || p.inline_data);
-  if (!out) return json({ error: "no_image" }, 502, origin);
-  const d = out.inlineData || out.inline_data;
+  const out = await gemini(env, parts);
+  if (out.error) return json({ error: out.error }, 502, origin);
+  const d = { mimeType: out.mime, data: out.data };
 
   if (env.LIMITS) {
     const ttl = { expirationTtl: 60 * 60 * 30 };

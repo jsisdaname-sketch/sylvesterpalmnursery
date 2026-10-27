@@ -483,8 +483,8 @@ html{scroll-behavior:smooth}
 .viz-actions a,.viz-actions button{display:flex;align-items:center;justify-content:center;gap:6px;padding:15px;border-radius:12px;font:800 1rem "DM Sans",sans-serif;text-decoration:none;cursor:pointer;border:0}
 .viz-text{grid-column:span 2;background:#1a7a3a;color:#fff}.viz-save{background:#0d2818;color:#FBDF80}.viz-again{background:#efe7d6;color:#0d2818}
 
-.palm-grid{grid-template-columns:repeat(2,1fr)}
-.palm-card.featured{grid-column:span 2}
+.palm-grid{grid-template-columns:repeat(4,1fr)}
+.palm-card.featured{grid-column:span 4}
 .palm-photo{aspect-ratio:4/5;overflow:hidden;background:#0a1f10}
 .palm-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
 .palm-card.prod:hover .palm-photo img{transform:scale(1.04)}
@@ -504,7 +504,7 @@ html{scroll-behavior:smooth}
 .palm-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pp{display:flex;flex-direction:column;border:2px solid #d8cdb5;border-radius:14px;overflow:hidden;background:#fff;padding:0;cursor:pointer;text-align:left;font-family:"DM Sans",sans-serif}
 .pp img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-.pp span{padding:10px 12px;font-size:0.82rem;color:#6b6b5e;display:grid}.pp b{font-size:1rem;color:#0d2818}
+.pp span{padding:10px 12px;font-size:0.82rem;color:#6b6b5e;display:grid}.pp i{font-style:normal}.size-chips{margin-bottom:10px}.pp b{font-size:1rem;color:#0d2818}
 .pp.on{border-color:#1a7a3a;box-shadow:0 0 0 3px rgba(26,122,58,0.25)}
 .pp.on span{background:#0d2818;color:#FBDF80}.pp.on b{color:#fff}
 .faq{padding:4rem 1.25rem;max-width:760px;margin:0 auto}
@@ -609,9 +609,19 @@ html{scroll-behavior:smooth}
         <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-3ft-varnished">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 3 ft Varnished Sylvester Palm.">Text for price</a></div></div>
     </article>
     <article class="palm-card prod">
-      <div class="palm-photo"><img src="images/palms/sylvester-3ft-normal.jpg" alt="3 ft natural Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-photo"><img src="images/palms/sylvester-3ft-normal.jpg" alt="3 ft normal Sylvester palm from our farm" loading="lazy"></div>
       <div class="palm-body"><span class="palm-size">3 ft trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
         <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-3ft-normal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 3 ft Normal Sylvester Palm.">Text for price</a></div></div>
+    </article>
+    <article class="palm-card prod">
+      <div class="palm-photo"><img src="images/palms/sylvester-4ft-varnished.jpg" alt="4 ft varnished Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-body"><span class="palm-size">4 ft trunk</span><h3>Varnished</h3><p>Glossy, rich orange trunk finish that pops day and night.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-4ft-varnished">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 4 ft Varnished Sylvester Palm.">Text for price</a></div></div>
+    </article>
+    <article class="palm-card prod">
+      <div class="palm-photo"><img src="images/palms/sylvester-4ft-normal.jpg" alt="4 ft normal Sylvester palm from our farm" loading="lazy"></div>
+      <div class="palm-body"><span class="palm-size">4 ft trunk</span><h3>Normal</h3><p>The natural golden-tan trunk, straight from the farm.</p>
+        <div class="palm-btns"><a class="pb-try" href="#visualize" data-palm="sylvester-4ft-normal">&#10024; Try in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on the 4 ft Normal Sylvester Palm.">Text for price</a></div></div>
     </article>
   </div>
   <p class="palms-more">Need a different size? <a href="sms:+15619005658&amp;body=Hi! What sizes of Sylvester Palms do you have?">Text us</a> and we'll send photos of what's on the farm.</p>
@@ -632,15 +642,18 @@ html{scroll-behavior:smooth}
     </div>
     <div class="viz-step" id="vizMarkStep" hidden>
       <div class="viz-h"><span class="viz-n">2</span>Paint where you want it</div>
-      <p class="viz-hint">Rub your finger over the spot. <b>Already a tree there?</b> Paint over it and we'll swap it out.</p>
+      <p class="viz-hint">Rub your finger over the spot on the ground where you want it. <b>Already a tree there?</b> Paint over its trunk and we'll remove the whole tree and put yours in its place.</p>
       <div class="mark-stage" id="markStage"><img id="markImg" alt="Your yard"><canvas id="markCanvas" aria-label="Paint the spot for your palm"></canvas><span class="mark-tip" id="markTip">&#9757; Paint here</span></div>
       <div class="mark-tools"><button type="button" id="markUndo">&#8630; Undo</button><button type="button" id="markClear">Clear</button><button type="button" id="markNew">New photo</button></div>
     </div>
     <div class="viz-step">
       <div class="viz-h"><span class="viz-n">3</span>Pick your palm</div>
+      <div class="viz-chips size-chips" id="vizSize" role="radiogroup" aria-label="Trunk size">
+        <button type="button" class="chip on" data-ft="3">3 ft trunk</button><button type="button" class="chip" data-ft="4">4 ft trunk</button>
+      </div>
       <div class="palm-pick" id="vizPalms" role="radiogroup" aria-label="Pick your palm">
-        <button type="button" class="pp on" data-palm="sylvester-3ft-varnished" role="radio" aria-checked="true"><img src="images/palms/sylvester-3ft-varnished.jpg" alt=""><span><b>Varnished</b>3 ft trunk</span></button>
-        <button type="button" class="pp" data-palm="sylvester-3ft-normal" role="radio" aria-checked="false"><img src="images/palms/sylvester-3ft-normal.jpg" alt=""><span><b>Normal</b>3 ft trunk</span></button>
+        <button type="button" class="pp on" data-finish="varnished" role="radio" aria-checked="true"><img src="images/palms/sylvester-3ft-varnished.jpg" alt=""><span><b>Varnished</b><i class="pp-ft">3 ft trunk</i></span></button>
+        <button type="button" class="pp" data-finish="normal" role="radio" aria-checked="false"><img src="images/palms/sylvester-3ft-normal.jpg" alt=""><span><b>Normal</b><i class="pp-ft">3 ft trunk</i></span></button>
       </div>
       <div class="viz-h small">How many?</div>
       <div class="viz-chips" id="vizCount" role="radiogroup" aria-label="How many palms">
@@ -648,7 +661,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
     <button type="button" class="viz-go" id="vizGo" disabled>&#10024; Show Me My Yard</button>
-    <div class="viz-loading" id="vizLoading" hidden><span class="viz-spin"></span><b>Planting your palm&hellip;</b><small>About 20 seconds</small></div>
+    <div class="viz-loading" id="vizLoading" hidden><span class="viz-spin"></span><b>Planting your palm&hellip;</b><small>About 30 seconds</small></div>
     <div class="viz-err" id="vizErr" hidden></div>
     <div class="viz-result" id="vizResult" hidden>
       <div class="ba" id="ba">
@@ -1336,14 +1349,20 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 (function(){
   var API="https://sp-visualizer.pages.dev/api/visualize";
   var PH="+15619005658";
-  var NAMES={"sylvester-3ft-varnished":"3 ft Varnished Sylvester Palm","sylvester-3ft-normal":"3 ft Normal Sylvester Palm"};
+  var ft=3,finish="varnished";function pid(){return "sylvester-"+ft+"ft-"+finish}
+  function pname(){return ft+" ft "+(finish==="varnished"?"Varnished":"Normal")+" Sylvester Palm"}
   var $=function(id){return document.getElementById(id)};
   var file=$("vizFile"),go=$("vizGo"),load=$("vizLoading"),err=$("vizErr"),res=$("vizResult");
   if(!file)return;
-  var photo=null,palm="sylvester-3ft-varnished",count=1,strokes=[],cur=null;
+  var photo=null,count=1,strokes=[],cur=null;
   var cv=$("markCanvas"),ctx=cv.getContext("2d"),img=$("markImg");
-  function pickPalm(id){palm=id;Array.prototype.forEach.call($("vizPalms").querySelectorAll(".pp"),function(b){var on=b.getAttribute("data-palm")===id;b.classList.toggle("on",on);b.setAttribute("aria-checked",on)})}
-  $("vizPalms").addEventListener("click",function(e){var b=e.target.closest(".pp");if(b)pickPalm(b.getAttribute("data-palm"))});
+  function paint(){
+    Array.prototype.forEach.call($("vizPalms").querySelectorAll(".pp"),function(b){var f=b.getAttribute("data-finish"),on=f===finish;b.classList.toggle("on",on);b.setAttribute("aria-checked",on);b.querySelector("img").src="images/palms/sylvester-"+ft+"ft-"+f+".jpg";b.querySelector(".pp-ft").textContent=ft+" ft trunk"});
+    Array.prototype.forEach.call($("vizSize").querySelectorAll(".chip"),function(c){c.classList.toggle("on",+c.getAttribute("data-ft")===ft)});
+  }
+  function pickPalm(id){var m=/sylvester-(\d)ft-(\w+)/.exec(id);if(m){ft=+m[1];finish=m[2];paint()}}
+  $("vizPalms").addEventListener("click",function(e){var b=e.target.closest(".pp");if(b){finish=b.getAttribute("data-finish");paint()}});
+  $("vizSize").addEventListener("click",function(e){var b=e.target.closest(".chip");if(b){ft=+b.getAttribute("data-ft");paint()}});
   $("vizCount").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;count=+b.getAttribute("data-n");Array.prototype.forEach.call($("vizCount").querySelectorAll(".chip"),function(c){c.classList.toggle("on",c===b)})});
   document.querySelectorAll(".pb-try[data-palm]").forEach(function(a){a.addEventListener("click",function(){pickPalm(a.getAttribute("data-palm"))})});
   function showErr(h){err.innerHTML=h;err.hidden=false}
@@ -1380,11 +1399,20 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
     x.drawImage(img,0,0,c.width,c.height);x.globalAlpha=0.8;draw(x,"#ff00ff");
     return c.toDataURL("image/jpeg",0.86);
   }
+  function spotImage(){
+    if(!strokes.length)return null;
+    var maxY=-1,xs=[];strokes.forEach(function(st){st.p.forEach(function(q){if(q[1]>maxY)maxY=q[1]})});
+    strokes.forEach(function(st){st.p.forEach(function(q){if(q[1]>maxY-cv.height*0.06)xs.push(q[0])})});
+    var x=xs.reduce(function(a,b){return a+b},0)/xs.length,r=Math.max(10,cv.width*0.025);
+    var c=document.createElement("canvas");c.width=cv.width;c.height=cv.height;var g=c.getContext("2d");
+    g.drawImage(img,0,0,c.width,c.height);g.fillStyle="#ff00ff";g.beginPath();g.ellipse(x,maxY-r*0.5,r*1.6,r,0,0,Math.PI*2);g.fill();
+    return c.toDataURL("image/jpeg",0.86);
+  }
   var help=' <a href="sms:'+PH+'">Text us your photo</a> and we\'ll show you how it would look.';
   go.addEventListener("click",function(){
     if(!photo)return;go.disabled=true;go.hidden=true;err.hidden=true;res.hidden=true;load.hidden=false;
     load.scrollIntoView({behavior:"smooth",block:"center"});
-    fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({image:photo,marked:markedImage(),palm:palm,count:count})})
+    fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({image:photo,marked:markedImage(),spot:spotImage(),palm:pid(),count:count})})
     .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
     .then(function(x){
       load.hidden=true;go.hidden=false;go.disabled=false;
@@ -1392,7 +1420,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
         var e=x.j&&x.j.error;
         showErr(e==="limit_you"?"You've used today's free previews."+help:e==="too_big"?"That photo is too big. Try a smaller one.":"Our yard preview is busy right now."+help);return;}
       $("baAfter").src=x.j.image;$("baBefore").src=photo;$("vizSave").href=x.j.image;
-      var n=(count>1?count+" x ":"")+NAMES[palm];
+      var n=(count>1?count+" x ":"")+pname();
       $("vizText").href="sms:"+PH+"&body="+encodeURIComponent("Hi! I tried the yard preview on your website and I'm interested in the "+n+". Can you send me a price? I'll send you my photo.");
       res.hidden=false;setTimeout(syncBA,50);res.scrollIntoView({behavior:"smooth",block:"center"});
     })
