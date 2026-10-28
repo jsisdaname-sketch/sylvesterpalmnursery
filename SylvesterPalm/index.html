@@ -2292,6 +2292,11 @@ a.rv-badge:hover .rv-ext{transform:translate(2px,-2px)}
 .ih-soc.ih-tel{--glow:rgba(37,211,102,.7)}
 .ih-soc.ih-tel svg{border-radius:7px;animation:telPop 4s var(--spring) infinite,icoGlow 4s ease-in-out infinite;transform-origin:50% 60%}
 @keyframes telPop{0%,70%,100%{transform:none}76%{transform:translateY(-4px) scale(1.24) rotate(-10deg)}82%{transform:translateY(-3px) scale(1.2) rotate(9deg)}88%{transform:translateY(-1px) scale(1.1) rotate(-5deg)}94%{transform:scale(1.03) rotate(2deg)}}
+/* iPhone top (clock/battery area): Safari colors it from the header / page background, so make both the header cream */
+html{background:#faf7ef}
+body{background:#faf7ef!important}
+main,.hero,.gallery-section,.rv,.why-wrap,.faq,.contact-section,.site-footer{background:#0d2818}
+header.ios-head,header.ios-head.compact{background:#faf7ef}
 /* gallery sits right under the hero now */
 .gallery-section{padding-top:2.4rem}
 </style>
