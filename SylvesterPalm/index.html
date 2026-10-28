@@ -885,7 +885,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="ih-row">
     <a class="ih-brand" href="#hero" aria-label="Sylvester Palm Nursery, back to top"><img src="images/logo-mark.png" alt="Sylvester Palm Nursery" width="393" height="245"></a>
     <nav class="ih-links" id="tbNav" aria-label="Sections">
-      <a href="#palms" data-sec="palms">What We Offer</a>
+      <a href="#gallery" data-sec="gallery">What We Offer</a>
       <a href="#faq" data-sec="faq">Questions</a>
       <a href="#why" data-sec="why">Why Us?</a>
     </nav>
@@ -898,7 +898,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   </div>
   <div class="ih-sheet" id="ihSheet" hidden>
     <nav class="ih-sheet-nav" id="tbMenu" aria-label="Menu">
-      <a href="#palms" data-sec="palms"><span>What We Offer</span><i aria-hidden="true">&rsaquo;</i></a>
+      <a href="#gallery" data-sec="gallery"><span>What We Offer</span><i aria-hidden="true">&rsaquo;</i></a>
       <a href="#faq" data-sec="faq"><span>Questions</span><i aria-hidden="true">&rsaquo;</i></a>
       <a href="#why" data-sec="why"><span>Why Us?</span><i aria-hidden="true">&rsaquo;</i></a>
       <a href="#visualize" class="ih-sheet-viz"><span>&#10024; See a Sylvester in Your Yard</span><i aria-hidden="true">&rsaquo;</i></a>
@@ -932,21 +932,6 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
     </div>
     <button class="hero-offer-btn" id="heroOfferBtn" onclick="openSubscribePopup()">🌴 Claim $50 Off</button>
     <p class="hero-states">Delivering across Florida, Georgia, Texas, Louisiana &amp; California</p>
-  </div>
-</section>
-
-<!-- OUR PALMS -->
-<section class="palms" id="palms">
-  <div class="palm-grid">
-    <article class="palm-card featured">
-      <div class="palm-img palm-media roll"><video class="pm-video" muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture disableremoteplayback poster="images/palms/delivery-trailer.jpg" aria-label="Sylvester palms loaded on our trailer for delivery"></video></div>
-      <div class="palm-body">
-        <span class="palm-tag">Our specialty</span>
-        <h3>The Sylvester Palm</h3>
-        <p>The showpiece palm: a thick diamond-cut trunk and a full, round silver-green crown. Every palm is grown and hand-picked on our family farm. Stunning with uplighting at night.</p>
-        <div class="palm-btns"><a class="pb-try" href="#visualize">&#10024; See one in my yard</a><a class="pb-price" href="sms:+15619005658&amp;body=Hi! I'd like a price on a Sylvester Palm.">Text for price</a></div>
-      </div>
-    </article>
   </div>
 </section>
 
@@ -1809,7 +1794,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&head.classList.contains("menu-open")){setMenu(false);btn.focus()}});
   sheet.addEventListener("click",function(e){if(e.target.closest("a"))setMenu(false)});
   addEventListener("resize",function(){if(innerWidth>=960&&head.classList.contains("menu-open"))setMenu(false)});
-  var secs=["palms","faq","why"].map(function(i){return document.getElementById(i)}).filter(Boolean).sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});
+  var secs=["gallery","faq","why"].map(function(i){return document.getElementById(i)}).filter(Boolean).sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top});
   var viz=document.getElementById("visualize"),sticky=document.getElementById("stickyCall"),ticking=false;
   function update(){ticking=false;head.classList.toggle("compact",scrollY>24);
     var y=head.offsetHeight+90,cur=null;secs.forEach(function(s){if(s.getBoundingClientRect().top<=y)cur=s.id});
@@ -2116,6 +2101,8 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 .spark-layer{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:700}
 
 @media(prefers-reduced-motion:reduce){.js-motion .rv-up{opacity:1;transform:none;filter:none}.hero-overlay{transform:none;opacity:1}.bt-w{animation:none}.contact-phone{animation:none}}
+/* gallery sits right under the hero now */
+.gallery-section{padding-top:2.4rem}
 </style>
 
 <script>
