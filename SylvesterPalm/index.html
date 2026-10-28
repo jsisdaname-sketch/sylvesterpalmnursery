@@ -1083,7 +1083,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 <div class="why-wrap" id="why">
 <h2 class="section-title">Why Us?</h2>
 <div class="stats">
-  <figure class="stat"><img class="stat-bg" src="images/palms/palms-sold.jpg" alt="A truck loaded with Sylvester palms from our farm" style="object-position:45% 78%" loading="lazy" decoding="async">
+  <figure class="stat stat-top"><img class="stat-bg" src="images/palms/palms-sold.jpg" alt="A truck loaded with Sylvester palms from our farm" style="object-position:45% 92%" loading="lazy" decoding="async">
     <figcaption><span class="stat-num"><span class="cu" data-to="50000">50,000</span><span class="stat-plus">+</span></span><b class="stat-label">Palms Sold</b><small>Grown and hand-picked on our family farm</small></figcaption></figure>
   <figure class="stat"><img class="stat-bg" src="images/palms/featured-home-night.jpg" alt="Sylvester palms lit up at a customer's home" loading="lazy" decoding="async">
     <figcaption><span class="stat-soc" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="iggS" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#iggS)"/><rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.3" cy="7.7" r="1.05" fill="#fff"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M15.12 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.88 1.96-1.88h1.52V4.92s-1.38-.24-2.69-.24c-2.74 0-4.53 1.66-4.53 4.67V12H5.53v3.47h3.05V24a12.1 12.1 0 0 0 3.74 0v-8.53z"/></svg></span><span class="stat-num"><span class="cu" data-to="100000">100,000</span><span class="stat-plus">+</span></span><b class="stat-label">Views Across Social Media</b><small>Come see the farm: <a href="https://www.instagram.com/sylvesterpalmnursery" target="_blank" rel="noopener">@sylvesterpalmnursery</a></small></figcaption></figure>
@@ -2269,6 +2269,12 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFS();})
 .rv-title{margin:1.2rem auto 0}
 .rv-title::after,.section-title::after,.contact-heading::after{content:"";display:block;width:58px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#C5973A,transparent);margin:.9rem auto 0}
 .gallery-section .section-title,.why-wrap .section-title,.faq .section-title{margin-bottom:1.8rem}
+/* palms sold: number sits up in the clouds, palms + truck stay clear below */
+.stat-top{align-items:flex-start}
+.stat-top::after{background:linear-gradient(180deg,rgba(8,26,14,.72) 0%,rgba(8,26,14,.42) 38%,rgba(8,26,14,0) 62%)}
+.stat-top figcaption{padding-top:24px}
+.stat-top .stat-label,.stat-top small{text-shadow:0 2px 12px rgba(0,0,0,.65),0 1px 2px rgba(0,0,0,.5)}
+.stat-top small{color:rgba(255,255,255,.92)}
 /* gallery sits right under the hero now */
 .gallery-section{padding-top:2.4rem}
 </style>
