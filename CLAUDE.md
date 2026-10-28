@@ -65,6 +65,7 @@ The owner is a beginner with web development. Explain everything step-by-step fo
 - Keep single-file architecture unless owner approves a split
 - Keep TCPA opt-out language in all SMS copy
 - Flag paid upgrades (Brevo credits, Cloudinary tiers, etc.) before proceeding
+- MOBILE FIRST, ALWAYS: every change must be fully optimized for phones (test iPhone SE/13 sizes, menu works at any scroll position, no overflow, images/videos compressed for mobile data)
 
 ## NEXT STEPS
 1. Toll-free number verification (blocks ALL SMS delivery)
