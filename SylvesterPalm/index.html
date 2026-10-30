@@ -2316,6 +2316,14 @@ header.ios-head,header.ios-head.compact{background:#faf7ef}
 .fs-actions button:active{transform:scale(.97)}
 @media(max-width:600px){.fs-actions{width:calc(100vw - 20px);max-width:460px;display:grid;grid-template-columns:1.3fr 1fr;gap:6px}.fs-actions .fs-viz,.fs-actions .like-btn{min-width:0;padding:0 6px 0 14px;font-size:.86rem;line-height:1.15;white-space:normal;text-align:left;min-height:56px}.fs-ico{width:36px;height:36px}}
 @media(max-width:360px){.fs-actions .fs-viz,.fs-actions .like-btn{padding-left:12px;font-size:.8rem}.fs-ico{width:32px;height:32px}.fs-ico .ic{width:16px;height:16px}}
+/* size tile: a clean white square, no icon */
+.fs-size{display:grid;place-content:center;justify-items:center;gap:3px;width:68px;height:68px;padding:0;border-radius:18px;bottom:calc(100px + var(--sab))}
+.fs-size b{font:700 1.35rem/1 "Playfair Display",serif;letter-spacing:-.01em;color:#0d2818}
+.fs-size small{font-size:.56rem;letter-spacing:.18em}
+/* hero numbers: elegant serif figures */
+.hst-num{font:700 clamp(2rem,9vw,2.8rem)/1 "Playfair Display",serif;letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.hst-num i{font-family:"DM Sans",sans-serif;font-weight:400;font-size:.72em;vertical-align:.32em;margin-left:3px}
+@media(min-width:768px){.hst-num{font-size:3.2rem}}
 /* gallery sits right under the hero now */
 .gallery-section{padding-top:2.4rem}
 </style>
@@ -2433,7 +2441,7 @@ header.ios-head,header.ios-head.compact{background:#faf7ef}
   $$(".fs-close,.fs-actions",ov).forEach(function(e){e.classList.add("fs-ui")});
   var src=null,img=null,box=null,isOpen=false,busy=false,justDragged=false;
   D.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest(".masonry-item");if(t)src=t},true);
-  function fit(nw,nh){var vw=innerWidth,vh=innerHeight,top=72,bot=vw<600?150:140,mw=vw*(vw<600?.94:.84),mh=vh-top-bot,k=Math.min(mw/nw,mh/nh),w=nw*k,h=nh*k;return{x:(vw-w)/2,y:top+(mh-h)/2,w:w,h:h}}
+  function fit(nw,nh){var vw=innerWidth,vh=innerHeight,top=72,bot=vw<600?188:184,mw=vw*(vw<600?.94:.84),mh=vh-top-bot,k=Math.min(mw/nw,mh/nh),w=nw*k,h=nh*k;return{x:(vw-w)/2,y:top+(mh-h)/2,w:w,h:h}}
   function place(im,f){im.style.left=f.x+"px";im.style.top=f.y+"px";im.style.width=f.w+"px";im.style.height=f.h+"px"}
   function flip(r,f){return "translate("+(r.left-f.x)+"px,"+(r.top-f.y)+"px) scale("+(r.width/f.w)+","+(r.height/f.h)+")"}
   function visibleTile(i){var want=palms[i].img,best=null;$$(".masonry-item",grid).forEach(function(t){if(best)return;var im=t.querySelector("img");if(!im||im.getAttribute("src")!==want)return;var r=t.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth)best=t});return best}
@@ -2443,7 +2451,7 @@ header.ios-head,header.ios-head.compact{background:#faf7ef}
     currentFSIndex=i;var tile=(src&&src.isConnected&&src.querySelector("img")&&src.querySelector("img").getAttribute("src")===palms[i].img)?src:visibleTile(i);
     var ti=tile&&tile.querySelector("img");img=mk(i);
     var nw=(ti&&ti.naturalWidth)||img.naturalWidth||4,nh=(ti&&ti.naturalHeight)||img.naturalHeight||3;box=fit(nw,nh);place(img,box);
-    fc.innerHTML="";fc.appendChild(img);var sz=D.createElement("div");sz.className="fs-size fs-ui";sz.innerHTML='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3v18M8 3h4M8 7.5h3M8 12h4M8 16.5h3M8 21h4"/></svg><b>'+PALM_SIZE+'</b><small>trunk</small>';fc.appendChild(sz);
+    fc.innerHTML="";fc.appendChild(img);var sz=D.createElement("div");sz.className="fs-size fs-ui";sz.innerHTML='<b>'+PALM_SIZE+'</b><small>trunk</small>';fc.appendChild(sz);
     if(!img.naturalWidth)img.onload=function(){if(img.naturalWidth){box=fit(img.naturalWidth,img.naturalHeight);place(img,box)}};
     ov.classList.add("open");D.body.style.overflow="hidden";grid&&grid.classList.add("wall-paused");count();isOpen=true;
     if(!still&&img.animate){if(tile){var r=tile.getBoundingClientRect();tile.classList.add("fs-src");img.animate([{transform:flip(r,box),borderRadius:"14px"},{transform:"none",borderRadius:"18px"}],{duration:640,easing:EASE})}
