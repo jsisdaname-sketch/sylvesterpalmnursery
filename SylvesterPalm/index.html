@@ -932,16 +932,16 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
     </div>
     <button class="hero-offer-btn" id="heroOfferBtn" onclick="openSubscribePopup()">🌴 Claim $50 Off</button>
     <p class="hero-states">Delivering across Florida, Georgia, Texas, Louisiana &amp; California</p>
-    <div class="hero-stats" aria-label="By the numbers">
-      <div class="hst"><span class="hst-num"><span class="cu" data-to="50000">50,000</span><i>+</i></span><span class="hst-lbl">Palms sold</span></div>
-      <span class="hst-div" aria-hidden="true"></span>
-      <div class="hst"><span class="hst-num"><span class="cu" data-to="100000">100,000</span><i>+</i></span><span class="hst-lbl">Social media views</span></div>
-    </div>
   </div>
 </section>
 
 <!-- GALLERY -->
 <section class="gallery-section" id="gallery">
+  <div class="hero-stats" aria-label="By the numbers">
+      <div class="hst"><span class="hst-num"><span class="cu" data-to="50000">50,000</span><i>+</i></span><span class="hst-lbl">Palms sold</span></div>
+      <span class="hst-div" aria-hidden="true"></span>
+      <div class="hst"><span class="hst-num"><span class="cu" data-to="100000">100,000</span><i>+</i></span><span class="hst-lbl">Social media views</span></div>
+  </div>
   <h2 class="section-title">Browse Our Palms</h2>
   <div class="masonry-wall" id="grid"></div>
   <p class="gal-hint">Tap any photo to see it up close</p>
@@ -2324,6 +2324,12 @@ header.ios-head,header.ios-head.compact{background:#faf7ef}
 .hst-num{font:700 clamp(2rem,9vw,2.8rem)/1 "Playfair Display",serif;letter-spacing:-.01em;font-variant-numeric:lining-nums}
 .hst-num i{font-family:"DM Sans",sans-serif;font-weight:400;font-size:.72em;vertical-align:.32em;margin-left:3px}
 @media(min-width:768px){.hst-num{font-size:3.2rem}}
+/* numbers now sit right above "Browse Our Palms", quiet and clean */
+.gallery-section .hero-stats{opacity:1;animation:none;max-width:420px;margin:.2rem auto 2.6rem;padding:0;border-top:0}
+.gallery-section .hst-num{font-size:clamp(1.7rem,7.4vw,2.3rem)}
+@media(min-width:768px){.gallery-section .hero-stats{max-width:520px}.gallery-section .hst-num{font-size:2.6rem}}
+/* narrower sections still paint green edge to edge (page behind is cream for the iPhone top bar) */
+.gallery-section,.faq{box-shadow:0 0 0 100vmax #0d2818;clip-path:inset(0 -100vmax)}
 /* gallery sits right under the hero now */
 .gallery-section{padding-top:2.4rem}
 </style>
@@ -2346,7 +2352,7 @@ header.ios-head,header.ios-head.compact{background:#faf7ef}
   reveal(".why-label");reveal(".stat",.1);reveal(".why-pills");
   reveal(".faq .section-label,.faq .section-title",.06);reveal(".faq details",.05);
   reveal(".contact-card>*",.07);
-  reveal(".site-footer");
+  reveal(".site-footer > *",.06);
   /* the photo wall rows glide in from alternating sides (rows are rebuilt on resize, so watch for that) */
   var grid=D.getElementById("grid");
   function rows(){$$(".scroll-row",grid).forEach(function(r,k){if(r.classList.contains("rv-up"))return;r.classList.add("rv-up");r.style.setProperty("--d",(k*.1)+"s");io?io.observe(r):r.classList.add("in")})}
